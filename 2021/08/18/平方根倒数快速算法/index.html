@@ -20,20 +20,20 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629445480418" as="style">
+  <link rel="preload" href="/css/style.css?time=1629448827750" as="style">
   <!-- 页面元数据 -->
   <title>平方根倒数快速算法 - DearXuan的主页</title>
   <meta name="keywords" content="算法,C/C++,编程,算法">
-  <meta name="description" content="单位向量时需要用到平方根倒数，而计算单位向量在游戏引擎中会大量使用，属于底层代码，因此其效率将会直接影响游戏体验。 雷神之锤3中使用了以下代码 123456789101112float Q_rsqrt(float number) {    long i;    float x2, y;    const float threehalfs &#x3D; 1.5F;    x2 &#x3D; number * 0.5F;">
+  <meta name="description" content="单位向量时需要用到平方根倒数，而计算单位向量在游戏引擎中会大量使用，属于底层代码，因此其效率将会直接影响游戏体验。 雷神之锤3中使用了以下代码 float Q_rsqrt(float number) {     long i;     float x2, y;     const float threehalfs &#x3D; 1.5F;     x2 &#x3D; number * 0.5F;     y &#x3D; nu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="平方根倒数快速算法">
 <meta property="og:url" content="http://example.com/2021/08/18/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="DearXuan的主页">
-<meta property="og:description" content="单位向量时需要用到平方根倒数，而计算单位向量在游戏引擎中会大量使用，属于底层代码，因此其效率将会直接影响游戏体验。 雷神之锤3中使用了以下代码 123456789101112float Q_rsqrt(float number) {    long i;    float x2, y;    const float threehalfs &#x3D; 1.5F;    x2 &#x3D; number * 0.5F;">
+<meta property="og:description" content="单位向量时需要用到平方根倒数，而计算单位向量在游戏引擎中会大量使用，属于底层代码，因此其效率将会直接影响游戏体验。 雷神之锤3中使用了以下代码 float Q_rsqrt(float number) {     long i;     float x2, y;     const float threehalfs &#x3D; 1.5F;     x2 &#x3D; number * 0.5F;     y &#x3D; nu">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2021-08-18T10:20:00.000Z">
-<meta property="article:modified_time" content="2021-08-20T07:43:38.123Z">
+<meta property="article:modified_time" content="2021-08-20T08:40:15.644Z">
 <meta property="article:author" content="DearXuan">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="C&#x2F;C++">
@@ -2207,8 +2207,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629445480418" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629445480418"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629448827750" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629448827750"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2645,10 +2645,22 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div id="page-plugins-helper"></div>
   <p>单位向量时需要用到平方根倒数，而计算单位向量在游戏引擎中会大量使用，属于底层代码，因此其效率将会直接影响游戏体验。</p>
 <p>雷神之锤3中使用了以下代码</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">Q_rsqrt</span><span class="params">(<span class="keyword">float</span> number)</span> </span>{</span><br><span class="line">    <span class="keyword">long</span> i;</span><br><span class="line">    <span class="keyword">float</span> x2, y;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">float</span> threehalfs = <span class="number">1.5F</span>;</span><br><span class="line">    x2 = number * <span class="number">0.5F</span>;</span><br><span class="line">    y = number;</span><br><span class="line">    i = *(<span class="keyword">long</span> *) &amp;y;</span><br><span class="line">    i = <span class="number">0x5F3759DF</span> - (i &gt;&gt; <span class="number">1</span>);</span><br><span class="line">    y = *(<span class="keyword">float</span> *) &amp;i;</span><br><span class="line">    y = y * (threehalfs - (x2 * y * y));</span><br><span class="line">    <span class="keyword">return</span> y;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">float Q_rsqrt(float number) {
+    long i;
+    float x2, y;
+    const float threehalfs = 1.5F;
+    x2 = number * 0.5F;
+    y = number;
+    i = *(long *) &amp;y;
+    i = 0x5F3759DF - (i &gt;&gt; 1);
+    y = *(float *) &amp;i;
+    y = y * (threehalfs - (x2 * y * y));
+    return y;
+}
+</code></pre>
 <p>本文将分析上述代码的含义</p>
 <h2 id="float内存结构"><a href="#float内存结构" class="headerlink" title="float内存结构"></a>float内存结构</h2><p>float类型总共占用32位，其内存结构采用科学计数法表示。第一位表示符号，接下来8位表示指数，后23位表示尾数</p>
-<p>以4.25为例，其内存中的结构为<br><font color="red">0</font><br><font color="green">10000001</font><br><font color="blue">00010000000000000000000</font><br>第一位0表示这个数是正数.</p>
+<p>以4.25为例，其内存中的结构为<br><font color="red">0</font> <font color="green">10000001</font> <font color="blue">00010000000000000000000</font><br>第一位0表示这个数是正数.</p>
 <p>接下来的8位表示指数，其指在0-255之间，但是这样就无法表示负指数了，因此规定正指数第一位是1，负指数第一位是0，将这8位转换成10进制后减去127就是实际的指数。这里的10000001转换成10进制后是129，因此表示2^2 = 4.</p>
 <p>接下来的23位表示尾数。前面提到float在内存中是以科学计数法形式表示，在十进制中，科学计数法的个位数一定在1-9之间，因此在二进制中，科学计数法的个位数一定是1，既然一定是1，那就没有必要保存了，因此尾数0001实际上是1.0001，转换成十进制就是1.0625.</p>
 <p>所以最终十进制数字就是1.0625 * 2^2 = 4.25.</p>
@@ -2656,19 +2668,25 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>则原float数字可以表示为<br><img src="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-0.png" class="lazyload" data-srcset="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-0.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>取2为底的对数，得<br><img src="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-1.png" class="lazyload" data-srcset="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>在上面的分析中，我们知道M/2^23一定小于1，此时对数公式满足log(1+x)等价无穷小模型.</p>
 <p>我们用x+μ来近似代替2为底的对数。现在上述表达式可以写成<br><img src="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-2.png" class="lazyload" data-srcset="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-2.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>提出1/2^23，得<br><img src="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-3.png" class="lazyload" data-srcset="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-3.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
 <h2 id="位操作"><a href="#位操作" class="headerlink" title="位操作"></a>位操作</h2><p>float无法进行位操作，而long可以，并且都是4字节，因此可以把float*转换成long*来进行位操作.</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> y = number;</span><br><span class="line"><span class="keyword">long</span> i = *(<span class="keyword">long</span> *) &amp;y;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">float y = number;
+long i = *(long *) &amp;y;
+</code></pre>
 <p>计算y的平方根倒数，就是计算y的-0.5次方，直接计算的效率低下，但是我们已经发现可以用log的方法来加速计算.<br><br><br>将y用上面的表达式替换</p>
 <p>设<br><img src="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-4.png" class="lazyload" data-srcset="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-4.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>取对数<br><img src="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-5.png" class="lazyload" data-srcset="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-5.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>带入上面的表达式<br><img src="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-6.png" class="lazyload" data-srcset="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-6.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>化简<br><img src="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-7.png" class="lazyload" data-srcset="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-7.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>可以看到右边的式子是一个常数减去一个变量的一半，这个变量就是代码中的number.</p>
 <p>如何求μ的值？<br><br><br>观察函数图像<br><img src="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-8.png" class="lazyload" data-srcset="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-8.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>我们希望y=x+μ尽可能均分红色和黄色曲线，因此我们可以作红色曲线的切线，求出它和y轴的交点.<br><img src="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-9.png" class="lazyload" data-srcset="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-9.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br><img src="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-10.png" class="lazyload" data-srcset="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-10.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>代进原方程，得到y≈0.528766，x≈0.442695</p>
 <p>相减，得到μ=(y-x) / 2 = 0.0430355</p>
 <p>将这个μ的值代入表达式，计算结果转换为十六进制，就是0x5F3759DF</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">0x5F3759DF</span> - (i &gt;&gt; <span class="number">1</span>);</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">i = 0x5F3759DF - (i &gt;&gt; 1);
+</code></pre>
 <p>由于float无法进行位运算，所以将它转换成long后再位移，虽然这样会损失精度，但是影响可以忽略不计.</p>
 <p>此时已经运算完成，再把long转换回float</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y = *(<span class="keyword">float</span> *) &amp;i;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">y = *(float *) &amp;i;
+</code></pre>
 <h2 id="牛顿迭代法"><a href="#牛顿迭代法" class="headerlink" title="牛顿迭代法"></a>牛顿迭代法</h2><p>当前得到的y仍然是一个近似值.</p>
 <p>设y是x的平方根倒数，则函数表达式为<br><img src="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-11.png" class="lazyload" data-srcset="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-11.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>转换为x关于y的函数，得到<br><img src="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-12.png" class="lazyload" data-srcset="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-12.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>利用牛顿迭代法<br><img src="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-13.png" class="lazyload" data-srcset="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-13.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>带入Xn=y，得到<br><img src="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-14.png" class="lazyload" data-srcset="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-14.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>化简<br><img src="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-15.png" class="lazyload" data-srcset="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-15.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br><img src="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-16.png" class="lazyload" data-srcset="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-16.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br><img src="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-17.png" class="lazyload" data-srcset="/2021/08/20/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97/dearxuan-17.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>得到最后一行代码.</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y = y * (threehalfs - (x2 * y * y));</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">y = y * (threehalfs - (x2 * y * y));
+</code></pre>
+
   
   
     
@@ -2702,7 +2720,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-20T15:43:38+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-20T16:40:15+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2021年8月20日</p>
@@ -3234,6 +3252,8 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
   
   
   
+  volantis.css("https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.1.0/build/styles/default.min.css");
+  
 </script>
 
 <!-- required -->
@@ -3449,7 +3469,7 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629445480418')
+    volantis.js('/js/rightMenu.js?time=1629448827750')
   </script>
 
 
@@ -3562,19 +3582,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629445480418")
+        volantis.js("/js/plugins/sites.js?time=1629448827750")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629445480418")
+        volantis.js("/js/plugins/friends.js?time=1629448827750")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629445480418")
+        volantis.js("/js/plugins/contributors.js?time=1629448827750")
       }
     
   };
@@ -3647,7 +3667,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629445480420')
+      await volantis.js('/js/aplayer.js?time=1629448827751')
       volantis.APlayerController.music = true;
     
   })();
@@ -3730,7 +3750,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629445480418.js"></script>
+<script src="/js/app.js?time=1629448827750.js"></script>
 
 
 <!-- optional -->
@@ -3743,7 +3763,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629445480418");
+    return volantis.js("/js/search/hexo.js?time=1629448827750");
   }
 
   function loadSearchService() {
@@ -3781,6 +3801,20 @@ volantis.pjax.push(bindToggleButton);
 
 
 
+
+  
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.1.0/build/highlight.min.js"></script>
+
+<script>volantis.requestAnimationFrame(hljs.initHighlightingOnLoad)</script>
+
+<script>
+volantis.pjax.push(()=>{
+	document.querySelectorAll('pre code').forEach((block) => {
+	  hljs.highlightBlock(block);
+	});
+},"highlightjs")
+</script>
 
 
 
@@ -4011,8 +4045,8 @@ volantis.pjax.push(bindToggleButton);
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629445480418')
-      volantis.js('/js/message.js?time=1629445480418', () => {
+      volantis.css('/css/message.css?time=1629448827750')
+      volantis.js('/js/message.js?time=1629448827750', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4056,8 +4090,8 @@ volantis.pjax.push(bindToggleButton);
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629445480418')
-      volantis.js('/js/message.js?time=1629445480418', () => {
+      volantis.css('/css/message.css?time=1629448827750')
+      volantis.js('/js/message.js?time=1629448827750', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4217,7 +4251,7 @@ volantis.pjax.push(bindToggleButton);
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/C-C/","name":"C/C++"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/08/18/平方根倒数快速算法/","name":"平方根倒数快速算法"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"平方根倒数快速算法","description":"","datePublished":"2021-08-18T10:20:00.000Z","dateModified":"2021-08-20T07:43:38.123Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/08/18/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97%E6%B3%95/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/08/18/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97%E6%B3%95/","wordCount":0,"articleSection":"C/C++","keywords":"算法,C/C++"}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/C-C/","name":"C/C++"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/08/18/平方根倒数快速算法/","name":"平方根倒数快速算法"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"平方根倒数快速算法","description":"","datePublished":"2021-08-18T10:20:00.000Z","dateModified":"2021-08-20T08:40:15.644Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/08/18/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97%E6%B3%95/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/08/18/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97%E6%B3%95/","wordCount":0,"articleSection":"C/C++","keywords":"算法,C/C++"}]</script>
 
 
 <!-- more -->

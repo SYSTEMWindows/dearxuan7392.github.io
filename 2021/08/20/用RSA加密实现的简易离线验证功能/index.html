@@ -20,7 +20,7 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629445480416" as="style">
+  <link rel="preload" href="/css/style.css?time=1629448827747" as="style">
   <!-- 页面元数据 -->
   <title>利用RSA加密实现的简易离线验证功能(C#,含代码) - DearXuan的主页</title>
   <meta name="keywords" content="编程,算法">
@@ -2206,8 +2206,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629445480416" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629445480416"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629448827747" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629448827747"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2773,7 +2773,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <p class='title'>平方根倒数快速算法<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
           <p class='content'>单位向量时需要用到平方根倒数，而计算单位向量在游戏引擎中会大量使用，属于底层代码，因此其效率将会直接影响游戏体验。
 雷神之锤3中使用了以下代码
-123456789101112float Q_rs...</p>
+float Q_rsqrt(float numbe...</p>
         </a>
       
     </div>
@@ -3207,6 +3207,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
   
+  volantis.css("https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.1.0/build/styles/default.min.css");
+  
 </script>
 
 <!-- required -->
@@ -3422,7 +3424,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629445480416')
+    volantis.js('/js/rightMenu.js?time=1629448827747')
   </script>
 
 
@@ -3535,19 +3537,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629445480416")
+        volantis.js("/js/plugins/sites.js?time=1629448827747")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629445480416")
+        volantis.js("/js/plugins/friends.js?time=1629448827747")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629445480416")
+        volantis.js("/js/plugins/contributors.js?time=1629448827747")
       }
     
   };
@@ -3620,7 +3622,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629445480417')
+      await volantis.js('/js/aplayer.js?time=1629448827749')
       volantis.APlayerController.music = true;
     
   })();
@@ -3703,7 +3705,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629445480416.js"></script>
+<script src="/js/app.js?time=1629448827747.js"></script>
 
 
 <!-- optional -->
@@ -3716,7 +3718,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629445480416");
+    return volantis.js("/js/search/hexo.js?time=1629448827747");
   }
 
   function loadSearchService() {
@@ -3754,6 +3756,20 @@ volantis.pjax.push(bindToggleButton);
 
 
 
+
+  
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.1.0/build/highlight.min.js"></script>
+
+<script>volantis.requestAnimationFrame(hljs.initHighlightingOnLoad)</script>
+
+<script>
+volantis.pjax.push(()=>{
+	document.querySelectorAll('pre code').forEach((block) => {
+	  hljs.highlightBlock(block);
+	});
+},"highlightjs")
+</script>
 
 
 
@@ -3984,8 +4000,8 @@ volantis.pjax.push(bindToggleButton);
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629445480416')
-      volantis.js('/js/message.js?time=1629445480416', () => {
+      volantis.css('/css/message.css?time=1629448827747')
+      volantis.js('/js/message.js?time=1629448827747', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4029,8 +4045,8 @@ volantis.pjax.push(bindToggleButton);
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629445480416')
-      volantis.js('/js/message.js?time=1629445480416', () => {
+      volantis.css('/css/message.css?time=1629448827747')
+      volantis.js('/js/message.js?time=1629448827747', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
