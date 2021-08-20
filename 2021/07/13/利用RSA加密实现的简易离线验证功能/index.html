@@ -20,10 +20,10 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629443605482" as="style">
+  <link rel="preload" href="/css/style.css?time=1629444356473" as="style">
   <!-- 页面元数据 -->
   <title>利用RSA加密实现的简易离线验证功能(C#,含代码) - DearXuan的主页</title>
-  <meta name="keywords" content="C#,编程,算法">
+  <meta name="keywords" content="C#,RSA加密,离线验证,编程,算法">
   <meta name="description" content="许多软件都有正版验证功能，它们通常需要联网验证，验证的本质则是加密与解密，本文将使用RSA加密算法实现简易的离线验证功能 RSA加密设p,q是两个超级大的素数，N&#x3D;pq，数据通过欧拉函数φ(N)来加密，而欧拉函数φ(N)满足φ(N)&#x3D; φ(pq)&#x3D;(p-1)(q-1)，如果要算出φ(N)，就必须知道p和q。并且这有一点好处，某人可以公开宣布他的密钥e以及N，任何人都可以给他发送密文，但是只有他能看">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用RSA加密实现的简易离线验证功能(C#,含代码)">
@@ -33,9 +33,11 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2021-07-13T14:02:00.000Z">
-<meta property="article:modified_time" content="2021-08-20T03:10:42.294Z">
+<meta property="article:modified_time" content="2021-08-20T07:22:13.023Z">
 <meta property="article:author" content="DearXuan">
 <meta property="article:tag" content="C#">
+<meta property="article:tag" content="RSA加密">
+<meta property="article:tag" content="离线验证">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -2206,8 +2208,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629443605482" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629443605482"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629444356473" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629444356473"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2595,7 +2597,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class='new-meta-item category'>
     <a class='notlink'>
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/">加密算法</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/RSA/">RSA</a>
+      <a class="category-link" href="/categories/C/">C#</a>
     </a>
   </div>
 
@@ -2691,7 +2693,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-20T11:10:42+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-20T15:22:13+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2021年8月20日</p>
@@ -2703,7 +2705,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C#</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C#</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/RSA%E5%8A%A0%E5%AF%86/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>RSA加密</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%A6%BB%E7%BA%BF%E9%AA%8C%E8%AF%81/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>离线验证</p></a></div>
 
 
         
@@ -3406,7 +3408,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629443605482')
+    volantis.js('/js/rightMenu.js?time=1629444356473')
   </script>
 
 
@@ -3519,19 +3521,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629443605482")
+        volantis.js("/js/plugins/sites.js?time=1629444356473")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629443605482")
+        volantis.js("/js/plugins/friends.js?time=1629444356473")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629443605482")
+        volantis.js("/js/plugins/contributors.js?time=1629444356473")
       }
     
   };
@@ -3604,7 +3606,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629443605483')
+      await volantis.js('/js/aplayer.js?time=1629444356475')
       volantis.APlayerController.music = true;
     
   })();
@@ -3687,7 +3689,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629443605482.js"></script>
+<script src="/js/app.js?time=1629444356473.js"></script>
 
 
 <!-- optional -->
@@ -3700,7 +3702,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629443605482");
+    return volantis.js("/js/search/hexo.js?time=1629444356473");
   }
 
   function loadSearchService() {
@@ -3968,8 +3970,8 @@ volantis.pjax.push(bindToggleButton);
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629443605482')
-      volantis.js('/js/message.js?time=1629443605482', () => {
+      volantis.css('/css/message.css?time=1629444356473')
+      volantis.js('/js/message.js?time=1629444356473', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4013,8 +4015,8 @@ volantis.pjax.push(bindToggleButton);
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629443605482')
-      volantis.js('/js/message.js?time=1629443605482', () => {
+      volantis.css('/css/message.css?time=1629444356473')
+      volantis.js('/js/message.js?time=1629444356473', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4174,7 +4176,7 @@ volantis.pjax.push(bindToggleButton);
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/算法/","name":"算法"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/算法/加密算法/","name":"加密算法"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/算法/加密算法/RSA/","name":"RSA"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/07/13/利用RSA加密实现的简易离线验证功能/","name":"利用RSA加密实现的简易离线验证功能(C#,含代码)"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"利用RSA加密实现的简易离线验证功能(C#,含代码)","description":"","datePublished":"2021-07-13T14:02:00.000Z","dateModified":"2021-08-20T03:10:42.294Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/07/13/%E5%88%A9%E7%94%A8RSA%E5%8A%A0%E5%AF%86%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E6%98%93%E7%A6%BB%E7%BA%BF%E9%AA%8C%E8%AF%81%E5%8A%9F%E8%83%BD/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/07/13/%E5%88%A9%E7%94%A8RSA%E5%8A%A0%E5%AF%86%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E6%98%93%E7%A6%BB%E7%BA%BF%E9%AA%8C%E8%AF%81%E5%8A%9F%E8%83%BD/","wordCount":0,"articleSection":"算法","keywords":"C#"}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/C/","name":"C#"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/07/13/利用RSA加密实现的简易离线验证功能/","name":"利用RSA加密实现的简易离线验证功能(C#,含代码)"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"利用RSA加密实现的简易离线验证功能(C#,含代码)","description":"","datePublished":"2021-07-13T14:02:00.000Z","dateModified":"2021-08-20T07:22:13.023Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/07/13/%E5%88%A9%E7%94%A8RSA%E5%8A%A0%E5%AF%86%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E6%98%93%E7%A6%BB%E7%BA%BF%E9%AA%8C%E8%AF%81%E5%8A%9F%E8%83%BD/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/07/13/%E5%88%A9%E7%94%A8RSA%E5%8A%A0%E5%AF%86%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E6%98%93%E7%A6%BB%E7%BA%BF%E9%AA%8C%E8%AF%81%E5%8A%9F%E8%83%BD/","wordCount":0,"articleSection":"C#","keywords":"C#,RSA加密,离线验证"}]</script>
 
 
 <!-- more -->

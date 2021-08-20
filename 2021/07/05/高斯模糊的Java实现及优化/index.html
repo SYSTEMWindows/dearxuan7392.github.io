@@ -20,10 +20,10 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629443605487" as="style">
+  <link rel="preload" href="/css/style.css?time=1629444356475" as="style">
   <!-- 页面元数据 -->
   <title>高斯模糊的Java实现及优化 - DearXuan的主页</title>
-  <meta name="keywords" content="Java,编程,算法">
+  <meta name="keywords" content="Java,算法,图形算法,编程,算法">
   <meta name="description" content="高斯模糊是被广泛使用的图形算法之一，在实现高斯模糊之前，先要了解正态分布 正态分布一维的正态分布为直接让f(x)和f(y)相乘，就得到了二维的正态分布此处直接令μ&#x3D;0，将会在下面解释。 权值矩阵设有一个(2n+1)阶矩阵M，且有，我们称这个矩阵为权值矩阵，称为(i,j)点处的权。其中n是高斯模糊的半径。 离散卷积离散卷积是卷积对离散量的特殊形式，假设现有原图矩阵A,权值矩阵B,则点(x,y)处的离">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高斯模糊的Java实现及优化">
@@ -33,9 +33,11 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2021-07-05T05:45:00.000Z">
-<meta property="article:modified_time" content="2021-08-20T03:10:15.772Z">
+<meta property="article:modified_time" content="2021-08-20T07:21:55.551Z">
 <meta property="article:author" content="DearXuan">
 <meta property="article:tag" content="Java">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="图形算法">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -2206,8 +2208,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629443605487" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629443605487"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629444356475" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629444356475"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2595,7 +2597,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class='new-meta-item category'>
     <a class='notlink'>
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/">图像算法</a>
+      <a class="category-link" href="/categories/Java/">Java</a>
     </a>
   </div>
 
@@ -2691,7 +2693,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-20T11:10:15+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-20T15:21:55+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2021年8月20日</p>
@@ -2703,7 +2705,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%AE%97%E6%B3%95/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>算法</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%9B%BE%E5%BD%A2%E7%AE%97%E6%B3%95/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>图形算法</p></a></div>
 
 
         
@@ -3401,7 +3403,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629443605487')
+    volantis.js('/js/rightMenu.js?time=1629444356475')
   </script>
 
 
@@ -3514,19 +3516,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629443605487")
+        volantis.js("/js/plugins/sites.js?time=1629444356475")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629443605487")
+        volantis.js("/js/plugins/friends.js?time=1629444356475")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629443605487")
+        volantis.js("/js/plugins/contributors.js?time=1629444356475")
       }
     
   };
@@ -3599,7 +3601,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629443605489')
+      await volantis.js('/js/aplayer.js?time=1629444356479')
       volantis.APlayerController.music = true;
     
   })();
@@ -3682,7 +3684,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629443605487.js"></script>
+<script src="/js/app.js?time=1629444356475.js"></script>
 
 
 <!-- optional -->
@@ -3695,7 +3697,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629443605487");
+    return volantis.js("/js/search/hexo.js?time=1629444356475");
   }
 
   function loadSearchService() {
@@ -3963,8 +3965,8 @@ volantis.pjax.push(bindToggleButton);
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629443605487')
-      volantis.js('/js/message.js?time=1629443605487', () => {
+      volantis.css('/css/message.css?time=1629444356475')
+      volantis.js('/js/message.js?time=1629444356475', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4008,8 +4010,8 @@ volantis.pjax.push(bindToggleButton);
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629443605487')
-      volantis.js('/js/message.js?time=1629443605487', () => {
+      volantis.css('/css/message.css?time=1629444356475')
+      volantis.js('/js/message.js?time=1629444356475', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4169,7 +4171,7 @@ volantis.pjax.push(bindToggleButton);
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/算法/","name":"算法"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/算法/图像算法/","name":"图像算法"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/07/05/高斯模糊的Java实现及优化/","name":"高斯模糊的Java实现及优化"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"高斯模糊的Java实现及优化","description":"","datePublished":"2021-07-05T05:45:00.000Z","dateModified":"2021-08-20T03:10:15.772Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/07/05/%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A%E7%9A%84Java%E5%AE%9E%E7%8E%B0%E5%8F%8A%E4%BC%98%E5%8C%96/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/07/05/%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A%E7%9A%84Java%E5%AE%9E%E7%8E%B0%E5%8F%8A%E4%BC%98%E5%8C%96/","wordCount":0,"articleSection":"算法","keywords":"Java"}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Java/","name":"Java"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/07/05/高斯模糊的Java实现及优化/","name":"高斯模糊的Java实现及优化"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"高斯模糊的Java实现及优化","description":"","datePublished":"2021-07-05T05:45:00.000Z","dateModified":"2021-08-20T07:21:55.551Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/07/05/%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A%E7%9A%84Java%E5%AE%9E%E7%8E%B0%E5%8F%8A%E4%BC%98%E5%8C%96/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/07/05/%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A%E7%9A%84Java%E5%AE%9E%E7%8E%B0%E5%8F%8A%E4%BC%98%E5%8C%96/","wordCount":0,"articleSection":"Java","keywords":"Java,算法,图形算法"}]</script>
 
 
 <!-- more -->

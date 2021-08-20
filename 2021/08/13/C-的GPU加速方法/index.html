@@ -20,10 +20,10 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629443605456" as="style">
+  <link rel="preload" href="/css/style.css?time=1629444356446" as="style">
   <!-- 页面元数据 -->
   <title>C#的GPU加速方法 - DearXuan的主页</title>
-  <meta name="keywords" content="C#,C++,编程,算法">
+  <meta name="keywords" content="C#,C++,Dll,GPU编程,硬件加速,编程,算法">
   <meta name="description" content="本文将通过C#调用dll的方法来实现并发计算 在VS2019里新建动态链接库项目，在pch.h里定义函数 1234567891011121314&#x2F;&#x2F; pch.h: 这是预编译标头文件。&#x2F;&#x2F; 下方列出的文件仅编译一次，提高了将来生成的生成性能。&#x2F;&#x2F; 这还将影响 IntelliSense 性能，包括代码完成和许多代码浏览功能。&#x2F;&#x2F; 但是，如果此处列出的文件中的任何一个在生成之间有更新，它们全部都将被重">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C#的GPU加速方法">
@@ -33,10 +33,13 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2021-08-13T06:11:00.000Z">
-<meta property="article:modified_time" content="2021-08-20T05:00:13.952Z">
+<meta property="article:modified_time" content="2021-08-20T07:25:34.295Z">
 <meta property="article:author" content="DearXuan">
 <meta property="article:tag" content="C#">
 <meta property="article:tag" content="C++">
+<meta property="article:tag" content="Dll">
+<meta property="article:tag" content="GPU编程">
+<meta property="article:tag" content="硬件加速">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -2207,8 +2210,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629443605456" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629443605456"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629444356446" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629444356446"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2596,7 +2599,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class='new-meta-item category'>
     <a class='notlink'>
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F/">硬件加速</a><span class="sep"></span><a class="category-link" href="/categories/%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F/GPU%E7%BC%96%E7%A8%8B/">GPU编程</a>
+      <a class="category-link" href="/categories/C/">C#</a>
     </a>
   </div>
 
@@ -2711,7 +2714,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-20T13:00:13+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-20T15:25:34+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2021年8月20日</p>
@@ -2723,7 +2726,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C#</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C++</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C#</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C++</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Dll/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Dll</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/GPU%E7%BC%96%E7%A8%8B/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>GPU编程</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>硬件加速</p></a></div>
 
 
         
@@ -3416,7 +3419,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629443605456')
+    volantis.js('/js/rightMenu.js?time=1629444356446')
   </script>
 
 
@@ -3529,19 +3532,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629443605456")
+        volantis.js("/js/plugins/sites.js?time=1629444356446")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629443605456")
+        volantis.js("/js/plugins/friends.js?time=1629444356446")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629443605456")
+        volantis.js("/js/plugins/contributors.js?time=1629444356446")
       }
     
   };
@@ -3614,7 +3617,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629443605458')
+      await volantis.js('/js/aplayer.js?time=1629444356447')
       volantis.APlayerController.music = true;
     
   })();
@@ -3697,7 +3700,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629443605456.js"></script>
+<script src="/js/app.js?time=1629444356446.js"></script>
 
 
 <!-- optional -->
@@ -3710,7 +3713,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629443605456");
+    return volantis.js("/js/search/hexo.js?time=1629444356446");
   }
 
   function loadSearchService() {
@@ -3978,8 +3981,8 @@ volantis.pjax.push(bindToggleButton);
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629443605456')
-      volantis.js('/js/message.js?time=1629443605456', () => {
+      volantis.css('/css/message.css?time=1629444356446')
+      volantis.js('/js/message.js?time=1629444356446', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4023,8 +4026,8 @@ volantis.pjax.push(bindToggleButton);
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629443605456')
-      volantis.js('/js/message.js?time=1629443605456', () => {
+      volantis.css('/css/message.css?time=1629444356446')
+      volantis.js('/js/message.js?time=1629444356446', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4184,7 +4187,7 @@ volantis.pjax.push(bindToggleButton);
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/硬件加速/","name":"硬件加速"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/硬件加速/GPU编程/","name":"GPU编程"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/08/13/C-的GPU加速方法/","name":"C#的GPU加速方法"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"C#的GPU加速方法","description":"","datePublished":"2021-08-13T06:11:00.000Z","dateModified":"2021-08-20T05:00:13.952Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/08/13/C-%E7%9A%84GPU%E5%8A%A0%E9%80%9F%E6%96%B9%E6%B3%95/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/08/13/C-%E7%9A%84GPU%E5%8A%A0%E9%80%9F%E6%96%B9%E6%B3%95/","wordCount":0,"articleSection":"硬件加速","keywords":"C#,C++"}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/C/","name":"C#"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/08/13/C-的GPU加速方法/","name":"C#的GPU加速方法"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"C#的GPU加速方法","description":"","datePublished":"2021-08-13T06:11:00.000Z","dateModified":"2021-08-20T07:25:34.295Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/08/13/C-%E7%9A%84GPU%E5%8A%A0%E9%80%9F%E6%96%B9%E6%B3%95/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/08/13/C-%E7%9A%84GPU%E5%8A%A0%E9%80%9F%E6%96%B9%E6%B3%95/","wordCount":0,"articleSection":"C#","keywords":"C#,C++,Dll,GPU编程,硬件加速"}]</script>
 
 
 <!-- more -->

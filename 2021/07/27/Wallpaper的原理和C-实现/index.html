@@ -20,10 +20,10 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629443605465" as="style">
+  <link rel="preload" href="/css/style.css?time=1629444356454" as="style">
   <!-- 页面元数据 -->
   <title>Wallpaper的原理和C#实现 - DearXuan的主页</title>
-  <meta name="keywords" content="C#,编程,算法">
+  <meta name="keywords" content="C#,Wallpaper,编程,算法">
   <meta name="description" content="wallpaper是一款优秀的动态壁纸软件，除了播放动画以外，还可以执行程序，甚至可以实时响应鼠标移动。 windows的桌面是由不同的二窗体构成，包括图标层，背景层，背景层显示桌面壁纸，图标层放置图标，且图标层背景透明，因此可以直接看到后面的背景层，鼠标右键弹出菜单也是在图标层完成。wallpaper在图标层和背景层之间插入了自己的窗口，因此可以显示动画，执行代码。前面已经提到图标层是一个透明的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Wallpaper的原理和C#实现">
@@ -33,9 +33,10 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2021-07-27T04:09:00.000Z">
-<meta property="article:modified_time" content="2021-08-20T04:12:46.698Z">
+<meta property="article:modified_time" content="2021-08-20T07:24:23.768Z">
 <meta property="article:author" content="DearXuan">
 <meta property="article:tag" content="C#">
+<meta property="article:tag" content="Wallpaper">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -2206,8 +2207,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629443605465" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629443605465"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629444356454" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629444356454"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2595,7 +2596,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class='new-meta-item category'>
     <a class='notlink'>
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/Wallpaper/">Wallpaper</a><span class="sep"></span><a class="category-link" href="/categories/Wallpaper/Wallpaper%E5%8E%9F%E7%90%86/">Wallpaper原理</a>
+      <a class="category-link" href="/categories/Wallpaper/">Wallpaper</a><span class="sep"></span><a class="category-link" href="/categories/Wallpaper/C/">C#</a>
     </a>
   </div>
 
@@ -2716,7 +2717,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-20T12:12:46+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-20T15:24:23+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2021年8月20日</p>
@@ -2728,7 +2729,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C#</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C#</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Wallpaper/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Wallpaper</p></a></div>
 
 
         
@@ -3418,7 +3419,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629443605465')
+    volantis.js('/js/rightMenu.js?time=1629444356454')
   </script>
 
 
@@ -3531,19 +3532,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629443605465")
+        volantis.js("/js/plugins/sites.js?time=1629444356454")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629443605465")
+        volantis.js("/js/plugins/friends.js?time=1629444356454")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629443605465")
+        volantis.js("/js/plugins/contributors.js?time=1629444356454")
       }
     
   };
@@ -3616,7 +3617,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629443605468')
+      await volantis.js('/js/aplayer.js?time=1629444356456')
       volantis.APlayerController.music = true;
     
   })();
@@ -3699,7 +3700,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629443605465.js"></script>
+<script src="/js/app.js?time=1629444356454.js"></script>
 
 
 <!-- optional -->
@@ -3712,7 +3713,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629443605465");
+    return volantis.js("/js/search/hexo.js?time=1629444356454");
   }
 
   function loadSearchService() {
@@ -3980,8 +3981,8 @@ volantis.pjax.push(bindToggleButton);
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629443605465')
-      volantis.js('/js/message.js?time=1629443605465', () => {
+      volantis.css('/css/message.css?time=1629444356454')
+      volantis.js('/js/message.js?time=1629444356454', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4025,8 +4026,8 @@ volantis.pjax.push(bindToggleButton);
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629443605465')
-      volantis.js('/js/message.js?time=1629443605465', () => {
+      volantis.css('/css/message.css?time=1629444356454')
+      volantis.js('/js/message.js?time=1629444356454', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4186,7 +4187,7 @@ volantis.pjax.push(bindToggleButton);
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Wallpaper/","name":"Wallpaper"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Wallpaper/Wallpaper原理/","name":"Wallpaper原理"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/07/27/Wallpaper的原理和C-实现/","name":"Wallpaper的原理和C#实现"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Wallpaper的原理和C#实现","description":"","datePublished":"2021-07-27T04:09:00.000Z","dateModified":"2021-08-20T04:12:46.698Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/07/27/Wallpaper%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8CC-%E5%AE%9E%E7%8E%B0/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/07/27/Wallpaper%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8CC-%E5%AE%9E%E7%8E%B0/","wordCount":0,"articleSection":"Wallpaper","keywords":"C#"}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Wallpaper/","name":"Wallpaper"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Wallpaper/C/","name":"C#"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/07/27/Wallpaper的原理和C-实现/","name":"Wallpaper的原理和C#实现"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Wallpaper的原理和C#实现","description":"","datePublished":"2021-07-27T04:09:00.000Z","dateModified":"2021-08-20T07:24:23.768Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/07/27/Wallpaper%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8CC-%E5%AE%9E%E7%8E%B0/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/07/27/Wallpaper%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8CC-%E5%AE%9E%E7%8E%B0/","wordCount":0,"articleSection":"Wallpaper","keywords":"C#,Wallpaper"}]</script>
 
 
 <!-- more -->

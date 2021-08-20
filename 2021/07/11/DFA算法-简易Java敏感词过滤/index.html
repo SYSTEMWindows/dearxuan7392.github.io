@@ -20,10 +20,10 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629443605484" as="style">
+  <link rel="preload" href="/css/style.css?time=1629444356470" as="style">
   <!-- 页面元数据 -->
   <title>DFA算法-简易Java敏感词过滤(含源文件和上万敏感词列表) - DearXuan的主页</title>
-  <meta name="keywords" content="Java,编程,算法">
+  <meta name="keywords" content="Java,算法,DFA算法,敏感词过滤,编程,算法">
   <meta name="description" content="敏感词过滤说白了就是简单的字符串替换，Java本身已经提供了相关函数，但是一旦遇到长文本，或者敏感词数量庞大，效率下降就会非常明显。本文将介绍利用多叉树进行敏感词存储和过滤的方法。 多叉树多叉树是一种特殊的数据结构，如下图Head为头节点，下面的ABCDE均为子树。那么多叉树是如何存储敏感词的呢？首先将敏感词分解为一个一个的字符，例如敏感词”CSDN”，第一个字符是C，则在Head下创建子树”C”">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DFA算法-简易Java敏感词过滤(含源文件和上万敏感词列表)">
@@ -33,9 +33,12 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2021-07-11T14:39:00.000Z">
-<meta property="article:modified_time" content="2021-08-20T03:10:26.610Z">
+<meta property="article:modified_time" content="2021-08-20T07:22:05.471Z">
 <meta property="article:author" content="DearXuan">
 <meta property="article:tag" content="Java">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="DFA算法">
+<meta property="article:tag" content="敏感词过滤">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -2206,8 +2209,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629443605484" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629443605484"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629444356470" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629444356470"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2595,7 +2598,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class='new-meta-item category'>
     <a class='notlink'>
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/">敏感词过滤</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/%E5%A4%9A%E5%8F%89%E6%A0%91/">多叉树</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/%E5%A4%9A%E5%8F%89%E6%A0%91/DFA%E7%AE%97%E6%B3%95/">DFA算法</a>
+      <a class="category-link" href="/categories/Java/">Java</a>
     </a>
   </div>
 
@@ -2692,7 +2695,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-20T11:10:26+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-20T15:22:05+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2021年8月20日</p>
@@ -2704,7 +2707,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%AE%97%E6%B3%95/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>算法</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DFA%E7%AE%97%E6%B3%95/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DFA算法</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>敏感词过滤</p></a></div>
 
 
         
@@ -3409,7 +3412,7 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629443605484')
+    volantis.js('/js/rightMenu.js?time=1629444356470')
   </script>
 
 
@@ -3522,19 +3525,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629443605484")
+        volantis.js("/js/plugins/sites.js?time=1629444356470")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629443605484")
+        volantis.js("/js/plugins/friends.js?time=1629444356470")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629443605484")
+        volantis.js("/js/plugins/contributors.js?time=1629444356470")
       }
     
   };
@@ -3607,7 +3610,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629443605486')
+      await volantis.js('/js/aplayer.js?time=1629444356472')
       volantis.APlayerController.music = true;
     
   })();
@@ -3690,7 +3693,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629443605484.js"></script>
+<script src="/js/app.js?time=1629444356470.js"></script>
 
 
 <!-- optional -->
@@ -3703,7 +3706,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629443605484");
+    return volantis.js("/js/search/hexo.js?time=1629444356470");
   }
 
   function loadSearchService() {
@@ -3971,8 +3974,8 @@ volantis.pjax.push(bindToggleButton);
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629443605484')
-      volantis.js('/js/message.js?time=1629443605484', () => {
+      volantis.css('/css/message.css?time=1629444356470')
+      volantis.js('/js/message.js?time=1629444356470', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4016,8 +4019,8 @@ volantis.pjax.push(bindToggleButton);
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629443605484')
-      volantis.js('/js/message.js?time=1629443605484', () => {
+      volantis.css('/css/message.css?time=1629444356470')
+      volantis.js('/js/message.js?time=1629444356470', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4177,7 +4180,7 @@ volantis.pjax.push(bindToggleButton);
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/算法/","name":"算法"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/算法/敏感词过滤/","name":"敏感词过滤"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/算法/敏感词过滤/多叉树/","name":"多叉树"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/算法/敏感词过滤/多叉树/DFA算法/","name":"DFA算法"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/07/11/DFA算法-简易Java敏感词过滤/","name":"DFA算法-简易Java敏感词过滤(含源文件和上万敏感词列表)"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"DFA算法-简易Java敏感词过滤(含源文件和上万敏感词列表)","description":"","datePublished":"2021-07-11T14:39:00.000Z","dateModified":"2021-08-20T03:10:26.610Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/07/11/DFA%E7%AE%97%E6%B3%95-%E7%AE%80%E6%98%93Java%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/07/11/DFA%E7%AE%97%E6%B3%95-%E7%AE%80%E6%98%93Java%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/","wordCount":0,"articleSection":"算法","keywords":"Java"}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Java/","name":"Java"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/07/11/DFA算法-简易Java敏感词过滤/","name":"DFA算法-简易Java敏感词过滤(含源文件和上万敏感词列表)"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"DFA算法-简易Java敏感词过滤(含源文件和上万敏感词列表)","description":"","datePublished":"2021-07-11T14:39:00.000Z","dateModified":"2021-08-20T07:22:05.471Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/07/11/DFA%E7%AE%97%E6%B3%95-%E7%AE%80%E6%98%93Java%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/07/11/DFA%E7%AE%97%E6%B3%95-%E7%AE%80%E6%98%93Java%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/","wordCount":0,"articleSection":"Java","keywords":"Java,算法,DFA算法,敏感词过滤"}]</script>
 
 
 <!-- more -->
