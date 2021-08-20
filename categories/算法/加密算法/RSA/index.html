@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://example.com/archives/2021/07/"/>
+  <link rel="canonical" href="http://example.com/categories/算法/加密算法/rsa/"/>
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -20,14 +20,14 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629429990758" as="style">
+  <link rel="preload" href="/css/style.css?time=1629429990731" as="style">
   <!-- 页面元数据 -->
-  <title>归档：2021/7 - DearXuan的主页</title>
+  <title>分类：RSA - DearXuan的主页</title>
   <meta name="keywords" content="编程,算法">
   <meta name="description" content="欢迎访问DearXuan的主页!">
 <meta property="og:type" content="website">
 <meta property="og:title" content="DearXuan的主页">
-<meta property="og:url" content="http://example.com/archives/2021/07/index.html">
+<meta property="og:url" content="http://example.com/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/RSA/index.html">
 <meta property="og:site_name" content="DearXuan的主页">
 <meta property="og:description" content="欢迎访问DearXuan的主页!">
 <meta property="og:locale" content="zh_CN">
@@ -2203,8 +2203,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629429990758" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629429990758"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629429990731" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629429990731"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2270,7 +2270,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
   <body>
-    <header id="l_header" class="l_header auto shadow floatable " style='opacity: 0' >
+    <header id="l_header" class="l_header auto shadow floatable show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2494,7 +2494,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="half" class='cover-wrapper  dock' style="display: ;">
+      <div id="none" class='cover-wrapper  dock' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture"></div>
 
@@ -2540,168 +2540,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="safearea">
         <div class="body-wrapper" id="pjax-container">
           
+
 <div id="l_main" class=''>
-	
-		
+  
+    
+      
   <section class="post-list">
     
       
         
           
         
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
       
     
     
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/07/19/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D%E4%BD%9C/">
-        PVZ逆向分析与C#内存操作(含源文件)
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        首先打开植物大战僵尸，进入游戏，初始阳光为50.打开CE修改器，搜索50进入游戏，种植向日葵，阳光变成0，再次搜索再进入游戏，收取阳光，阳光变成25，搜索25显然地址0x144344C8保存的就是阳光，现在退出游戏重新打开，重复上面步骤现在地址变成0x1408EDC0了，说明阳光的地址并不是固定的。对这个地址进行检测，查看是哪条指令在修改我刚刚进行了种植和收集阳光两个步骤，显然mov是减少阳...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-07-19</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%BA%95%E5%B1%82/">底层</a><span class="sep"></span><a class="category-link" href="/categories/%E5%BA%95%E5%B1%82/%E5%86%85%E5%AD%98/">内存</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/07/19/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D%E4%BD%9C/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/07/19/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94%E7%A9%B6/">
-        C#序列化对象的二进制储存方法及底层原理研究
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        在硬盘里保存txt或二进制文件非常容易，当需要保存的对象是一个自定义类的对象时，此时采用txt或二进制存储都较为复杂，如果采用txt形式，那么在保存非文本的数据时，需要手动转换，并且txt非常容易修改。保存为二进制文件较为简单，C#还提供了int32,byte等类型的读写方法，可以直接使用，但是仍有弊端，即代码复杂，你需要不断地读取，赋值。
-实际上C#提供了序列化存储的方法，可以轻松地把一个...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-07-19</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">底层原理</a><span class="sep"></span><a class="category-link" href="/categories/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/%E4%BA%8C%E8%BF%9B%E5%88%B6/">二进制</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/07/19/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94%E7%A9%B6/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/07/14/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB%E5%99%A8/">
-        C#实现简易XML阅读器(含源文件和exe文件)
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        功能本程序的主要目的是便于阅读XML文件。在网上复制一些XML文本时，常常出现格式错误，更有甚者，整个文本就一行，一行有几百个字符。这些奇奇怪怪的格式大大增加了理解难度，本程序将模仿记事本，提供基础的文件读写，编辑功能，并在此基础上增加了格式对齐和高亮功能。
-1234567891011&lt;?xml version="1.0" encoding="utf-8" ?&gt; &lt;Clas...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-07-14</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/EXE%E6%96%87%E4%BB%B6/">EXE文件</a><span class="sep"></span><a class="category-link" href="/categories/EXE%E6%96%87%E4%BB%B6/%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0/">启动参数</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/07/14/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB%E5%99%A8/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
       
         
           <div class='post-wrapper'>
@@ -2750,102 +2602,6 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/07/11/DFA%E7%AE%97%E6%B3%95-%E7%AE%80%E6%98%93Java%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/">
-        DFA算法-简易Java敏感词过滤(含源文件和上万敏感词列表)
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        敏感词过滤说白了就是简单的字符串替换，Java本身已经提供了相关函数，但是一旦遇到长文本，或者敏感词数量庞大，效率下降就会非常明显。本文将介绍利用多叉树进行敏感词存储和过滤的方法。
-多叉树多叉树是一种特殊的数据结构，如下图Head为头节点，下面的ABCDE均为子树。那么多叉树是如何存储敏感词的呢？首先将敏感词分解为一个一个的字符，例如敏感词”CSDN”，第一个字符是C，则在Head下创建子树...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-07-11</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/">敏感词过滤</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/%E5%A4%9A%E5%8F%89%E6%A0%91/">多叉树</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/%E5%A4%9A%E5%8F%89%E6%A0%91/DFA%E7%AE%97%E6%B3%95/">DFA算法</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/07/11/DFA%E7%AE%97%E6%B3%95-%E7%AE%80%E6%98%93Java%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/07/05/%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A%E7%9A%84Java%E5%AE%9E%E7%8E%B0%E5%8F%8A%E4%BC%98%E5%8C%96/">
-        高斯模糊的Java实现及优化
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        高斯模糊是被广泛使用的图形算法之一，在实现高斯模糊之前，先要了解正态分布
-正态分布一维的正态分布为直接让f(x)和f(y)相乘，就得到了二维的正态分布此处直接令μ=0，将会在下面解释。
-权值矩阵设有一个(2n+1)阶矩阵M，且有，我们称这个矩阵为权值矩阵，称为(i,j)点处的权。其中n是高斯模糊的半径。
-离散卷积离散卷积是卷积对离散量的特殊形式，假设现有原图矩阵A,权值矩阵B,则点(x,y)...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-07-05</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/">图像算法</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/07/05/%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A%E7%9A%84Java%E5%AE%9E%E7%8E%B0%E5%8F%8A%E4%BC%98%E5%8C%96/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -2853,7 +2609,8 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
   
 
 
-	
+    
+  
 </div>
 <aside id='l_side'>
   
@@ -3060,14 +2817,14 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
     // header
     var l_header=document.getElementById("l_header");
     
-    l_header.classList.remove("show");
+    l_header.classList.add("show");
     
     
       // cover
       var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
       var scroll_down=document.getElementById('scroll-down');
-      cover_wrapper.id="half";
-      cover_wrapper.style.display="";
+      cover_wrapper.id="none";
+      cover_wrapper.style.display="none";
       scroll_down.style.display="none";
     
   
@@ -3595,7 +3352,7 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629429990758')
+    volantis.js('/js/rightMenu.js?time=1629429990731')
   </script>
 
 
@@ -3708,19 +3465,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629429990758")
+        volantis.js("/js/plugins/sites.js?time=1629429990731")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629429990758")
+        volantis.js("/js/plugins/friends.js?time=1629429990731")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629429990758")
+        volantis.js("/js/plugins/contributors.js?time=1629429990731")
       }
     
   };
@@ -3793,7 +3550,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629429990759')
+      await volantis.js('/js/aplayer.js?time=1629429990734')
       volantis.APlayerController.music = true;
     
   })();
@@ -3876,7 +3633,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629429990758.js"></script>
+<script src="/js/app.js?time=1629429990731.js"></script>
 
 
 <!-- optional -->
@@ -3889,7 +3646,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629429990758");
+    return volantis.js("/js/search/hexo.js?time=1629429990731");
   }
 
   function loadSearchService() {
@@ -4157,8 +3914,8 @@ volantis.pjax.push(bindToggleButton);
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629429990758')
-      volantis.js('/js/message.js?time=1629429990758', () => {
+      volantis.css('/css/message.css?time=1629429990731')
+      volantis.js('/js/message.js?time=1629429990731', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4202,8 +3959,8 @@ volantis.pjax.push(bindToggleButton);
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629429990758')
-      volantis.js('/js/message.js?time=1629429990758', () => {
+      volantis.css('/css/message.css?time=1629429990731')
+      volantis.js('/js/message.js?time=1629429990731', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4363,7 +4120,7 @@ volantis.pjax.push(bindToggleButton);
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/archives/","name":"Archive"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/archives/2021/","name":"2021年"}},{"@type":"ListItem","position":4,"item":{"@id":"http://example.com/archives/2021/7/","name":"7月"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"DearXuan的主页","url":"http://example.com/","keywords":"编程,算法","description":"欢迎访问DearXuan的主页!","author":{"@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"}},"publisher":{"@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/RSA/","name":"RSA"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"DearXuan的主页","url":"http://example.com/","keywords":"编程,算法","description":"欢迎访问DearXuan的主页!","author":{"@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"}},"publisher":{"@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}}]</script>
 
 
 <!-- more -->

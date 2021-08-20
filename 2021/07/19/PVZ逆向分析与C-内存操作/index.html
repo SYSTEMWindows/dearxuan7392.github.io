@@ -4,8 +4,8 @@
   <meta name="generator" content="Hexo 5.4.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://example.com/archives/2021/07/"/>
+  
+  <link rel="canonical" href="http://example.com/2021/07/19/pvz逆向分析与c-内存操作/"/>
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -20,20 +20,22 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629429990758" as="style">
+  <link rel="preload" href="/css/style.css?time=1629429990694" as="style">
   <!-- 页面元数据 -->
-  <title>归档：2021/7 - DearXuan的主页</title>
-  <meta name="keywords" content="编程,算法">
-  <meta name="description" content="欢迎访问DearXuan的主页!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DearXuan的主页">
-<meta property="og:url" content="http://example.com/archives/2021/07/index.html">
+  <title>PVZ逆向分析与C#内存操作(含源文件) - DearXuan的主页</title>
+  <meta name="keywords" content="C#,编程,算法">
+  <meta name="description" content="首先打开植物大战僵尸，进入游戏，初始阳光为50.打开CE修改器，搜索50进入游戏，种植向日葵，阳光变成0，再次搜索再进入游戏，收取阳光，阳光变成25，搜索25显然地址0x144344C8保存的就是阳光，现在退出游戏重新打开，重复上面步骤现在地址变成0x1408EDC0了，说明阳光的地址并不是固定的。对这个地址进行检测，查看是哪条指令在修改我刚刚进行了种植和收集阳光两个步骤，显然mov是减少阳光，a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PVZ逆向分析与C#内存操作(含源文件)">
+<meta property="og:url" content="http://example.com/2021/07/19/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="DearXuan的主页">
-<meta property="og:description" content="欢迎访问DearXuan的主页!">
+<meta property="og:description" content="首先打开植物大战僵尸，进入游戏，初始阳光为50.打开CE修改器，搜索50进入游戏，种植向日葵，阳光变成0，再次搜索再进入游戏，收取阳光，阳光变成25，搜索25显然地址0x144344C8保存的就是阳光，现在退出游戏重新打开，重复上面步骤现在地址变成0x1408EDC0了，说明阳光的地址并不是固定的。对这个地址进行检测，查看是哪条指令在修改我刚刚进行了种植和收集阳光两个步骤，显然mov是减少阳光，a">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2021-07-19T11:03:00.000Z">
+<meta property="article:modified_time" content="2021-08-20T03:22:10.450Z">
 <meta property="article:author" content="DearXuan">
-<meta property="article:tag" content="编程,算法">
+<meta property="article:tag" content="C#">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -2203,8 +2205,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629429990758" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629429990758"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629429990694" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629429990694"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2270,7 +2272,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
   <body>
-    <header id="l_header" class="l_header auto shadow floatable " style='opacity: 0' >
+    <header id="l_header" class="l_header auto shadow floatable show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2494,7 +2496,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="half" class='cover-wrapper  dock' style="display: ;">
+      <div id="none" class='cover-wrapper post dock' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture"></div>
 
@@ -2541,319 +2543,257 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper" id="pjax-container">
           
 <div id="l_main" class=''>
-	
-		
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
     
     
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
     
-    <h2 class="article-title" >
-      <a href="/2021/07/19/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D%E4%BD%9C/">
+      <h1 class="title">
         PVZ逆向分析与C#内存操作(含源文件)
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>请设置文章作者</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E5%BA%95%E5%B1%82/">底层</a><span class="sep"></span><a class="category-link" href="/categories/%E5%BA%95%E5%B1%82/%E5%86%85%E5%AD%98/">内存</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年7月19日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
       
-        首先打开植物大战僵尸，进入游戏，初始阳光为50.打开CE修改器，搜索50进入游戏，种植向日葵，阳光变成0，再次搜索再进入游戏，收取阳光，阳光变成25，搜索25显然地址0x144344C8保存的就是阳光，现在退出游戏重新打开，重复上面步骤现在地址变成0x1408EDC0了，说明阳光的地址并不是固定的。对这个地址进行检测，查看是哪条指令在修改我刚刚进行了种植和收集阳光两个步骤，显然mov是减少阳...
-      
+      <div id="lc-pv" data-title="PVZ逆向分析与C#内存操作(含源文件)" data-path="/2021/07/19/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D%E4%BD%9C/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
     
   </div>
+
+
+  <div id="page-plugins-helper"></div>
+  <p>首先打开植物大战僵尸，进入游戏，初始阳光为50.<br><img src="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-1.png" class="lazyload" data-srcset="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>打开CE修改器，搜索50<br><img src="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-2.png" class="lazyload" data-srcset="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-2.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>进入游戏，种植向日葵，阳光变成0，再次搜索<br><img src="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-3.png" class="lazyload" data-srcset="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-3.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>再进入游戏，收取阳光，阳光变成25，搜索25<br><img src="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-0.png" class="lazyload" data-srcset="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-0.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>显然地址0x144344C8保存的就是阳光，现在退出游戏重新打开，重复上面步骤<br><img src="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-4.png" class="lazyload" data-srcset="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-4.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>现在地址变成0x1408EDC0了，说明阳光的地址并不是固定的。对这个地址进行检测，查看是哪条指令在修改<br><img src="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-5.png" class="lazyload" data-srcset="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-5.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>我刚刚进行了种植和收集阳光两个步骤，显然mov是减少阳光，add是增加阳光。查看详细信息<br><img src="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-6.png" class="lazyload" data-srcset="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-6.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>得到EAX = 0x14089860，这个0x5560其实就是二级偏移.然而EAX也是动态变化的，我们需要在内存中搜索EAX，来查找它到底保存在哪个地方<br><img src="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-7.png" class="lazyload" data-srcset="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-7.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>由于这个地址保存了阳光的地址，所以它应该是不变的，否则就找不到阳光的地址了，所以可以多次重复扫描，确保把会改变的量排除。<br><br><br>逐一查看哪个操作码访问了上面地址，发现地址0x028CA730很有趣<br><img src="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-8.png" class="lazyload" data-srcset="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-8.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>列表里清一色的都是0x768，证明[EAX + 0x028CA730]保存了结构体地址，查看EAX地址<br><img src="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-9.png" class="lazyload" data-srcset="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-9.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>这里不管是查看EAX还是ECX，结果肯定是一样的，因为它们都指向同一个地址，且偏移也相同。EAX = 0x028C9FC8，而0x768就是一级偏移。继续搜索EAX<br><img src="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-10.png" class="lazyload" data-srcset="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-10.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>列表里出现绿色的基址，查找结束。<br><br><br>开始写代码，C#无法直接修改内存，需要动态调用kernel32.dll</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[DllImport("kernel32.dll", EntryPoint = "OpenProcess")]</span><br><span class="line">public static extern IntPtr OpenProcess(int desiredAccess, bool heritHandle, int pocessID);</span><br><span class="line"> </span><br><span class="line">[DllImport("kernel32.dll", EntryPoint = "CloseHandle")]</span><br><span class="line">public static extern void CloseHandle(IntPtr hObject);</span><br><span class="line"> </span><br><span class="line">[DllImport("kernel32.dll", EntryPoint = "ReadProcessMemory")]</span><br><span class="line">public static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr baseaddress, IntPtr buffer, int nsize, IntPtr bytesread);</span><br><span class="line"> </span><br><span class="line">[DllImport("kernel32.dll", EntryPoint = "WriteProcessMemory")]</span><br><span class="line">public static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr baseaddress, long[] buffer, int nSize, IntPtr byteswrite);</span><br></pre></td></tr></tbody></table></figure>
+<p>读写内存需要用到OpenProcess，官方文档里告诉我们第一个参数是访问权限，PROCESS_ALL_ACCESS指所有能获得的最高权限，但是PROCESS_ALL_ACCESS是在C++里定义的，C#里却没有，注意到这个值的类型是int，我们可以在C++里打印出这个值，然后直接写在C#里<br><img src="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-11.png" class="lazyload" data-srcset="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-11.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>所以我们只要输入0x1F0FFF就行了</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">private int ReadMemory(int pid,IntPtr toBase)</span><br><span class="line">{</span><br><span class="line">    byte[] bytes = new byte[4];</span><br><span class="line">    IntPtr address = Marshal.UnsafeAddrOfPinnedArrayElement(bytes, 0);</span><br><span class="line">    IntPtr process = OpenProcess(0x1F0FFF, false, pid);</span><br><span class="line">    ReadProcessMemory(process, toBase, address, 4, IntPtr.Zero);</span><br><span class="line">    CloseHandle(process);</span><br><span class="line">    return Marshal.ReadInt32(address);</span><br><span class="line">}</span><br><span class="line">private void WriteMemory(int pid,IntPtr toBase,int num)</span><br><span class="line">{</span><br><span class="line">    IntPtr process = OpenProcess(0x1F0FFF, false, pid);</span><br><span class="line">    WriteProcessMemory(process, toBase, new long[] { num }, 4, IntPtr.Zero);</span><br><span class="line">    CloseHandle(process);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>获取进程PID</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">private int GetPid()</span><br><span class="line">{</span><br><span class="line">    Process[] processes = Process.GetProcessesByName(ProcessName);</span><br><span class="line">    if(processes.Length == 0)</span><br><span class="line">    {</span><br><span class="line">        ShowDialog("没有检测到游戏进程.");</span><br><span class="line">        return -1;</span><br><span class="line">    }</span><br><span class="line">    if(processes.Length &gt; 1)</span><br><span class="line">    {</span><br><span class="line">        ShowDialog("检测到多个进程，这可能是因为您开启了多个相同进程名的软件，请关闭多余软件.");</span><br><span class="line">        return -1;</span><br><span class="line">    }</span><br><span class="line">    return processes[0].Id;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>定义全局变量</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">private const string ProcessName = "PlantsVsZombies";//进程名称</span><br><span class="line">private const int sun = 9990;//每次修改的阳光数值</span><br><span class="line"> </span><br><span class="line">private int pid;//进程PID</span><br><span class="line">private IntPtr intPtr;//阳光的地址</span><br></pre></td></tr></tbody></table></figure>
+<p>获取进程信息</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">private void GetInfo()</span><br><span class="line">{</span><br><span class="line">    pid = GetPid();</span><br><span class="line">    if (pid == -1) return;</span><br><span class="line">    int num1 = ReadMemory(pid, (IntPtr)0x006A9EC0);</span><br><span class="line">    int num2 = ReadMemory(pid, (IntPtr)(num1 + 0x768));</span><br><span class="line">    intPtr = (IntPtr)(num2 + 0x5560);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>添加两个按钮，第一个按钮用来读取进程信息，第二个按钮用来修改阳光</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">private void button1_Click(object sender, EventArgs e)</span><br><span class="line">{</span><br><span class="line">    GetInfo();</span><br><span class="line">}</span><br><span class="line">private void button2_Click(object sender, EventArgs e)</span><br><span class="line">{</span><br><span class="line">    WriteMemory(pid, intPtr, sun);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>修改成功<br><img src="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-12.png" class="lazyload" data-srcset="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-12.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>关闭植物大战僵尸，重新打开，再次尝试。<br><img src="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-13.png" class="lazyload" data-srcset="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-13.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>修改成功，修改器制作完成。接下来是优化<br><img src="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-14.png" class="lazyload" data-srcset="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-14.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>MemoryIO.cs</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Diagnostics;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Runtime.InteropServices;</span><br><span class="line">using System.Text;</span><br><span class="line">using System.Threading.Tasks;</span><br><span class="line"> </span><br><span class="line">namespace PVZ_Cheater</span><br><span class="line">{</span><br><span class="line">    static class MemoryIO</span><br><span class="line">    {</span><br><span class="line">        [DllImport("kernel32.dll", EntryPoint = "OpenProcess")]</span><br><span class="line">        public static extern IntPtr OpenProcess(int desiredAccess, bool heritHandle, int pocessID);</span><br><span class="line"> </span><br><span class="line">        [DllImport("kernel32.dll", EntryPoint = "CloseHandle")]</span><br><span class="line">        public static extern void CloseHandle(IntPtr hObject);</span><br><span class="line"> </span><br><span class="line">        [DllImport("kernel32.dll", EntryPoint = "ReadProcessMemory")]</span><br><span class="line">        public static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr baseaddress, IntPtr buffer, int nsize, IntPtr bytesread);</span><br><span class="line"> </span><br><span class="line">        [DllImport("kernel32.dll", EntryPoint = "WriteProcessMemory")]</span><br><span class="line">        public static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr baseaddress, long[] buffer, int nSize, IntPtr byteswrite);</span><br><span class="line"> </span><br><span class="line">        public static int GetPid(string ProcessName)</span><br><span class="line">        {</span><br><span class="line">            Process[] processes = Process.GetProcessesByName(ProcessName);</span><br><span class="line">            if (processes.Length == 0)</span><br><span class="line">            {</span><br><span class="line">                throw new Exception("没有检测到游戏进程.");</span><br><span class="line">            }</span><br><span class="line">            if (processes.Length &gt; 1)</span><br><span class="line">            {</span><br><span class="line">                throw new Exception("检测到多个进程，这可能是因为您开启了多个相同进程名的软件，请关闭多余软件.");</span><br><span class="line">            }</span><br><span class="line">            return processes[0].Id;</span><br><span class="line">        }</span><br><span class="line"> </span><br><span class="line">        public static int ReadMemory(int pid, IntPtr toBase)</span><br><span class="line">        {</span><br><span class="line">            byte[] bytes = new byte[4];</span><br><span class="line">            IntPtr address = Marshal.UnsafeAddrOfPinnedArrayElement(bytes, 0);</span><br><span class="line">            IntPtr process = OpenProcess(0x1F0FFF, false, pid);</span><br><span class="line">            ReadProcessMemory(process, toBase, address, 4, IntPtr.Zero);</span><br><span class="line">            CloseHandle(process);</span><br><span class="line">            return Marshal.ReadInt32(address);</span><br><span class="line">        }</span><br><span class="line">        public static void WriteMemory(int pid, IntPtr toBase, int num)</span><br><span class="line">        {</span><br><span class="line">            IntPtr process = OpenProcess(0x1F0FFF, false, pid);</span><br><span class="line">            WriteProcessMemory(process, toBase, new long[] { num }, 4, IntPtr.Zero);</span><br><span class="line">            CloseHandle(process);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>PVZInfo.cs</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line">using System.Threading.Tasks;</span><br><span class="line">using System.Windows.Forms;</span><br><span class="line"> </span><br><span class="line">namespace PVZ_Cheater</span><br><span class="line">{</span><br><span class="line">    static class PVZInfo</span><br><span class="line">    {</span><br><span class="line">        public const string ProcessName = "PlantsVsZombies";</span><br><span class="line"> </span><br><span class="line">        public static int Pid;</span><br><span class="line"> </span><br><span class="line">        public static IntPtr Sun_Address;</span><br><span class="line">        public static int Sun_Value = 9990;</span><br><span class="line"> </span><br><span class="line">        public static bool isReady = false;</span><br><span class="line">        public static void GetInfo()</span><br><span class="line">        {</span><br><span class="line">            isReady = false;</span><br><span class="line">            Pid = MemoryIO.GetPid(ProcessName);</span><br><span class="line">            int num1 = MemoryIO.ReadMemory(Pid, (IntPtr)0x006A9EC0);</span><br><span class="line">            int num2 = MemoryIO.ReadMemory(Pid, (IntPtr)(num1 + 0x768));</span><br><span class="line">            Sun_Address = (IntPtr)(num2 + 0x5560);</span><br><span class="line">            isReady = true;</span><br><span class="line">        }</span><br><span class="line"> </span><br><span class="line">        public static void SetSun()</span><br><span class="line">        {</span><br><span class="line">            if(isReady) MemoryIO.WriteMemory(Pid, Sun_Address, Sun_Value);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>增加一个Timer计时器，当选中”锁定阳光”选项时，每隔1秒将阳光赋值为9990，成功实现无限阳光<br><img src="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-15.png" class="lazyload" data-srcset="/2021/08/20/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D/dearxuan-15.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
+<p>源文件:<a target="_blank" rel="noopener" href="https://dearx.lanzoui.com/ibVLJrm95be">https://dearx.lanzoui.com/ibVLJrm95be</a></p>
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-07-19</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%BA%95%E5%B1%82/">底层</a><span class="sep"></span><a class="category-link" href="/categories/%E5%BA%95%E5%B1%82/%E5%86%85%E5%AD%98/">内存</a>
-        
-      </div>
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/07/19/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D%E4%BD%9C/'>
-            阅读全文
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://example.com/2021/07/19/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D%E4%BD%9C/>http://example.com/2021/07/19/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D%E4%BD%9C/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-20T11:22:10+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年8月20日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
+          
   
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/07/19/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94%E7%A9%B6/">
-        C#序列化对象的二进制储存方法及底层原理研究
-      </a>
-    </h2>
-  
-  <div class='md'>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C#</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        在硬盘里保存txt或二进制文件非常容易，当需要保存的对象是一个自定义类的对象时，此时采用txt或二进制存储都较为复杂，如果采用txt形式，那么在保存非文本的数据时，需要手动转换，并且txt非常容易修改。保存为二进制文件较为简单，C#还提供了int32,byte等类型的读写方法，可以直接使用，但是仍有弊端，即代码复杂，你需要不断地读取，赋值。
-实际上C#提供了序列化存储的方法，可以轻松地把一个...
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/07/19/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D%E4%BD%9C/&title=PVZ逆向分析与C#内存操作(含源文件) - DearXuan的主页&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/07/19/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D%E4%BD%9C/&title=PVZ逆向分析与C#内存操作(含源文件) - DearXuan的主页&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/07/19/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D%E4%BD%9C/&title=PVZ逆向分析与C#内存操作(含源文件) - DearXuan的主页&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-07-19</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">底层原理</a><span class="sep"></span><a class="category-link" href="/categories/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/%E4%BA%8C%E8%BF%9B%E5%88%B6/">二进制</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/07/19/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94%E7%A9%B6/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
 </div>
 
-          </div>
+
+
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
+    </div>
+    <!-- Custom Files bottomMeta begin -->
     
-    <h2 class="article-title" >
-      <a href="/2021/07/14/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB%E5%99%A8/">
-        C#实现简易XML阅读器(含源文件和exe文件)
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        功能本程序的主要目的是便于阅读XML文件。在网上复制一些XML文本时，常常出现格式错误，更有甚者，整个文本就一行，一行有几百个字符。这些奇奇怪怪的格式大大增加了理解难度，本程序将模仿记事本，提供基础的文件读写，编辑功能，并在此基础上增加了格式对齐和高亮功能。
-1234567891011&lt;?xml version="1.0" encoding="utf-8" ?&gt; &lt;Clas...
-      
-    
+    <!-- Custom Files bottomMeta end -->
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-07-14</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/EXE%E6%96%87%E4%BB%B6/">EXE文件</a><span class="sep"></span><a class="category-link" href="/categories/EXE%E6%96%87%E4%BB%B6/%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0/">启动参数</a>
-        
-      </div>
+  
+
+  
+    <div class="prev-next">
       
-        <div>
-          <a class='readmore' href='/2021/07/14/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB%E5%99%A8/'>
-            阅读全文
-          </a>
-        </div>
+        <a class='prev' href='/2021/08/20/%E7%94%A8RSA%E5%8A%A0%E5%AF%86%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E6%98%93%E7%A6%BB%E7%BA%BF%E9%AA%8C%E8%AF%81%E5%8A%9F%E8%83%BD/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>利用RSA加密实现的简易离线验证功能(C#,含代码)</p>
+          <p class='content'>许多软件都有正版验证功能，它们通常需要联网验证，验证的本质则是加密与解密，本文将使用RSA加密算法实现简易的离线验证功能
+RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N)...</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/07/19/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94%E7%A9%B6/'>
+          <p class='title'>C#序列化对象的二进制储存方法及底层原理研究<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>在硬盘里保存txt或二进制文件非常容易，当需要保存的对象是一个自定义类的对象时，此时采用txt或二进制存储都较为复杂，如果采用txt形式，那么在保存非文本的数据时，需要手动转换，并且txt非常容...</p>
+        </a>
       
     </div>
   
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/07/13/%E5%88%A9%E7%94%A8RSA%E5%8A%A0%E5%AF%86%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E6%98%93%E7%A6%BB%E7%BA%BF%E9%AA%8C%E8%AF%81%E5%8A%9F%E8%83%BD/">
-        利用RSA加密实现的简易离线验证功能(C#,含代码)
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        许多软件都有正版验证功能，它们通常需要联网验证，验证的本质则是加密与解密，本文将使用RSA加密算法实现简易的离线验证功能
-RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N)来加密，而欧拉函数φ(N)满足φ(N)= φ(pq)=(p-1)(q-1)，如果要算出φ(N)，就必须知道p和q。并且这有一点好处，某人可以公开宣布他的密钥e以及N，任何人都可以给他发送密文，但是只有...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-07-13</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/">加密算法</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/RSA/">RSA</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/07/13/%E5%88%A9%E7%94%A8RSA%E5%8A%A0%E5%AF%86%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E6%98%93%E7%A6%BB%E7%BA%BF%E9%AA%8C%E8%AF%81%E5%8A%9F%E8%83%BD/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
   
 
-</div>
+  
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
     
-    <h2 class="article-title" >
-      <a href="/2021/07/11/DFA%E7%AE%97%E6%B3%95-%E7%AE%80%E6%98%93Java%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/">
-        DFA算法-简易Java敏感词过滤(含源文件和上万敏感词列表)
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        敏感词过滤说白了就是简单的字符串替换，Java本身已经提供了相关函数，但是一旦遇到长文本，或者敏感词数量庞大，效率下降就会非常明显。本文将介绍利用多叉树进行敏感词存储和过滤的方法。
-多叉树多叉树是一种特殊的数据结构，如下图Head为头节点，下面的ABCDE均为子树。那么多叉树是如何存储敏感词的呢？首先将敏感词分解为一个一个的字符，例如敏感词”CSDN”，第一个字符是C，则在Head下创建子树...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-07-11</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/">敏感词过滤</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/%E5%A4%9A%E5%8F%89%E6%A0%91/">多叉树</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/%E5%A4%9A%E5%8F%89%E6%A0%91/DFA%E7%AE%97%E6%B3%95/">DFA算法</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/07/11/DFA%E7%AE%97%E6%B3%95-%E7%AE%80%E6%98%93Java%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
+      <div id="gitalk-container"></div>
 
-</div>
+    
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
     
-    <h2 class="article-title" >
-      <a href="/2021/07/05/%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A%E7%9A%84Java%E5%AE%9E%E7%8E%B0%E5%8F%8A%E4%BC%98%E5%8C%96/">
-        高斯模糊的Java实现及优化
-      </a>
-    </h2>
-  
-  <div class='md'>
+      <!-- Custom Files comment begin-->
+      
+      <!-- Custom Files comment end-->
     
-      
-        高斯模糊是被广泛使用的图形算法之一，在实现高斯模糊之前，先要了解正态分布
-正态分布一维的正态分布为直接让f(x)和f(y)相乘，就得到了二维的正态分布此处直接令μ=0，将会在下面解释。
-权值矩阵设有一个(2n+1)阶矩阵M，且有，我们称这个矩阵为权值矩阵，称为(i,j)点处的权。其中n是高斯模糊的半径。
-离散卷积离散卷积是卷积对离散量的特殊形式，假设现有原图矩阵A,权值矩阵B,则点(x,y)...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-07-05</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/">图像算法</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/07/05/%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A%E7%9A%84Java%E5%AE%9E%E7%8E%B0%E5%8F%8A%E4%BC%98%E5%8C%96/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
+  </article>
   
 
 
-	
+
+
+
+
 </div>
 <aside id='l_side'>
   
@@ -2861,181 +2801,8 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
     
     
 
-<section class="widget blogger shadow floatable desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='/image/yoimiya.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">DearXuan的主页</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:dearxuan7392@163.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/DearXuan7392"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget category shadow floatable desktop">
-    
-  <header>
-    
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
 
 
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/EXE%E6%96%87%E4%BB%B6/" href="/categories/EXE%E6%96%87%E4%BB%B6/"
-            id="categoriesEXEE69687E4BBB6"
-            ><div class='name'>EXE文件</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/EXE%E6%96%87%E4%BB%B6/%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0/" href="/categories/EXE%E6%96%87%E4%BB%B6/%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0/"
-            id="categoriesEXEE69687E4BBB6E590AFE58AA8E58F82E695B0"
-            ><div class='name'>启动参数</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%BA%95%E5%B1%82/" href="/categories/%E5%BA%95%E5%B1%82/"
-            id="categoriesE5BA95E5B182"
-            ><div class='name'>底层</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%BA%95%E5%B1%82/%E5%86%85%E5%AD%98/" href="/categories/%E5%BA%95%E5%B1%82/%E5%86%85%E5%AD%98/"
-            id="categoriesE5BA95E5B182E58685E5AD98"
-            ><div class='name'>内存</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" href="/categories/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/"
-            id="categoriesE5BA95E5B182E58E9FE79086"
-            ><div class='name'>底层原理</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/%E4%BA%8C%E8%BF%9B%E5%88%B6/" href="/categories/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/%E4%BA%8C%E8%BF%9B%E5%88%B6/"
-            id="categoriesE5BA95E5B182E58E9FE79086E4BA8CE8BF9BE588B6"
-            ><div class='name'>二进制</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E7%AE%97%E6%B3%95/" href="/categories/%E7%AE%97%E6%B3%95/"
-            id="categoriesE7AE97E6B395"
-            ><div class='name'>算法</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/"
-            id="categoriesE7AE97E6B395E58AA0E5AF86E7AE97E6B395"
-            ><div class='name'>加密算法</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/RSA/" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/RSA/"
-            id="categoriesE7AE97E6B395E58AA0E5AF86E7AE97E6B395RSA"
-            ><div class='name'>RSA</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E7%AE%97%E6%B3%95/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/" href="/categories/%E7%AE%97%E6%B3%95/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/"
-            id="categoriesE7AE97E6B395E59BBEE5838FE7AE97E6B395"
-            ><div class='name'>图像算法</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/"
-            id="categoriesE7AE97E6B395E6958FE6849FE8AF8DE8BF87E6BBA4"
-            ><div class='name'>敏感词过滤</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/%E5%A4%9A%E5%8F%89%E6%A0%91/" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/%E5%A4%9A%E5%8F%89%E6%A0%91/"
-            id="categoriesE7AE97E6B395E6958FE6849FE8AF8DE8BF87E6BBA4E5A49AE58F89E6A091"
-            ><div class='name'>多叉树</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/%E5%A4%9A%E5%8F%89%E6%A0%91/DFA%E7%AE%97%E6%B3%95/" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/%E5%A4%9A%E5%8F%89%E6%A0%91/DFA%E7%AE%97%E6%B3%95/"
-            id="categoriesE7AE97E6B395E6958FE6849FE8AF8DE8BF87E6BBA4E5A49AE58F89E6A091DFAE7AE97E6B395"
-            ><div class='name'>DFA算法</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow floatable desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/C/" style="font-size: 24px; color: #555">C#</a> <a href="/tags/Java/" style="font-size: 14px; color: #999">Java</a>
-    </div>
-  </section>
-
-
-  
 
   
 
@@ -3046,13 +2813,14 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="PVZ逆向分析与C#内存操作(含源文件)";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   //  see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs
@@ -3060,14 +2828,14 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
     // header
     var l_header=document.getElementById("l_header");
     
-    l_header.classList.remove("show");
+    l_header.classList.add("show");
     
     
       // cover
       var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
       var scroll_down=document.getElementById('scroll-down');
-      cover_wrapper.id="half";
-      cover_wrapper.style.display="";
+      cover_wrapper.id="none";
+      cover_wrapper.style.display="none";
       scroll_down.style.display="none";
     
   
@@ -3595,7 +3363,7 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629429990758')
+    volantis.js('/js/rightMenu.js?time=1629429990693')
   </script>
 
 
@@ -3708,19 +3476,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629429990758")
+        volantis.js("/js/plugins/sites.js?time=1629429990693")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629429990758")
+        volantis.js("/js/plugins/friends.js?time=1629429990693")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629429990758")
+        volantis.js("/js/plugins/contributors.js?time=1629429990693")
       }
     
   };
@@ -3793,7 +3561,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629429990759')
+      await volantis.js('/js/aplayer.js?time=1629429990696')
       volantis.APlayerController.music = true;
     
   })();
@@ -3876,7 +3644,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629429990758.js"></script>
+<script src="/js/app.js?time=1629429990694.js"></script>
 
 
 <!-- optional -->
@@ -3889,7 +3657,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629429990758");
+    return volantis.js("/js/search/hexo.js?time=1629429990694");
   }
 
   function loadSearchService() {
@@ -4157,8 +3925,8 @@ volantis.pjax.push(bindToggleButton);
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629429990758')
-      volantis.js('/js/message.js?time=1629429990758', () => {
+      volantis.css('/css/message.css?time=1629429990693')
+      volantis.js('/js/message.js?time=1629429990693', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4202,8 +3970,8 @@ volantis.pjax.push(bindToggleButton);
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629429990758')
-      volantis.js('/js/message.js?time=1629429990758', () => {
+      volantis.css('/css/message.css?time=1629429990693')
+      volantis.js('/js/message.js?time=1629429990693', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4363,7 +4131,7 @@ volantis.pjax.push(bindToggleButton);
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/archives/","name":"Archive"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/archives/2021/","name":"2021年"}},{"@type":"ListItem","position":4,"item":{"@id":"http://example.com/archives/2021/7/","name":"7月"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"DearXuan的主页","url":"http://example.com/","keywords":"编程,算法","description":"欢迎访问DearXuan的主页!","author":{"@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"}},"publisher":{"@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/底层/","name":"底层"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/底层/内存/","name":"内存"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/07/19/PVZ逆向分析与C-内存操作/","name":"PVZ逆向分析与C#内存操作(含源文件)"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"PVZ逆向分析与C#内存操作(含源文件)","description":"","datePublished":"2021-07-19T11:03:00.000Z","dateModified":"2021-08-20T03:22:10.450Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/07/19/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D%E4%BD%9C/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/07/19/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D%E4%BD%9C/","wordCount":0,"articleSection":"底层","keywords":"C#"}]</script>
 
 
 <!-- more -->

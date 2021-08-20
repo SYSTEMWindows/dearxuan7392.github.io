@@ -4,8 +4,8 @@
   <meta name="generator" content="Hexo 5.4.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://example.com/archives/2021/07/"/>
+  
+  <link rel="canonical" href="http://example.com/2021/07/19/c-序列化对象的二进制储存方法及底层原理研究/"/>
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -20,20 +20,22 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629429990758" as="style">
+  <link rel="preload" href="/css/style.css?time=1629429990697" as="style">
   <!-- 页面元数据 -->
-  <title>归档：2021/7 - DearXuan的主页</title>
-  <meta name="keywords" content="编程,算法">
-  <meta name="description" content="欢迎访问DearXuan的主页!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DearXuan的主页">
-<meta property="og:url" content="http://example.com/archives/2021/07/index.html">
+  <title>C#序列化对象的二进制储存方法及底层原理研究 - DearXuan的主页</title>
+  <meta name="keywords" content="C#,编程,算法">
+  <meta name="description" content="在硬盘里保存txt或二进制文件非常容易，当需要保存的对象是一个自定义类的对象时，此时采用txt或二进制存储都较为复杂，如果采用txt形式，那么在保存非文本的数据时，需要手动转换，并且txt非常容易修改。保存为二进制文件较为简单，C#还提供了int32,byte等类型的读写方法，可以直接使用，但是仍有弊端，即代码复杂，你需要不断地读取，赋值。 实际上C#提供了序列化存储的方法，可以轻松地把一个对象保">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#序列化对象的二进制储存方法及底层原理研究">
+<meta property="og:url" content="http://example.com/2021/07/19/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94%E7%A9%B6/index.html">
 <meta property="og:site_name" content="DearXuan的主页">
-<meta property="og:description" content="欢迎访问DearXuan的主页!">
+<meta property="og:description" content="在硬盘里保存txt或二进制文件非常容易，当需要保存的对象是一个自定义类的对象时，此时采用txt或二进制存储都较为复杂，如果采用txt形式，那么在保存非文本的数据时，需要手动转换，并且txt非常容易修改。保存为二进制文件较为简单，C#还提供了int32,byte等类型的读写方法，可以直接使用，但是仍有弊端，即代码复杂，你需要不断地读取，赋值。 实际上C#提供了序列化存储的方法，可以轻松地把一个对象保">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2021-07-19T01:55:00.000Z">
+<meta property="article:modified_time" content="2021-08-20T03:09:57.068Z">
 <meta property="article:author" content="DearXuan">
-<meta property="article:tag" content="编程,算法">
+<meta property="article:tag" content="C#">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -2203,8 +2205,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629429990758" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629429990758"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629429990697" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629429990697"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2270,7 +2272,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
   <body>
-    <header id="l_header" class="l_header auto shadow floatable " style='opacity: 0' >
+    <header id="l_header" class="l_header auto shadow floatable show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2494,7 +2496,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="half" class='cover-wrapper  dock' style="display: ;">
+      <div id="none" class='cover-wrapper post dock' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture"></div>
 
@@ -2541,319 +2543,291 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper" id="pjax-container">
           
 <div id="l_main" class=''>
-	
-		
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/07/19/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D%E4%BD%9C/">
-        PVZ逆向分析与C#内存操作(含源文件)
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        首先打开植物大战僵尸，进入游戏，初始阳光为50.打开CE修改器，搜索50进入游戏，种植向日葵，阳光变成0，再次搜索再进入游戏，收取阳光，阳光变成25，搜索25显然地址0x144344C8保存的就是阳光，现在退出游戏重新打开，重复上面步骤现在地址变成0x1408EDC0了，说明阳光的地址并不是固定的。对这个地址进行检测，查看是哪条指令在修改我刚刚进行了种植和收集阳光两个步骤，显然mov是减少阳...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-07-19</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%BA%95%E5%B1%82/">底层</a><span class="sep"></span><a class="category-link" href="/categories/%E5%BA%95%E5%B1%82/%E5%86%85%E5%AD%98/">内存</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/07/19/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D%E4%BD%9C/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
   
-  
-  
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title" >
-      <a href="/2021/07/19/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94%E7%A9%B6/">
+    
+    
+      <h1 class="title">
         C#序列化对象的二进制储存方法及底层原理研究
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>请设置文章作者</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">底层原理</a><span class="sep"></span><a class="category-link" href="/categories/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/%E4%BA%8C%E8%BF%9B%E5%88%B6/">二进制</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年7月19日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
       
-        在硬盘里保存txt或二进制文件非常容易，当需要保存的对象是一个自定义类的对象时，此时采用txt或二进制存储都较为复杂，如果采用txt形式，那么在保存非文本的数据时，需要手动转换，并且txt非常容易修改。保存为二进制文件较为简单，C#还提供了int32,byte等类型的读写方法，可以直接使用，但是仍有弊端，即代码复杂，你需要不断地读取，赋值。
-实际上C#提供了序列化存储的方法，可以轻松地把一个...
-      
+      <div id="lc-pv" data-title="C#序列化对象的二进制储存方法及底层原理研究" data-path="/2021/07/19/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94%E7%A9%B6/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
     
   </div>
+
+
+  <div id="page-plugins-helper"></div>
+  <p>在硬盘里保存txt或二进制文件非常容易，当需要保存的对象是一个自定义类的对象时，此时采用txt或二进制存储都较为复杂，如果采用txt形式，那么在保存非文本的数据时，需要手动转换，并且txt非常容易修改。保存为二进制文件较为简单，C#还提供了int32,byte等类型的读写方法，可以直接使用，但是仍有弊端，即代码复杂，你需要不断地读取，赋值。</p>
+<p>实际上C#提供了序列化存储的方法，可以轻松地把一个对象保存到硬盘里。</p>
+<p>首先定义一个类，并在最前面加上”[Serializable]”，表示这个类可以序列化</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[Serializable]</span><br><span class="line">class Struct</span><br><span class="line">{</span><br><span class="line">    public string a { get; set; }</span><br><span class="line">    public string b { get; set; }</span><br><span class="line">    public int s { get; set; }</span><br><span class="line"> </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>引入命名空间System.Runtime.Serialization.Formatters.Binary和System.IO</p>
+<p>实例化对象@struct，并保存在D:\abc.txt</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">static void Save()</span><br><span class="line">{</span><br><span class="line">    Struct @struct = new Struct();</span><br><span class="line">    @struct.a = "123";</span><br><span class="line">    @struct.b = "ABCD";</span><br><span class="line">    @struct.s = 27;</span><br><span class="line">    using (FileStream fileStream = new FileStream(@"D:\abc.txt", FileMode.OpenOrCreate))</span><br><span class="line">    {</span><br><span class="line">        BinaryFormatter binaryFormatter = new BinaryFormatter();</span><br><span class="line">        binaryFormatter.Serialize(fileStream, @struct);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>从硬盘读取</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">static void Read()</span><br><span class="line">{</span><br><span class="line">    using(FileStream fileStream = new FileStream(@"D:\abc.txt", FileMode.OpenOrCreate))</span><br><span class="line">    {</span><br><span class="line">        BinaryFormatter binaryFormatter = new BinaryFormatter();</span><br><span class="line">        Struct @struct = binaryFormatter.Deserialize(fileStream) as Struct;</span><br><span class="line">        Console.WriteLine(@struct.a);</span><br><span class="line">        Console.WriteLine(@struct.b);</span><br><span class="line">        Console.WriteLine(@struct.s);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>运行结果<br><img src="/2021/08/20/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94/dearxuan-0.png" class="lazyload" data-srcset="/2021/08/20/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94/dearxuan-0.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br> 现在开始研究底层原理</p>
+<p>首先给这个类加上一个变量k</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[Serializable]</span><br><span class="line">class Struct</span><br><span class="line">{</span><br><span class="line">    public string a { get; set; }</span><br><span class="line">    public string b { get; set; }</span><br><span class="line">    public int s { get; set; }</span><br><span class="line"> </span><br><span class="line">    public int k { get; set; }</span><br><span class="line"> </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>执行Read方法，发现竟然读取成功了，但是k并没有被赋值</p>
+<p>我们再给他加上一个方法ABC</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Struct</span><br><span class="line">{</span><br><span class="line">    public string a { get; set; }</span><br><span class="line">    public string b { get; set; }</span><br><span class="line">    public int s { get; set; }</span><br><span class="line"> </span><br><span class="line">    public int k { get; set; }</span><br><span class="line"> </span><br><span class="line">    public void ABC()</span><br><span class="line">    {</span><br><span class="line">        k++;</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>现在这个类的结果已经完全改变，但是执行了Read方法后发现仍然读取成功了。</p>
+<p>现在我们修改其中一个变量名，把s改成ss</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[Serializable]</span><br><span class="line">class Struct</span><br><span class="line">{</span><br><span class="line">    public string a { get; set; }</span><br><span class="line">    public string b { get; set; }</span><br><span class="line">    public int ss { get; set; }</span><br><span class="line"> </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>执行结果</p>
+<p><img src="/2021/08/20/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94/dearxuan-1.png" class="lazyload" data-srcset="/2021/08/20/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94/dearxuan-1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
+<p> 最后我们把类名Struct改成Struct1\</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[Serializable]</span><br><span class="line">class Struct1</span><br><span class="line">{</span><br><span class="line">    public string a { get; set; }</span><br><span class="line">    public string b { get; set; }</span><br><span class="line">    public int s { get; set; }</span><br><span class="line"> </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>不出所料地失败了</p>
+<p><img src="/2021/08/20/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94/dearxuan-2.png" class="lazyload" data-srcset="/2021/08/20/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94/dearxuan-2.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
+<p> 到这里已经基本可以看出序列化储存地原理，C#采用了类似XML文件地方法，将类名，变量名与变量值保存到一起。</p>
+<p>将保存的文件以二进制形式打开</p>
+<p><img src="/2021/08/20/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94/dearxuan-3.png" class="lazyload" data-srcset="/2021/08/20/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94/dearxuan-3.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
+<p>搜索字符串”123”</p>
+<p><img src="/2021/08/20/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94/dearxuan-4.png" class="lazyload" data-srcset="/2021/08/20/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94/dearxuan-4.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
+<p>发现就在这个字符串的后面出现了连续的41到45，很明显这就是”ABCDE”的ASCII码，只不过是16进制的，换成10进制就看着舒服多了</p>
+<p><img src="/2021/08/20/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94/dearxuan-5.png" class="lazyload" data-srcset="/2021/08/20/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94/dearxuan-5.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
+<p>同时我们还注意到这些字符串的前面都有一个数字恰好是后面的字符串长度</p>
+<p>例如: “03”代表后面3个字节是字符串，但是为什么”03”前面还有3个”00”？在VS里随意输入一个字符串.Length，查看Length的类型</p>
+<p><img src="/2021/08/20/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94/dearxuan-6.png" class="lazyload" data-srcset="/2021/08/20/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94/dearxuan-6.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
+<p>Length返回的是int类型，这说明string的最大长度不会超过int的最大值，int是int32的别名，从名字就能看出int32占了32位，恰好是4个字节，这也证明string的储存形式是 “长度+内容”</p>
+<p>继续往后看，最后面还有一个int类型的数字27，但是这个27的位置很奇怪，他居然是靠左的，而刚刚还是靠右的。为了进一步研究，我们把27改成999999999</p>
+<p><img src="/2021/08/20/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94/dearxuan-7.png" class="lazyload" data-srcset="/2021/08/20/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94/dearxuan-7.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
+<p>现在的十六进制码是 FF C9 9A 3B。通过其他软件进制转换，发现正确的十六进制码应该是</p>
+<p>3B 9A C9 FF。恰好是上面的反转。</p>
+<p>我们再把int改成long，并把数字改成99999999999999999，再次尝试。</p>
+<p><img src="/2021/08/20/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94/dearxuan-8.png" class="lazyload" data-srcset="/2021/08/20/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94/dearxuan-8.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
+<p>软件中是：FF FF 89 5D 78 45 63 01</p>
+<p>实际上是：01 63 45 78 5D 89 FF FF</p>
+<p>已经足够肯定C#会将数字倒序输出。但是这样不是多此一举吗？大家是否还记得在进制转换时需要不断计算余数，最后把余数倒序排列？并且这个规律只在16进制出现，合理猜测C#在保存数值类型数据时会把数字转化成16进制来保存，并且没有倒序输出。而十六进制转十进制时，也是需要从右往左来读取，第一个数的权值是1，第二个数是16，第三个是16^2。不管是保存还是读取，都是需要从右往左的，因为右边是最低位。</p>
+<p>生活中进制转换需要把余数倒序排列，因为我们的数字是高位在左，低位在右，而计算机储存时显然不需要遵守这个规律，它可以令高位在右，低位在左，这样就省去了倒序输出这一步，并且也符合了文件流操作从左到右的顺序。</p>
+<p>至于为什么选择16进制，而不是二进制，可能是为了效率，同样的一个数2^16，如果除以16，则只需要计算4次，但是如果除以2，则需要计算16次，效率相差了4倍。但是最终不是还要用二进制保存吗？是不是还需要把16进制转成2进制？如果是我们自己写代码，可能真的需要多转换一次，但是计算机是以2进制保存数据，除法的底层原理是位移计算，计算结果也是2进制数，所以计算机并不需要额外转换一次。</p>
+<p>想到这里，看似已经真相大白，但是又出现了新的问题，我们输入的数字在内存里也是二进制形式，计算机可以直接把这个二进制形式的数字从左到右保存到文件里，为什么要多此一举先转换成10进制，再转成16进制？</p>
+<p>接下来我们用C++进行下一步实验</p>
+<p><img src="/2021/08/20/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94/dearxuan-9.png" class="lazyload" data-srcset="/2021/08/20/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94/dearxuan-9.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
+<p>图中可以看到，我在计算机中保存了0x11223344这个数字，尽管我输入的是16进制，但是内存里仍然是按int类型储存。C++中的char只占了一个字节，所以我们定义一个char指针，把他指向a，此时p指向的是a的第一个字节，顺序打印p,p+1,p+2,p+3位置的数据，发现结果是 44 33 22 11。</p>
+<p>这样的结果与我们的输入完全相反，但同时也证明了int在内存中是倒序存放的(相对于人类是倒序)。与上面的猜想相联系，最终得出答案：数字在内存中是以字节为单位倒序保存的，这样保存的优点在于可以从低位到高位的读取方向与流操作从左到右的方向相同，加快了读取速度。</p>
+<p>最后回到一开始的问题上来，我们已经研究了变量在序列化操作中的保存方法。如果刚刚仔细观察，会发现文件末尾总是 0B，由此我们可以大胆猜测这是结束符。我们还发现字符串的前面除了有四个字节用来表示数字以外，还有两个字节 06 03，以及第二个字符串前面的 06 04，如果你在类里面多定义一个字符串，你会发现字节码里多出一个 06 05，因此我们也可以大胆猜测这是字符串标志。为了进一步验证这个猜想，我们把前面的0603改成0604，把后面的0604改成0603，重新读取，发现能够正常读取，而如果把前面的06改成07，就无法读取了，可以证明06是标识符。后面的数据是按顺序存储的，而不是采用指针的方法。</p>
+<p>到这里已经基本搞清楚变量的储存结构了，前面一长串的字节可以直接用txt格式打开，能够发现其中夹杂着Version,PublicKeyToken,Struct等，这些数据表明了版本，类的结构，类里面的变量名等数据，用来判断类的格式。后面紧跟着的是变量，变量与前面的变量名按顺序一一对应，最后一位是0B，表示文件流结束。</p>
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-07-19</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">底层原理</a><span class="sep"></span><a class="category-link" href="/categories/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/%E4%BA%8C%E8%BF%9B%E5%88%B6/">二进制</a>
-        
-      </div>
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/07/19/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94%E7%A9%B6/'>
-            阅读全文
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://example.com/2021/07/19/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94%E7%A9%B6/>http://example.com/2021/07/19/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94%E7%A9%B6/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-20T11:09:57+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年8月20日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
+          
   
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/07/14/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB%E5%99%A8/">
-        C#实现简易XML阅读器(含源文件和exe文件)
-      </a>
-    </h2>
-  
-  <div class='md'>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C#</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        功能本程序的主要目的是便于阅读XML文件。在网上复制一些XML文本时，常常出现格式错误，更有甚者，整个文本就一行，一行有几百个字符。这些奇奇怪怪的格式大大增加了理解难度，本程序将模仿记事本，提供基础的文件读写，编辑功能，并在此基础上增加了格式对齐和高亮功能。
-1234567891011&lt;?xml version="1.0" encoding="utf-8" ?&gt; &lt;Clas...
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/07/19/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94%E7%A9%B6/&title=C#序列化对象的二进制储存方法及底层原理研究 - DearXuan的主页&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/07/19/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94%E7%A9%B6/&title=C#序列化对象的二进制储存方法及底层原理研究 - DearXuan的主页&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/07/19/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94%E7%A9%B6/&title=C#序列化对象的二进制储存方法及底层原理研究 - DearXuan的主页&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-07-14</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/EXE%E6%96%87%E4%BB%B6/">EXE文件</a><span class="sep"></span><a class="category-link" href="/categories/EXE%E6%96%87%E4%BB%B6/%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0/">启动参数</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/07/14/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB%E5%99%A8/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
 </div>
 
-          </div>
+
+
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
+    </div>
+    <!-- Custom Files bottomMeta begin -->
     
-    <h2 class="article-title" >
-      <a href="/2021/07/13/%E5%88%A9%E7%94%A8RSA%E5%8A%A0%E5%AF%86%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E6%98%93%E7%A6%BB%E7%BA%BF%E9%AA%8C%E8%AF%81%E5%8A%9F%E8%83%BD/">
-        利用RSA加密实现的简易离线验证功能(C#,含代码)
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        许多软件都有正版验证功能，它们通常需要联网验证，验证的本质则是加密与解密，本文将使用RSA加密算法实现简易的离线验证功能
-RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N)来加密，而欧拉函数φ(N)满足φ(N)= φ(pq)=(p-1)(q-1)，如果要算出φ(N)，就必须知道p和q。并且这有一点好处，某人可以公开宣布他的密钥e以及N，任何人都可以给他发送密文，但是只有...
-      
-    
+    <!-- Custom Files bottomMeta end -->
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-07-13</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/">加密算法</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/RSA/">RSA</a>
-        
-      </div>
+  
+
+  
+    <div class="prev-next">
       
-        <div>
-          <a class='readmore' href='/2021/07/13/%E5%88%A9%E7%94%A8RSA%E5%8A%A0%E5%AF%86%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E6%98%93%E7%A6%BB%E7%BA%BF%E9%AA%8C%E8%AF%81%E5%8A%9F%E8%83%BD/'>
-            阅读全文
-          </a>
-        </div>
+        <a class='prev' href='/2021/07/19/PVZ%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E4%B8%8EC-%E5%86%85%E5%AD%98%E6%93%8D%E4%BD%9C/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>PVZ逆向分析与C#内存操作(含源文件)</p>
+          <p class='content'>首先打开植物大战僵尸，进入游戏，初始阳光为50.打开CE修改器，搜索50进入游戏，种植向日葵，阳光变成0，再次搜索再进入游戏，收取阳光，阳光变成25，搜索25显然地址0x144344C8保存的就...</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/07/14/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB%E5%99%A8/'>
+          <p class='title'>C#实现简易XML阅读器(含源文件和exe文件)<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>功能本程序的主要目的是便于阅读XML文件。在网上复制一些XML文本时，常常出现格式错误，更有甚者，整个文本就一行，一行有几百个字符。这些奇奇怪怪的格式大大增加了理解难度，本程序将模仿记事本，提供...</p>
+        </a>
       
     </div>
   
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/07/11/DFA%E7%AE%97%E6%B3%95-%E7%AE%80%E6%98%93Java%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/">
-        DFA算法-简易Java敏感词过滤(含源文件和上万敏感词列表)
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        敏感词过滤说白了就是简单的字符串替换，Java本身已经提供了相关函数，但是一旦遇到长文本，或者敏感词数量庞大，效率下降就会非常明显。本文将介绍利用多叉树进行敏感词存储和过滤的方法。
-多叉树多叉树是一种特殊的数据结构，如下图Head为头节点，下面的ABCDE均为子树。那么多叉树是如何存储敏感词的呢？首先将敏感词分解为一个一个的字符，例如敏感词”CSDN”，第一个字符是C，则在Head下创建子树...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-07-11</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/">敏感词过滤</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/%E5%A4%9A%E5%8F%89%E6%A0%91/">多叉树</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/%E5%A4%9A%E5%8F%89%E6%A0%91/DFA%E7%AE%97%E6%B3%95/">DFA算法</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/07/11/DFA%E7%AE%97%E6%B3%95-%E7%AE%80%E6%98%93Java%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
   
 
-</div>
+  
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
     
-    <h2 class="article-title" >
-      <a href="/2021/07/05/%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A%E7%9A%84Java%E5%AE%9E%E7%8E%B0%E5%8F%8A%E4%BC%98%E5%8C%96/">
-        高斯模糊的Java实现及优化
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        高斯模糊是被广泛使用的图形算法之一，在实现高斯模糊之前，先要了解正态分布
-正态分布一维的正态分布为直接让f(x)和f(y)相乘，就得到了二维的正态分布此处直接令μ=0，将会在下面解释。
-权值矩阵设有一个(2n+1)阶矩阵M，且有，我们称这个矩阵为权值矩阵，称为(i,j)点处的权。其中n是高斯模糊的半径。
-离散卷积离散卷积是卷积对离散量的特殊形式，假设现有原图矩阵A,权值矩阵B,则点(x,y)...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-07-05</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/">图像算法</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/07/05/%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A%E7%9A%84Java%E5%AE%9E%E7%8E%B0%E5%8F%8A%E4%BC%98%E5%8C%96/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
+      <div id="gitalk-container"></div>
 
-</div>
+    
 
-          </div>
-        
+    
+      <!-- Custom Files comment begin-->
       
+      <!-- Custom Files comment end-->
     
-  </section>
-  
-    
+  </article>
   
 
 
-	
+
+
+
+
 </div>
 <aside id='l_side'>
   
@@ -2861,181 +2835,8 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
     
     
 
-<section class="widget blogger shadow floatable desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='/image/yoimiya.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">DearXuan的主页</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:dearxuan7392@163.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/DearXuan7392"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget category shadow floatable desktop">
-    
-  <header>
-    
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
 
 
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/EXE%E6%96%87%E4%BB%B6/" href="/categories/EXE%E6%96%87%E4%BB%B6/"
-            id="categoriesEXEE69687E4BBB6"
-            ><div class='name'>EXE文件</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/EXE%E6%96%87%E4%BB%B6/%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0/" href="/categories/EXE%E6%96%87%E4%BB%B6/%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0/"
-            id="categoriesEXEE69687E4BBB6E590AFE58AA8E58F82E695B0"
-            ><div class='name'>启动参数</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%BA%95%E5%B1%82/" href="/categories/%E5%BA%95%E5%B1%82/"
-            id="categoriesE5BA95E5B182"
-            ><div class='name'>底层</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%BA%95%E5%B1%82/%E5%86%85%E5%AD%98/" href="/categories/%E5%BA%95%E5%B1%82/%E5%86%85%E5%AD%98/"
-            id="categoriesE5BA95E5B182E58685E5AD98"
-            ><div class='name'>内存</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" href="/categories/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/"
-            id="categoriesE5BA95E5B182E58E9FE79086"
-            ><div class='name'>底层原理</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/%E4%BA%8C%E8%BF%9B%E5%88%B6/" href="/categories/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/%E4%BA%8C%E8%BF%9B%E5%88%B6/"
-            id="categoriesE5BA95E5B182E58E9FE79086E4BA8CE8BF9BE588B6"
-            ><div class='name'>二进制</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E7%AE%97%E6%B3%95/" href="/categories/%E7%AE%97%E6%B3%95/"
-            id="categoriesE7AE97E6B395"
-            ><div class='name'>算法</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/"
-            id="categoriesE7AE97E6B395E58AA0E5AF86E7AE97E6B395"
-            ><div class='name'>加密算法</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/RSA/" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/RSA/"
-            id="categoriesE7AE97E6B395E58AA0E5AF86E7AE97E6B395RSA"
-            ><div class='name'>RSA</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E7%AE%97%E6%B3%95/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/" href="/categories/%E7%AE%97%E6%B3%95/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/"
-            id="categoriesE7AE97E6B395E59BBEE5838FE7AE97E6B395"
-            ><div class='name'>图像算法</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/"
-            id="categoriesE7AE97E6B395E6958FE6849FE8AF8DE8BF87E6BBA4"
-            ><div class='name'>敏感词过滤</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/%E5%A4%9A%E5%8F%89%E6%A0%91/" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/%E5%A4%9A%E5%8F%89%E6%A0%91/"
-            id="categoriesE7AE97E6B395E6958FE6849FE8AF8DE8BF87E6BBA4E5A49AE58F89E6A091"
-            ><div class='name'>多叉树</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/%E5%A4%9A%E5%8F%89%E6%A0%91/DFA%E7%AE%97%E6%B3%95/" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/%E5%A4%9A%E5%8F%89%E6%A0%91/DFA%E7%AE%97%E6%B3%95/"
-            id="categoriesE7AE97E6B395E6958FE6849FE8AF8DE8BF87E6BBA4E5A49AE58F89E6A091DFAE7AE97E6B395"
-            ><div class='name'>DFA算法</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow floatable desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/C/" style="font-size: 24px; color: #555">C#</a> <a href="/tags/Java/" style="font-size: 14px; color: #999">Java</a>
-    </div>
-  </section>
-
-
-  
 
   
 
@@ -3046,13 +2847,14 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="C#序列化对象的二进制储存方法及底层原理研究";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   //  see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs
@@ -3060,14 +2862,14 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
     // header
     var l_header=document.getElementById("l_header");
     
-    l_header.classList.remove("show");
+    l_header.classList.add("show");
     
     
       // cover
       var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
       var scroll_down=document.getElementById('scroll-down');
-      cover_wrapper.id="half";
-      cover_wrapper.style.display="";
+      cover_wrapper.id="none";
+      cover_wrapper.style.display="none";
       scroll_down.style.display="none";
     
   
@@ -3595,7 +3397,7 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629429990758')
+    volantis.js('/js/rightMenu.js?time=1629429990697')
   </script>
 
 
@@ -3708,19 +3510,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629429990758")
+        volantis.js("/js/plugins/sites.js?time=1629429990697")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629429990758")
+        volantis.js("/js/plugins/friends.js?time=1629429990697")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629429990758")
+        volantis.js("/js/plugins/contributors.js?time=1629429990697")
       }
     
   };
@@ -3793,7 +3595,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629429990759')
+      await volantis.js('/js/aplayer.js?time=1629429990699')
       volantis.APlayerController.music = true;
     
   })();
@@ -3876,7 +3678,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629429990758.js"></script>
+<script src="/js/app.js?time=1629429990697.js"></script>
 
 
 <!-- optional -->
@@ -3889,7 +3691,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629429990758");
+    return volantis.js("/js/search/hexo.js?time=1629429990697");
   }
 
   function loadSearchService() {
@@ -4157,8 +3959,8 @@ volantis.pjax.push(bindToggleButton);
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629429990758')
-      volantis.js('/js/message.js?time=1629429990758', () => {
+      volantis.css('/css/message.css?time=1629429990697')
+      volantis.js('/js/message.js?time=1629429990697', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4202,8 +4004,8 @@ volantis.pjax.push(bindToggleButton);
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629429990758')
-      volantis.js('/js/message.js?time=1629429990758', () => {
+      volantis.css('/css/message.css?time=1629429990697')
+      volantis.js('/js/message.js?time=1629429990697', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4363,7 +4165,7 @@ volantis.pjax.push(bindToggleButton);
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/archives/","name":"Archive"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/archives/2021/","name":"2021年"}},{"@type":"ListItem","position":4,"item":{"@id":"http://example.com/archives/2021/7/","name":"7月"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"DearXuan的主页","url":"http://example.com/","keywords":"编程,算法","description":"欢迎访问DearXuan的主页!","author":{"@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"}},"publisher":{"@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/底层原理/","name":"底层原理"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/底层原理/二进制/","name":"二进制"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/07/19/C-序列化对象的二进制储存方法及底层原理研究/","name":"C#序列化对象的二进制储存方法及底层原理研究"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"C#序列化对象的二进制储存方法及底层原理研究","description":"","datePublished":"2021-07-19T01:55:00.000Z","dateModified":"2021-08-20T03:09:57.068Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/07/19/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94%E7%A9%B6/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/07/19/C-%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%82%A8%E5%AD%98%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E7%A0%94%E7%A9%B6/","wordCount":0,"articleSection":"底层原理","keywords":"C#"}]</script>
 
 
 <!-- more -->
