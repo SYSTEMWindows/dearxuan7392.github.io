@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://example.com/tags/qt/"/>
+  <link rel="canonical" href="http://example.com/categories/c-c/"/>
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -20,14 +20,14 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629445480523" as="style">
+  <link rel="preload" href="/css/style.css?time=1629445480485" as="style">
   <!-- 页面元数据 -->
-  <title>标签：Qt - DearXuan的主页</title>
+  <title>分类：C/C++ - DearXuan的主页</title>
   <meta name="keywords" content="编程,算法">
   <meta name="description" content="欢迎访问DearXuan的主页!">
 <meta property="og:type" content="website">
 <meta property="og:title" content="DearXuan的主页">
-<meta property="og:url" content="http://example.com/tags/Qt/index.html">
+<meta property="og:url" content="http://example.com/categories/C-C/index.html">
 <meta property="og:site_name" content="DearXuan的主页">
 <meta property="og:description" content="欢迎访问DearXuan的主页!">
 <meta property="og:locale" content="zh_CN">
@@ -2204,8 +2204,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629445480523" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629445480523"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629445480485" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629445480485"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2588,19 +2588,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title" >
-      <a href="/2021/08/07/Wallpaper%E9%80%8F%E8%A7%86%E6%95%88%E6%9E%9C%E7%9A%84C-%E5%AE%9E%E7%8E%B0/">
-        Wallpaper透视效果的C++实现
+      <a href="/2021/08/18/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97%E6%B3%95/">
+        平方根倒数快速算法
       </a>
     </h2>
   
   <div class='md'>
     
       
-        Wallpaper的透视图实际上包含了两张图，一张是非透视图，即正常情况下能够被看到的图片，另一张是透视图，即鼠标移到上面才会部分显示的图片。
-本文将使用Qt框架实现类似效果
-最终效果
-代码桌面子窗体将自己的窗体设置成桌面的子窗体，其原理在之前的Wallpaper文章中已经介绍过，故直接放出代码，不再解释。
-123456789101112131415161718192021222324252...
+        单位向量时需要用到平方根倒数，而计算单位向量在游戏引擎中会大量使用，属于底层代码，因此其效率将会直接影响游戏体验。
+雷神之锤3中使用了以下代码
+123456789101112float Q_rsqrt(float number) {    long i;    float x2, y;    const float threehalfs = 1.5F;    x2 = number * 0....
       
     
   </div>
@@ -2608,15 +2606,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time>2021-08-07</time>
+        <time>2021-08-18</time>
         
           <span class="dot"></span>
-          <a class="category-link" href="/categories/Wallpaper/">Wallpaper</a><span class="sep"></span><a class="category-link" href="/categories/Wallpaper/Qt/">Qt</a>
+          <a class="category-link" href="/categories/C-C/">C/C++</a>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2021/08/07/Wallpaper%E9%80%8F%E8%A7%86%E6%95%88%E6%9E%9C%E7%9A%84C-%E5%AE%9E%E7%8E%B0/'>
+          <a class='readmore' href='/2021/08/18/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E5%BF%AB%E9%80%9F%E7%AE%97%E6%B3%95/'>
             阅读全文
           </a>
         </div>
@@ -2638,21 +2636,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title" >
-      <a href="/2021/07/28/%E4%BD%BF%E7%94%A8C-%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%BB%BFWallpaper%E5%8A%A8%E6%80%81%E5%A3%81%E7%BA%B8%E8%BD%AF%E4%BB%B6/">
-        使用C++实现的仿Wallpaper动态壁纸软件(含源文件)
+      <a href="/2021/07/25/%E9%92%88%E5%AF%B9%E5%86%85%E5%AD%98%E4%BF%AE%E6%94%B9%E7%9A%84%E5%8F%8D%E4%BD%9C%E5%BC%8A%E6%96%B9%E6%B3%95/">
+        针对内存修改的反作弊方法
       </a>
     </h2>
   
   <div class='md'>
     
       
-        在上一篇博客中，已经介绍了wallpaper的实现原理，并用C#实现，本文将使用C++和Qt框架实现，由于之前已经介绍过具体思路，本文将跳过分析过程，直接上代码。
-新建Qt项目，系统自动生成widget.h,widget.cpp,main.cpp。
-我们将使用widget作为主窗体
-窗体设计
-在项目pro里加上
-1QT += multimedia multimediawidgets
-widg...
+        内存修改作弊是指用户修改内存数据来达到修改分数，金币，生命的作弊手段，这种作弊方法最常见，门槛也最低，只需要简单地掌握CE类修改器的使用方法即可。
+源程序123456789101112131415161718192021222324#include &lt;iostream&gt;#include &lt;windows.h&gt;#include &lt;conio.h&gt;int sc...
       
     
   </div>
@@ -2660,15 +2653,15 @@ widg...
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time>2021-07-28</time>
+        <time>2021-07-25</time>
         
           <span class="dot"></span>
-          <a class="category-link" href="/categories/Wallpaper/">Wallpaper</a><span class="sep"></span><a class="category-link" href="/categories/Wallpaper/Qt/">Qt</a>
+          <a class="category-link" href="/categories/C-C/">C/C++</a>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2021/07/28/%E4%BD%BF%E7%94%A8C-%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%BB%BFWallpaper%E5%8A%A8%E6%80%81%E5%A3%81%E7%BA%B8%E8%BD%AF%E4%BB%B6/'>
+          <a class='readmore' href='/2021/07/25/%E9%92%88%E5%AF%B9%E5%86%85%E5%AD%98%E4%BF%AE%E6%94%B9%E7%9A%84%E5%8F%8D%E4%BD%9C%E5%BC%8A%E6%96%B9%E6%B3%95/'>
             阅读全文
           </a>
         </div>
@@ -3431,7 +3424,7 @@ widg...
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629445480523')
+    volantis.js('/js/rightMenu.js?time=1629445480485')
   </script>
 
 
@@ -3544,19 +3537,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629445480523")
+        volantis.js("/js/plugins/sites.js?time=1629445480485")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629445480523")
+        volantis.js("/js/plugins/friends.js?time=1629445480485")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629445480523")
+        volantis.js("/js/plugins/contributors.js?time=1629445480485")
       }
     
   };
@@ -3629,7 +3622,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629445480524')
+      await volantis.js('/js/aplayer.js?time=1629445480486')
       volantis.APlayerController.music = true;
     
   })();
@@ -3712,7 +3705,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629445480523.js"></script>
+<script src="/js/app.js?time=1629445480485.js"></script>
 
 
 <!-- optional -->
@@ -3725,7 +3718,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629445480523");
+    return volantis.js("/js/search/hexo.js?time=1629445480485");
   }
 
   function loadSearchService() {
@@ -3993,8 +3986,8 @@ volantis.pjax.push(bindToggleButton);
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629445480523')
-      volantis.js('/js/message.js?time=1629445480523', () => {
+      volantis.css('/css/message.css?time=1629445480485')
+      volantis.js('/js/message.js?time=1629445480485', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4038,8 +4031,8 @@ volantis.pjax.push(bindToggleButton);
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629445480523')
-      volantis.js('/js/message.js?time=1629445480523', () => {
+      volantis.css('/css/message.css?time=1629445480485')
+      volantis.js('/js/message.js?time=1629445480485', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4199,7 +4192,7 @@ volantis.pjax.push(bindToggleButton);
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/tags/Qt/","name":"Qt"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"DearXuan的主页","url":"http://example.com/","keywords":"编程,算法","description":"欢迎访问DearXuan的主页!","author":{"@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"}},"publisher":{"@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/C/C++/","name":"C/C++"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"DearXuan的主页","url":"http://example.com/","keywords":"编程,算法","description":"欢迎访问DearXuan的主页!","author":{"@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"}},"publisher":{"@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}}]</script>
 
 
 <!-- more -->

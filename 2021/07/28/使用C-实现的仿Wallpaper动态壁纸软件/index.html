@@ -20,10 +20,10 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629444356451" as="style">
+  <link rel="preload" href="/css/style.css?time=1629445480426" as="style">
   <!-- 页面元数据 -->
   <title>使用C++实现的仿Wallpaper动态壁纸软件(含源文件) - DearXuan的主页</title>
-  <meta name="keywords" content="C++,Wallpaper,Qt,编程,算法">
+  <meta name="keywords" content="Wallpaper,Qt,C/C++,编程,算法">
   <meta name="description" content="在上一篇博客中，已经介绍了wallpaper的实现原理，并用C#实现，本文将使用C++和Qt框架实现，由于之前已经介绍过具体思路，本文将跳过分析过程，直接上代码。 新建Qt项目，系统自动生成widget.h,widget.cpp,main.cpp。 我们将使用widget作为主窗体 窗体设计 在项目pro里加上 1QT +&#x3D; multimedia multimediawidgets widget里">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用C++实现的仿Wallpaper动态壁纸软件(含源文件)">
@@ -33,11 +33,11 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2021-07-28T09:46:00.000Z">
-<meta property="article:modified_time" content="2021-08-20T07:24:45.862Z">
+<meta property="article:modified_time" content="2021-08-20T07:43:59.409Z">
 <meta property="article:author" content="DearXuan">
-<meta property="article:tag" content="C++">
 <meta property="article:tag" content="Wallpaper">
 <meta property="article:tag" content="Qt">
+<meta property="article:tag" content="C&#x2F;C++">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -2208,8 +2208,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629444356451" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629444356451"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629445480426" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629445480426"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2712,7 +2712,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-20T15:24:45+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-20T15:43:59+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2021年8月20日</p>
@@ -2724,7 +2724,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C++</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Wallpaper/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Wallpaper</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Qt/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Qt</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Wallpaper/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Wallpaper</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Qt/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Qt</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C-C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C/C++</p></a></div>
 
 
         
@@ -3309,6 +3309,44 @@ windows的桌面是由不同的二窗体构成，包括图标层，背景层，�
         
           
     <li class="menuLoad-Content">
+      <a class='vlts-menu fix-cursor-default' href=/categories
+        
+        
+        
+        
+          id="categories"
+        
+      >
+        <i class='fas fa-folder-open fa-fw'></i> 分类
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr class="menuLoad-Content">
+        
+      
+        
+          
+    <li class="menuLoad-Content">
+      <a class='vlts-menu fix-cursor-default' href=/tags
+        
+        
+        
+        
+          id="tags"
+        
+      >
+        <i class='fas fa-tags fa-fw'></i> 标签
+      </a>
+    </li>
+  
+        
+      
+        
+          
+    <li class="menuLoad-Content">
       <a class='vlts-menu fix-cursor-default' href=/archives
         
         
@@ -3321,14 +3359,6 @@ windows的桌面是由不同的二窗体构成，包括图标层，背景层，�
       </a>
     </li>
   
-        
-      
-        
-          <hr class="menuLoad-Content">
-        
-      
-        
-      
         
       
         
@@ -3416,7 +3446,7 @@ windows的桌面是由不同的二窗体构成，包括图标层，背景层，�
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629444356451')
+    volantis.js('/js/rightMenu.js?time=1629445480426')
   </script>
 
 
@@ -3529,19 +3559,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629444356451")
+        volantis.js("/js/plugins/sites.js?time=1629445480426")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629444356451")
+        volantis.js("/js/plugins/friends.js?time=1629445480426")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629444356451")
+        volantis.js("/js/plugins/contributors.js?time=1629445480426")
       }
     
   };
@@ -3614,7 +3644,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629444356453')
+      await volantis.js('/js/aplayer.js?time=1629445480428')
       volantis.APlayerController.music = true;
     
   })();
@@ -3697,7 +3727,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629444356451.js"></script>
+<script src="/js/app.js?time=1629445480426.js"></script>
 
 
 <!-- optional -->
@@ -3710,7 +3740,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629444356451");
+    return volantis.js("/js/search/hexo.js?time=1629445480426");
   }
 
   function loadSearchService() {
@@ -3978,8 +4008,8 @@ volantis.pjax.push(bindToggleButton);
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629444356451')
-      volantis.js('/js/message.js?time=1629444356451', () => {
+      volantis.css('/css/message.css?time=1629445480426')
+      volantis.js('/js/message.js?time=1629445480426', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4023,8 +4053,8 @@ volantis.pjax.push(bindToggleButton);
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629444356451')
-      volantis.js('/js/message.js?time=1629444356451', () => {
+      volantis.css('/css/message.css?time=1629445480426')
+      volantis.js('/js/message.js?time=1629445480426', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4184,7 +4214,7 @@ volantis.pjax.push(bindToggleButton);
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Wallpaper/","name":"Wallpaper"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Wallpaper/Qt/","name":"Qt"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/07/28/使用C-实现的仿Wallpaper动态壁纸软件/","name":"使用C++实现的仿Wallpaper动态壁纸软件(含源文件)"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"使用C++实现的仿Wallpaper动态壁纸软件(含源文件)","description":"","datePublished":"2021-07-28T09:46:00.000Z","dateModified":"2021-08-20T07:24:45.862Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/07/28/%E4%BD%BF%E7%94%A8C-%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%BB%BFWallpaper%E5%8A%A8%E6%80%81%E5%A3%81%E7%BA%B8%E8%BD%AF%E4%BB%B6/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/07/28/%E4%BD%BF%E7%94%A8C-%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%BB%BFWallpaper%E5%8A%A8%E6%80%81%E5%A3%81%E7%BA%B8%E8%BD%AF%E4%BB%B6/","wordCount":0,"articleSection":"Wallpaper","keywords":"C++,Wallpaper,Qt"}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Wallpaper/","name":"Wallpaper"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Wallpaper/Qt/","name":"Qt"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/07/28/使用C-实现的仿Wallpaper动态壁纸软件/","name":"使用C++实现的仿Wallpaper动态壁纸软件(含源文件)"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"使用C++实现的仿Wallpaper动态壁纸软件(含源文件)","description":"","datePublished":"2021-07-28T09:46:00.000Z","dateModified":"2021-08-20T07:43:59.409Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/07/28/%E4%BD%BF%E7%94%A8C-%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%BB%BFWallpaper%E5%8A%A8%E6%80%81%E5%A3%81%E7%BA%B8%E8%BD%AF%E4%BB%B6/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/07/28/%E4%BD%BF%E7%94%A8C-%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%BB%BFWallpaper%E5%8A%A8%E6%80%81%E5%A3%81%E7%BA%B8%E8%BD%AF%E4%BB%B6/","wordCount":0,"articleSection":"Wallpaper","keywords":"Wallpaper,Qt,C/C++"}]</script>
 
 
 <!-- more -->
