@@ -20,7 +20,7 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629450192330" as="style">
+  <link rel="preload" href="/css/style.css?time=1629451214539" as="style">
   <!-- 页面元数据 -->
   <title>分类：C# - DearXuan的主页</title>
   <meta name="keywords" content="编程,算法">
@@ -2204,8 +2204,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629450192330" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629450192330"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629451214539" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629451214539"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -3502,7 +3502,7 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
         
           <li class='option menuOption-Content'>
             <span class='vlts-menu opt fix-cursor-default toggle-mode-btn' id='menuDarkBtn'>
-              <i class='fa fa-moon fa-fw '></i> 暗黑模式
+              <i class='fa fa-moon fa-fw '></i> 深色模式
             </span>
           </li>
         
@@ -3510,7 +3510,7 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
         
           <li class='option menuOption-Content'>
             <span class='vlts-menu opt fix-cursor-default' id='readingModel'>
-              <i class='fa fa-book-open fa-fw '></i> 阅读模式
+              <i class='fa fa-book-open fa-fw '></i> 专注阅读
             </span>
           </li>  
         
@@ -3570,9 +3570,13 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
     
     
     
+      volantis.rightMenu.customPicUrl = true;
+      volantis.rightMenu.picOld = '';
+      volantis.rightMenu.picNew = '';
     
     
-    volantis.js('/js/rightMenu.js?time=1629450192330')
+    
+    volantis.js('/js/rightMenu.js?time=1629451214539')
   </script>
 
 
@@ -3685,19 +3689,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629450192330")
+        volantis.js("/js/plugins/sites.js?time=1629451214539")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629450192330")
+        volantis.js("/js/plugins/friends.js?time=1629451214539")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629450192330")
+        volantis.js("/js/plugins/contributors.js?time=1629451214539")
       }
     
   };
@@ -3770,7 +3774,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629450192332')
+      await volantis.js('/js/aplayer.js?time=1629451214541')
       volantis.APlayerController.music = true;
     
   })();
@@ -3853,7 +3857,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629450192330.js"></script>
+<script src="/js/app.js?time=1629451214539.js"></script>
 
 
 <!-- optional -->
@@ -3866,7 +3870,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629450192330");
+    return volantis.js("/js/search/hexo.js?time=1629451214539");
   }
 
   function loadSearchService() {
@@ -4148,8 +4152,8 @@ volantis.pjax.push(()=>{
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629450192330')
-      volantis.js('/js/message.js?time=1629450192330', () => {
+      volantis.css('/css/message.css?time=1629451214539')
+      volantis.js('/js/message.js?time=1629451214539', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4193,8 +4197,8 @@ volantis.pjax.push(()=>{
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629450192330')
-      volantis.js('/js/message.js?time=1629450192330', () => {
+      volantis.css('/css/message.css?time=1629451214539')
+      volantis.js('/js/message.js?time=1629451214539', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
