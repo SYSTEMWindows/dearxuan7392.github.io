@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://example.com/tags/"/>
+  <link rel="canonical" href="http://example.com/2021/07/14/c-实现简易xml阅读器/"/>
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -20,20 +20,22 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629428381407" as="style">
+  <link rel="preload" href="/css/style.css?time=1629428381409" as="style">
   <!-- 页面元数据 -->
-  <title>tags - DearXuan的主页</title>
-  <meta name="keywords" content="编程,算法">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://example.com/tags/index.html">
+  <title>C#实现简易XML阅读器(含源文件和exe文件) - DearXuan的主页</title>
+  <meta name="keywords" content="C#,编程,算法">
+  <meta name="description" content="功能本程序的主要目的是便于阅读XML文件。在网上复制一些XML文本时，常常出现格式错误，更有甚者，整个文本就一行，一行有几百个字符。这些奇奇怪怪的格式大大增加了理解难度，本程序将模仿记事本，提供基础的文件读写，编辑功能，并在此基础上增加了格式对齐和高亮功能。 1234567891011&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot; ?&gt; &lt;Class&amp;g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#实现简易XML阅读器(含源文件和exe文件)">
+<meta property="og:url" content="http://example.com/2021/07/14/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB%E5%99%A8/index.html">
 <meta property="og:site_name" content="DearXuan的主页">
+<meta property="og:description" content="功能本程序的主要目的是便于阅读XML文件。在网上复制一些XML文本时，常常出现格式错误，更有甚者，整个文本就一行，一行有几百个字符。这些奇奇怪怪的格式大大增加了理解难度，本程序将模仿记事本，提供基础的文件读写，编辑功能，并在此基础上增加了格式对齐和高亮功能。 1234567891011&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot; ?&gt; &lt;Class&amp;g">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2021-08-19T13:41:45.000Z">
-<meta property="article:modified_time" content="2021-08-19T13:41:45.971Z">
+<meta property="article:published_time" content="2021-07-14T13:01:00.000Z">
+<meta property="article:modified_time" content="2021-08-20T02:59:27.540Z">
 <meta property="article:author" content="DearXuan">
-<meta property="article:tag" content="编程,算法">
+<meta property="article:tag" content="C#">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -2203,8 +2205,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629428381407" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629428381407"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629428381409" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629428381409"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2494,7 +2496,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="none" class='cover-wrapper page dock' style="display: none;">
+      <div id="none" class='cover-wrapper post dock' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture"></div>
 
@@ -2541,7 +2543,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper" id="pjax-container">
           
 <div id="l_main" class=''>
-  <article class="article post white-box reveal md shadow article-type-page" id="page" itemscope itemprop="blogPost">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
 
 
@@ -2551,7 +2553,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title">
-        tags
+        C#实现简易XML阅读器(含源文件和exe文件)
       </h1>
       <div class='new-meta-box'>
         
@@ -2568,6 +2570,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/XML/">XML</a><span class="sep"></span><a class="category-link" href="/categories/XML/%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0/">启动参数</a>
+    </a>
+  </div>
+
 
           
         
@@ -2575,7 +2584,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2021年8月19日</p>
+    <p>发布于：2021年7月14日</p>
   </a>
 </div>
 
@@ -2586,7 +2595,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="tags" data-path="/tags/">
+      <div id="lc-pv" data-title="C#实现简易XML阅读器(含源文件和exe文件)" data-path="/2021/07/14/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB%E5%99%A8/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -2606,8 +2615,59 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
   <div id="page-plugins-helper"></div>
+  <h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><p>本程序的主要目的是便于阅读XML文件。在网上复制一些XML文本时，常常出现格式错误，更有甚者，整个文本就一行，一行有几百个字符。这些奇奇怪怪的格式大大增加了理解难度，本程序将模仿记事本，提供基础的文件读写，编辑功能，并在此基础上增加了格式对齐和高亮功能。</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">Class</span>&gt;</span> </span><br><span class="line"> <span class="tag">&lt;<span class="name">Student</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">ID</span>&gt;</span>1111<span class="tag">&lt;/<span class="name">ID</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>Happy<span class="tag">&lt;/<span class="name">name</span>&gt;</span> </span><br><span class="line"> <span class="tag">&lt;/<span class="name">Student</span>&gt;</span> </span><br><span class="line"> <span class="tag">&lt;<span class="name">Student</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">ID</span>&gt;</span>2222<span class="tag">&lt;/<span class="name">ID</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>Sad<span class="tag">&lt;/<span class="name">name</span>&gt;</span> </span><br><span class="line"> <span class="tag">&lt;/<span class="name">Student</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">Class</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="界面设计"><a href="#界面设计" class="headerlink" title="界面设计"></a>界面设计</h3><p>主界面分为菜单栏和输入框<br><img src="/2021/08/20/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB/dearxuan-1.png" class="lazyload" data-srcset="/2021/08/20/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB/dearxuan-1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
+<h3 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h3><p>新建FileIO.cs，引入命名空间System.IO</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">static class FileIO</span><br><span class="line">{</span><br><span class="line">    public static string ReadFile(string path)</span><br><span class="line">    {</span><br><span class="line">        if (path == null) return null;</span><br><span class="line">        string line;</span><br><span class="line">        string s = "";</span><br><span class="line">        StreamReader streamReader = null;</span><br><span class="line">        try</span><br><span class="line">        {</span><br><span class="line">            streamReader = new StreamReader(path);</span><br><span class="line">            while((line = streamReader.ReadLine()) != null)</span><br><span class="line">            {</span><br><span class="line">                s += line + "\n";</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        catch(Exception ex)</span><br><span class="line">        {</span><br><span class="line">            s = null;</span><br><span class="line">        }</span><br><span class="line">        finally</span><br><span class="line">        {</span><br><span class="line">            if (streamReader != null) streamReader.Dispose();</span><br><span class="line">        }</span><br><span class="line">        return s;</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    public static bool WriteFile(string path,string content)</span><br><span class="line">    {</span><br><span class="line">        StreamWriter streamWriter = null;</span><br><span class="line">        try</span><br><span class="line">        {</span><br><span class="line">            streamWriter = new StreamWriter(path);</span><br><span class="line">            streamWriter.Write(content);</span><br><span class="line">        }</span><br><span class="line">        catch(Exception ex)</span><br><span class="line">        {</span><br><span class="line">            return false;</span><br><span class="line">        }</span><br><span class="line">        finally</span><br><span class="line">        {</span><br><span class="line">            if (streamWriter != null) streamWriter.Dispose();</span><br><span class="line">        }</span><br><span class="line">        return true;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>ReadFile函数根据传入的地址，读取文件内容，WriteFile则负责保存文件，返回的布尔值用于判断是否保存成功。有人可能会对WriteFile里的catch产生疑惑，在catch里直接return了，那finally的代码不就无法执行了吗？实际上在执行return之前，会先把要return的数据保存，然后执行finally里的语句，最后再return刚刚保存的参数。例如我在catch里return a，而a=1，即使我在finally里把a赋值成2，那最后返回的仍然是1.</p>
+<h3 id="查找和替换"><a href="#查找和替换" class="headerlink" title="查找和替换"></a>查找和替换</h3><p><img src="/2021/08/20/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB/dearxuan-2.png" class="lazyload" data-srcset="/2021/08/20/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB/dearxuan-2.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>DFA算法可以极大提高长字符串的查找效率</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public bool textHasChanged = true;</span><br><span class="line">public bool wordHasChanged = true;</span><br><span class="line">private char[] word;</span><br><span class="line">private char[] text;</span><br><span class="line">private bool GetWord()</span><br><span class="line">{</span><br><span class="line">    if(main.richTextBox1.Text.Length == 0)</span><br><span class="line">    {</span><br><span class="line">        MessageBox.Show("文本内容为空!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);</span><br><span class="line">        return false;</span><br><span class="line">    }</span><br><span class="line">    if(textBox1.Text.Length == 0)</span><br><span class="line">    {</span><br><span class="line">        MessageBox.Show("查找内容为空!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);</span><br><span class="line">        return false;</span><br><span class="line">    }</span><br><span class="line">    if (textHasChanged)</span><br><span class="line">    {</span><br><span class="line">        if (checkBox1.Checked)//不区分大小写</span><br><span class="line">        {</span><br><span class="line">            text = main.richTextBox1.Text.ToLower().ToCharArray();</span><br><span class="line">        }</span><br><span class="line">        else</span><br><span class="line">        {</span><br><span class="line">            text = main.richTextBox1.Text.ToCharArray();</span><br><span class="line">        }</span><br><span class="line">        textHasChanged = false;</span><br><span class="line">    }</span><br><span class="line">    if (wordHasChanged)</span><br><span class="line">    {</span><br><span class="line">        if (checkBox1.Checked)//不区分大小写</span><br><span class="line">        {</span><br><span class="line">            word = textBox1.Text.ToLower().ToCharArray();</span><br><span class="line">        }</span><br><span class="line">        else</span><br><span class="line">        {</span><br><span class="line">            word = textBox1.Text.ToCharArray();</span><br><span class="line">        }</span><br><span class="line">        wordHasChanged = false;</span><br><span class="line">    }</span><br><span class="line">    return true;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>首先定义char数组word和text，分别表示需要查找的内容和全部文本，使用ToCharArray()将string转化成char数组，在实际使用中，常常会连续使用多次查找功能，如果每次查找时都要转换以下，会增大系统开销，因此需要设定布尔变量来表示字符串内容是否被修改，仅当用户手动修改了word或者text内容时才重新转换。<br><br><br>其中“查找”按钮就是简单的统计字符串在文本中出现了多少次，并选中第一次出现的位置，实现较为容易，不展示源码。“上一处”和“下一处”则要根据鼠标光标的位置寻找上一个或下一个出现的位置</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">private void button2_Click(object sender, EventArgs e)//向下查找</span><br><span class="line">{</span><br><span class="line">    if (!GetWord()) return;</span><br><span class="line">    int i, j;</span><br><span class="line">    bool flag;</span><br><span class="line">    if (checkBox1.Checked)</span><br><span class="line">    {</span><br><span class="line">        flag = main.richTextBox1.SelectedText.ToLower().Equals(textBox1.Text.ToLower());</span><br><span class="line">    }</span><br><span class="line">    else</span><br><span class="line">    {</span><br><span class="line">        flag = main.richTextBox1.SelectedText.Equals(textBox1.Text);</span><br><span class="line">    }</span><br><span class="line">    if (flag)</span><br><span class="line">    {</span><br><span class="line">        i = main.richTextBox1.SelectionStart + main.richTextBox1.SelectionLength;</span><br><span class="line">    }</span><br><span class="line">    else</span><br><span class="line">    {</span><br><span class="line">        i = main.richTextBox1.SelectionStart;</span><br><span class="line">    }</span><br><span class="line">    if (i == text.Length) i = 0;</span><br><span class="line">    int maxSearchLength = text.Length;</span><br><span class="line">    int alreadySearchLength = 0;</span><br><span class="line">    while (i &lt; text.Length &amp;&amp; alreadySearchLength &lt;= maxSearchLength)</span><br><span class="line">    {</span><br><span class="line">        j = 0;</span><br><span class="line">        while (i + j &lt; text.Length &amp;&amp; text[i + j] == word[j])</span><br><span class="line">        {</span><br><span class="line">            j++;</span><br><span class="line">            if (j == word.Length)</span><br><span class="line">            {</span><br><span class="line">                main.richTextBox1.Select(i, j);</span><br><span class="line">                main.Focus();</span><br><span class="line">                return;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        i += j + 1;</span><br><span class="line">        alreadySearchLength += j + 1;</span><br><span class="line">        if (i &gt;= text.Length &amp;&amp; checkBox2.Checked) i = 0;</span><br><span class="line">    }</span><br><span class="line">    MessageBox.Show("未找到!", "查找结果", MessageBoxButtons.OK, MessageBoxIcon.None);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>查找之前使用Getword()来获取最新的char数组，此时还要考虑一种情况，假设用户需要查找”abc”，并且用户当前已经选中”abc”，就需要将起始位置设置为光标位置的后3格。同时如果用户勾选了”循环”，则变量 i 超出文本长度时，需要将它设置为0，但是这又会引起另一个问题：死循环。为了防止出现死循环，可以设置一个变量alreadySearchLength，这个变量记录已经查找过的字符串长度，当这个变量超过文本长度时，说明已经遍历了全部字符，则退出循环。<br><br><br>查找采用了DFA算法，将需要查找的字符串的首字符跟text数组比较，遇到相同的再比较下一个，这样可以减少查找所用时间。<br><br><br>向下查找和向上查找代码大致相同，但是向上查找不需要判断当前选中字符串是否就是需要查找的字符串。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">private void button3_Click(object sender, EventArgs e)//向上查找</span><br><span class="line">{</span><br><span class="line">    if (!GetWord()) return;</span><br><span class="line">    int i = main.richTextBox1.SelectionStart,j;</span><br><span class="line">    if (i == 0 &amp;&amp; checkBox2.Checked) i = text.Length - 1;</span><br><span class="line">    if (i == text.Length) i = text.Length - 1;</span><br><span class="line">    int maxSearchLength = text.Length;</span><br><span class="line">    int alreadySearchLength = 0;</span><br><span class="line">    while (i &gt;= 0 &amp;&amp; alreadySearchLength &lt;= maxSearchLength)</span><br><span class="line">    {</span><br><span class="line">        j = 0;</span><br><span class="line">        while (i - j &gt;= 0 &amp;&amp; text[i - j] == word[word.Length - 1 - j])</span><br><span class="line">        {</span><br><span class="line">            j++;</span><br><span class="line">            if (j == word.Length)</span><br><span class="line">            {</span><br><span class="line">                main.richTextBox1.Select(i - j + 1, j);</span><br><span class="line">                main.Focus();</span><br><span class="line">                return;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        i -= j + 1;</span><br><span class="line">        alreadySearchLength += j + 1;</span><br><span class="line">        if (i &lt;= 0 &amp;&amp; checkBox2.Checked) i = text.Length - 1;</span><br><span class="line">    }</span><br><span class="line">    MessageBox.Show("未找到!", "查找结果", MessageBoxButtons.OK, MessageBoxIcon.None);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/2021/08/20/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB/dearxuan-3.png" class="lazyload" data-srcset="/2021/08/20/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB/dearxuan-3.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">private void button1_Click(object sender, EventArgs e)//替换</span><br><span class="line">{</span><br><span class="line">    if (checkBox1.Checked)</span><br><span class="line">    {</span><br><span class="line">        if (main.richTextBox1.SelectedText.ToLower().Equals(textBox1.Text.ToLower()))</span><br><span class="line">        {</span><br><span class="line">            int position = main.richTextBox1.SelectionStart + textBox2.Text.Length;</span><br><span class="line">            ReplaceWord(main.richTextBox1.SelectionStart, main.richTextBox1.SelectionLength);</span><br><span class="line">            main.richTextBox1.Select(position, 0);</span><br><span class="line">            int start = SearchNext();</span><br><span class="line">            if(start &gt;= 0)</span><br><span class="line">            {</span><br><span class="line">                main.richTextBox1.Select(start, textBox1.Text.Length);</span><br><span class="line">            }</span><br><span class="line">            main.Focus();</span><br><span class="line">        }</span><br><span class="line">        else</span><br><span class="line">        {</span><br><span class="line">            int start = SearchNext();</span><br><span class="line">            if(start &lt; 0)</span><br><span class="line">            {</span><br><span class="line">                ShowNotFoundDialog();</span><br><span class="line">            }</span><br><span class="line">            else</span><br><span class="line">            {</span><br><span class="line">                main.richTextBox1.Select(start, textBox1.Text.Length);</span><br><span class="line">                main.Focus();</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    else</span><br><span class="line">    {</span><br><span class="line">        if (main.richTextBox1.SelectedText.Equals(textBox1.Text))</span><br><span class="line">        {</span><br><span class="line">            int position = main.richTextBox1.SelectionStart + textBox2.Text.Length;</span><br><span class="line">            ReplaceWord(main.richTextBox1.SelectionStart, main.richTextBox1.SelectionLength);</span><br><span class="line">            main.richTextBox1.Select(position, 0);</span><br><span class="line">            int start = SearchNext();</span><br><span class="line">            if (start &gt;= 0)</span><br><span class="line">            {</span><br><span class="line">                main.richTextBox1.Select(start, textBox1.Text.Length);</span><br><span class="line">            }</span><br><span class="line">            main.Focus();</span><br><span class="line">        }</span><br><span class="line">        else</span><br><span class="line">        {</span><br><span class="line">            int start = SearchNext();</span><br><span class="line">            if (start &lt; 0)</span><br><span class="line">            {</span><br><span class="line">                ShowNotFoundDialog();</span><br><span class="line">            }</span><br><span class="line">            else</span><br><span class="line">            {</span><br><span class="line">                main.richTextBox1.Select(start, textBox1.Text.Length);</span><br><span class="line">                main.Focus();</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>替换比起查找较为复杂，首先是判断当前选中字符串是否就是要替换的内容，如果是，替换当前选中的文本，并选中下一个出现的位置；如果不是，直接选中下一个出现的位置。替换是利用字符串截取功能实现的，因此在替换前需要先保存光标位置，替换后再重设光标位置。</p>
+<h3 id="对齐与高亮"><a href="#对齐与高亮" class="headerlink" title="对齐与高亮"></a>对齐与高亮</h3><p>对齐可以使用C#自带的XmlTextWriter来实现，注意命名空间为System.Xml<br><br><br>高亮比之前的查找和替换简单，只需要根据尖括号来查找就行，并将尖括号里的内容设置为蓝色</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">if (richTextBox1.Text.Trim().Equals(""))</span><br><span class="line">{</span><br><span class="line">    MessageBox.Show("内容为空.", "对齐");</span><br><span class="line">    return;</span><br><span class="line">}</span><br><span class="line">try</span><br><span class="line">{</span><br><span class="line">    XmlDocument document = new XmlDocument();</span><br><span class="line">    document.LoadXml(richTextBox1.Text);</span><br><span class="line">    MemoryStream memoryStream = new MemoryStream();</span><br><span class="line">    XmlTextWriter writer = new XmlTextWriter(memoryStream, null)</span><br><span class="line">    {</span><br><span class="line">        Formatting = Formatting.Indented</span><br><span class="line">    };</span><br><span class="line">    document.Save(writer);</span><br><span class="line">    StreamReader streamReader = new StreamReader(memoryStream);</span><br><span class="line">    memoryStream.Position = 0;</span><br><span class="line">    string xmlString = streamReader.ReadToEnd();</span><br><span class="line">    streamReader.Close();</span><br><span class="line">    memoryStream.Close();</span><br><span class="line">    richTextBox1.Text = xmlString;</span><br><span class="line">}</span><br><span class="line">catch(Exception ex)</span><br><span class="line">{</span><br><span class="line">    MessageBox.Show(ex.Message);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="启动参数"><a href="#启动参数" class="headerlink" title="启动参数"></a>启动参数</h3><p>为了实现快捷打开文本文件，需要程序读取启动参数并在启动后立即打开参数指定的文件</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public Form1(string[] args)</span><br><span class="line">{</span><br><span class="line">    InitializeComponent();</span><br><span class="line">    if(args.Length != 0)</span><br><span class="line">    {</span><br><span class="line">        filePath = args[0];</span><br><span class="line">        if (!filePath.EndsWith(".txt"))</span><br><span class="line">        {</span><br><span class="line">            switch(MessageBox.Show("XML Reader仅支持文本文件，是否以文本形式打开" + filePath + "?", "XML Reader", MessageBoxButtons.YesNoCancel, MessageBoxIcon.None))</span><br><span class="line">            {</span><br><span class="line">                case DialogResult.OK:</span><br><span class="line">                    break;</span><br><span class="line">                case DialogResult.No:</span><br><span class="line">                    filePath = null;</span><br><span class="line">                    return;</span><br><span class="line">                case DialogResult.Cancel:</span><br><span class="line">                    System.Environment.Exit(0);</span><br><span class="line">                    break;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        string content = FileIO.ReadFile(filePath);</span><br><span class="line">        if (content == null)</span><br><span class="line">        {</span><br><span class="line">            filePath = null;</span><br><span class="line">        }</span><br><span class="line">        else</span><br><span class="line">        {</span><br><span class="line">            LoadXML(content);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>注意string[] args并不是自动生成的，而是我手动加上去的，首先在程序入口点Program.Main里获取args，然后再传递给主窗体</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">static class Program</span><br><span class="line">{</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 应用程序的主入口点。</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    [STAThread]</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    {</span><br><span class="line">        Application.EnableVisualStyles();</span><br><span class="line">        Application.SetCompatibleTextRenderingDefault(false);</span><br><span class="line">        Application.Run(new Form1(args));</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="拖拽事件"><a href="#拖拽事件" class="headerlink" title="拖拽事件"></a>拖拽事件</h3><p>当用户手动拖入某个文件时，快捷打开该文件<br><br><br>事件窗口里并没有为我们提供拖拽事件，因此我们需要自己手动定义一个</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">richTextBox1.AllowDrop = true;</span><br><span class="line">richTextBox1.DragDrop += new DragEventHandler(richTextBox1_DragDrop);</span><br></pre></td></tr></tbody></table></figure>
+<p>改写DragDrop函数</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">private void richTextBox1_DragDrop(object sender, DragEventArgs e)</span><br><span class="line">{</span><br><span class="line">    string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);</span><br><span class="line">    if (files.Length == 0) return;</span><br><span class="line">    string file = files[0];</span><br><span class="line">    if (Path.GetExtension(file).Equals(".txt"))</span><br><span class="line">    {</span><br><span class="line">        string s = FileIO.ReadFile(file);</span><br><span class="line">        if(s == null)</span><br><span class="line">        {</span><br><span class="line">            MessageBox.Show("读取失败.", "XML Reader", MessageBoxButtons.OK, MessageBoxIcon.Information);</span><br><span class="line">            return;</span><br><span class="line">        }</span><br><span class="line">        else</span><br><span class="line">        {</span><br><span class="line">            if (!isSaved)</span><br><span class="line">            {</span><br><span class="line">                DialogResult result = MessageBox.Show("你想将更改保存到" + Text + "吗?", "XML Reader", MessageBoxButtons.YesNoCancel, MessageBoxIcon.None);</span><br><span class="line">                switch (result)</span><br><span class="line">                {</span><br><span class="line">                    case DialogResult.OK:</span><br><span class="line">                        保存ToolStripMenuItem_Click(null, null);</span><br><span class="line">                        break;</span><br><span class="line">                    case DialogResult.No:</span><br><span class="line">                        break;</span><br><span class="line">                    case DialogResult.Cancel:</span><br><span class="line">                        return;</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">            LoadXML(s);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    else</span><br><span class="line">    {</span><br><span class="line">        MessageBox.Show("该类型的文件不被支持.", "XML Reader");</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="最终成果"><a href="#最终成果" class="headerlink" title="最终成果"></a>最终成果</h3><p><img src="/2021/08/20/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB/dearxuan-4.png" class="lazyload" data-srcset="/2021/08/20/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB/dearxuan-4.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
+<p><img src="/2021/08/20/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB/dearxuan-5.png" class="lazyload" data-srcset="/2021/08/20/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB/dearxuan-5.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
+<h3 id="源文件"><a href="#源文件" class="headerlink" title="源文件"></a>源文件</h3><p>EXE程序:<a target="_blank" rel="noopener" href="https://dearx.lanzoui.com/ioNRKrez29c">https://dearx.lanzoui.com/ioNRKrez29c</a><br><br><br>源文件:<a target="_blank" rel="noopener" href="https://dearx.lanzoui.com/i7bWzrez2fi">https://dearx.lanzoui.com/i7bWzrez2fi</a></p>
+
   
   
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://example.com/2021/07/14/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB%E5%99%A8/>http://example.com/2021/07/14/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB%E5%99%A8/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
   
   
     
@@ -2617,10 +2677,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-19T21:41:45+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-20T10:59:27+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2021年8月19日</p>
+    <p>更新于：2021年8月20日</p>
   </a>
 </div>
 
@@ -2628,6 +2688,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C#</p></a></div>
+
 
         
       
@@ -2639,7 +2702,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/tags/index.html&title=tags - DearXuan的主页&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/07/14/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB%E5%99%A8/&title=C#实现简易XML阅读器(含源文件和exe文件) - DearXuan的主页&summary="
           
           >
           
@@ -2651,7 +2714,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/tags/index.html&title=tags - DearXuan的主页&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/07/14/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB%E5%99%A8/&title=C#实现简易XML阅读器(含源文件和exe文件) - DearXuan的主页&summary="
           
           >
           
@@ -2663,7 +2726,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/tags/index.html&title=tags - DearXuan的主页&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/07/14/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB%E5%99%A8/&title=C#实现简易XML阅读器(含源文件和exe文件) - DearXuan的主页&summary="
           
           >
           
@@ -2693,6 +2756,23 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
 
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2021/08/20/%E7%94%A8RSA%E5%8A%A0%E5%AF%86%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E6%98%93%E7%A6%BB%E7%BA%BF%E9%AA%8C%E8%AF%81%E5%8A%9F%E8%83%BD/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>利用RSA加密实现的简易离线验证功能(C#,含代码)</p>
+          <p class='content'>许多软件都有正版验证功能，它们通常需要联网验证，验证的本质则是加密与解密，本文将使用RSA加密算法实现简易的离线验证功能
+RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N)...</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/07/13/%E5%88%A9%E7%94%A8RSA%E5%8A%A0%E5%AF%86%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E6%98%93%E7%A6%BB%E7%BA%BF%E9%AA%8C%E8%AF%81%E5%8A%9F%E8%83%BD/'>
+          <p class='title'>利用RSA加密实现的简易离线验证功能(C#,含代码)<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>许多软件都有正版验证功能，它们通常需要联网验证，验证的本质则是加密与解密，本文将使用RSA加密算法实现简易的离线验证功能
+RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N)...</p>
+        </a>
+      
+    </div>
   
   <!-- Custom Files postEnd begin-->
   
@@ -2734,6 +2814,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
+  <section class="widget toc-wrapper shadow floatable desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="toc-text">功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1"><span class="toc-text">界面设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99"><span class="toc-text">文件读写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%92%8C%E6%9B%BF%E6%8D%A2"><span class="toc-text">查找和替换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E9%BD%90%E4%B8%8E%E9%AB%98%E4%BA%AE"><span class="toc-text">对齐与高亮</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0"><span class="toc-text">启动参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%96%E6%8B%BD%E4%BA%8B%E4%BB%B6"><span class="toc-text">拖拽事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E6%88%90%E6%9E%9C"><span class="toc-text">最终成果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E6%96%87%E4%BB%B6"><span class="toc-text">源文件</span></a></li></ol>
+    </div>
+  </section>
+
 
   
 
@@ -2750,8 +2844,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="C#实现简易XML阅读器(含源文件和exe文件)";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   //  see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs
@@ -3294,7 +3388,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629428381407')
+    volantis.js('/js/rightMenu.js?time=1629428381409')
   </script>
 
 
@@ -3407,19 +3501,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629428381407")
+        volantis.js("/js/plugins/sites.js?time=1629428381409")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629428381407")
+        volantis.js("/js/plugins/friends.js?time=1629428381409")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629428381407")
+        volantis.js("/js/plugins/contributors.js?time=1629428381409")
       }
     
   };
@@ -3492,7 +3586,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629428381408')
+      await volantis.js('/js/aplayer.js?time=1629428381411')
       volantis.APlayerController.music = true;
     
   })();
@@ -3575,7 +3669,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629428381407.js"></script>
+<script src="/js/app.js?time=1629428381409.js"></script>
 
 
 <!-- optional -->
@@ -3588,7 +3682,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629428381407");
+    return volantis.js("/js/search/hexo.js?time=1629428381409");
   }
 
   function loadSearchService() {
@@ -3856,8 +3950,8 @@ volantis.pjax.push(bindToggleButton);
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629428381407')
-      volantis.js('/js/message.js?time=1629428381407', () => {
+      volantis.css('/css/message.css?time=1629428381409')
+      volantis.js('/js/message.js?time=1629428381409', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3901,8 +3995,8 @@ volantis.pjax.push(bindToggleButton);
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629428381407')
-      volantis.js('/js/message.js?time=1629428381407', () => {
+      volantis.css('/css/message.css?time=1629428381409')
+      volantis.js('/js/message.js?time=1629428381409', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4062,7 +4156,7 @@ volantis.pjax.push(bindToggleButton);
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"DearXuan的主页","url":"http://example.com/","keywords":"编程,算法","description":"欢迎访问DearXuan的主页!","author":{"@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"}},"publisher":{"@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/XML/","name":"XML"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/XML/启动参数/","name":"启动参数"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/07/14/C-实现简易XML阅读器/","name":"C#实现简易XML阅读器(含源文件和exe文件)"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"C#实现简易XML阅读器(含源文件和exe文件)","description":"","datePublished":"2021-07-14T13:01:00.000Z","dateModified":"2021-08-20T02:59:27.540Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/07/14/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB%E5%99%A8/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/07/14/C-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93XML%E9%98%85%E8%AF%BB%E5%99%A8/","wordCount":0,"articleSection":"XML","keywords":"C#"}]</script>
 
 
 <!-- more -->
