@@ -20,7 +20,7 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629448827792" as="style">
+  <link rel="preload" href="/css/style.css?time=1629450192311" as="style">
   <!-- 页面元数据 -->
   <title>归档：2021 - DearXuan的主页</title>
   <meta name="keywords" content="编程,算法">
@@ -2204,8 +2204,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629448827792" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629448827792"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629450192311" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629450192311"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -3300,14 +3300,14 @@ windows的桌面是由不同的二窗体构成，包括图标层，背景层，�
     <meting-js
       theme='#1BCDFC'
       autoplay='false'
-      volume='0.7'
+      volume='0.5'
       loop='all'
       order='list'
       fixed='false'
       list-max-height='320px'
       server='netease'
       type='playlist'
-      id='3175833810'
+      id='6927872292'
       list-folded='true'>
     </meting-js>
   
@@ -3840,7 +3840,7 @@ windows的桌面是由不同的二窗体构成，包括图标层，背景层，�
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629448827791')
+    volantis.js('/js/rightMenu.js?time=1629450192311')
   </script>
 
 
@@ -3953,19 +3953,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629448827792")
+        volantis.js("/js/plugins/sites.js?time=1629450192311")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629448827792")
+        volantis.js("/js/plugins/friends.js?time=1629450192311")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629448827792")
+        volantis.js("/js/plugins/contributors.js?time=1629450192311")
       }
     
   };
@@ -4028,8 +4028,8 @@ volantis.pjax.push(bindToggleButton);
 
   <script>
   volantis.APlayerController = {};
-  volantis.APlayerController.id = '3175833810';  // 设定全局音乐播放ID
-  volantis.APlayerController.volume = '0.7';
+  volantis.APlayerController.id = '6927872292';  // 设定全局音乐播放ID
+  volantis.APlayerController.volume = '0.5';
   volantis.css("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css");
   // APlayer 需要在  MetingJS 之前加载
   (async () => {
@@ -4038,7 +4038,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629448827793')
+      await volantis.js('/js/aplayer.js?time=1629450192313')
       volantis.APlayerController.music = true;
     
   })();
@@ -4121,7 +4121,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629448827792.js"></script>
+<script src="/js/app.js?time=1629450192311.js"></script>
 
 
 <!-- optional -->
@@ -4134,7 +4134,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629448827792");
+    return volantis.js("/js/search/hexo.js?time=1629450192311");
   }
 
   function loadSearchService() {
@@ -4416,8 +4416,8 @@ volantis.pjax.push(()=>{
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629448827791')
-      volantis.js('/js/message.js?time=1629448827792', () => {
+      volantis.css('/css/message.css?time=1629450192311')
+      volantis.js('/js/message.js?time=1629450192311', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4461,8 +4461,8 @@ volantis.pjax.push(()=>{
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629448827791')
-      volantis.js('/js/message.js?time=1629448827792', () => {
+      volantis.css('/css/message.css?time=1629450192311')
+      volantis.js('/js/message.js?time=1629450192311', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
