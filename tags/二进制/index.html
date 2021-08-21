@@ -20,7 +20,7 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629552854755" as="style">
+  <link rel="preload" href="/css/style.css?time=1629559085031" as="style">
   <!-- 页面元数据 -->
   <title>标签：二进制 - DearXuan的主页</title>
   <meta name="keywords" content="编程,算法">
@@ -1003,6 +1003,7 @@ th {
   width: 100%;
   height: 64px;
   background: var(--color-card);
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
   box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1);
 }
 .l_header.auto {
@@ -2200,8 +2201,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629552854755" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629552854755"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629559085031" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629559085031"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2358,7 +2359,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                     id="archives"
                   >
-                  <i class='fas fa-archive fa-fw'></i>博客
+                  <i class='fas fa-archive fa-fw'></i>归档
                 </a>
                 
               </li>
@@ -2503,7 +2504,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                     id="archives"
                   >
-                  <i class='fas fa-archive fa-fw'></i>博客
+                  <i class='fas fa-archive fa-fw'></i>归档
                 </a>
                 
               </li>
@@ -2570,6 +2571,50 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <p class="title">Hello World</p>
     
     
+    <!--滚动字幕-->
+    <div id="binft"></div> 
+    <script>
+      var binft = function (r) {
+      function t() {
+        return b[Math.floor(Math.random() * b.length)]
+      }  
+      function e() {
+        return String.fromCharCode(94 * Math.random() + 33)
+      }
+      function n(r) {
+        for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+          var l = document.createElement("span");
+          l.textContent = e(), l.style.color = t(), n.appendChild(l)
+        }
+        return n
+      }
+      function i() {
+        var t = o[c.skillI];
+        c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+      }
+      var l = "",
+      o = ["山有木兮木有枝，心悦君兮君不知。", "人生若只如初见，何事秋风悲画扇。","十年生死两茫茫，不思量，自难忘。", "曾经沧海难为水，除却巫山不是云。","洛中何郁郁，冠带自相索。","只愿君心似我心，定不负相思意。","愿得一心人，白头不相离。","入我相思门，知我相思苦。"].map(function (r) {
+      return r + ""
+      }),
+      a = 2,
+      g = 1,
+      s = 5,
+      d = 75,
+      b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+      c = {
+        text: "",
+        prefixP: -s,
+        skillI: 0,
+        skillP: 0,
+        direction: "forward",
+        delay: a,
+        step: g
+      };
+      i()
+      };
+      binft(document.getElementById('binft'));
+  </script>
+  <!--滚动字幕-->
   </div>
   <div class='bottom'>
     <div class='menu navigation'>
@@ -2921,7 +2966,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Sat Aug 21 2021 21:34:14 GMT+0800 (中国标准时间)</div>
+            <div id="last-update" style="display: none;">Sat Aug 21 2021 23:18:04 GMT+0800 (中国标准时间)</div>
             <div id="last-update-show">2021-08-21 日</div>
           
         </div>
@@ -3534,7 +3579,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629552854755')
+    volantis.js('/js/rightMenu.js?time=1629559085031')
   </script>
 
 
@@ -3647,19 +3692,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629552854755")
+        volantis.js("/js/plugins/sites.js?time=1629559085031")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629552854755")
+        volantis.js("/js/plugins/friends.js?time=1629559085031")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629552854755")
+        volantis.js("/js/plugins/contributors.js?time=1629559085031")
       }
     
   };
@@ -3732,7 +3777,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629552854757')
+      await volantis.js('/js/aplayer.js?time=1629559085033')
       volantis.APlayerController.music = true;
     
   })();
@@ -3767,7 +3812,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629552854755.js"></script>
+<script src="/js/app.js?time=1629559085031.js"></script>
 
 
 <!-- optional -->
@@ -3780,7 +3825,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629552854755");
+    return volantis.js("/js/search/hexo.js?time=1629559085031");
   }
 
   function loadSearchService() {
@@ -4092,7 +4137,7 @@ volantis.pjax.push(()=>{
       fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
     }
   }
-  volantis.js('/js/parallax.js?time=1629552854755').then(()=>{
+  volantis.js('/js/parallax.js?time=1629559085031').then(()=>{
     parallax()
   })
   volantis.pjax.push(next_parallax);
@@ -4111,8 +4156,8 @@ volantis.pjax.push(()=>{
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629552854755')
-      volantis.js('/js/message.js?time=1629552854755', () => {
+      volantis.css('/css/message.css?time=1629559085031')
+      volantis.js('/js/message.js?time=1629559085031', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4156,8 +4201,8 @@ volantis.pjax.push(()=>{
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629552854755')
-      volantis.js('/js/message.js?time=1629552854755', () => {
+      volantis.css('/css/message.css?time=1629559085031')
+      volantis.js('/js/message.js?time=1629559085031', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4401,6 +4446,15 @@ volantis.pjax.push(()=>{
     <!--浏览器恶搞标题-->
     
       <script type="text/javascript" src="/js/onfocus.js"></script>
+    
+    <!--动态线条背景-->
+     
+    <!--樱花特效-->
+    
+      <script src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog/hexo/js/sakura.js"></script>
+    
+    <!--鼠标滑动线条-->
+    
     
   </body>
 </html>
