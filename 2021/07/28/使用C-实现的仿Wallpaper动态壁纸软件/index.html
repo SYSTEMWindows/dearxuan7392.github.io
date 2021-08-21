@@ -20,24 +20,24 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629515457631" as="style">
+  <link rel="preload" href="/css/style.css?time=1629518746516" as="style">
   <!-- 页面元数据 -->
   <title>使用C++实现的仿Wallpaper动态壁纸软件(含源文件) - DearXuan的主页</title>
-  <meta name="keywords" content="Wallpaper,Qt,C/C++,编程,算法">
-  <meta name="description" content="在上一篇博客中，已经介绍了wallpaper的实现原理，并用C#实现，本文将使用C++和Qt框架实现，由于之前已经介绍过具体思路，本文将跳过分析过程，直接上代码。 新建Qt项目，系统自动生成widget.h,widget.cpp,main.cpp。 我们将使用widget作为主窗体 窗体设计 在项目pro里加上 1QT +&#x3D; multimedia multimediawidgets widget里">
+  <meta name="keywords" content="C/C++,Wallpaper,Qt,编程,算法">
+  <meta name="description" content="在上一篇博客中，已经介绍了wallpaper的实现原理，并用C#实现，本文将使用C++和Qt框架实现，由于之前已经介绍过具体思路，本文将跳过分析过程，直接上代码。 新建Qt项目，系统自动生成widget.h,widget.cpp,main.cpp。 我们将使用widget作为主窗体 窗体设计 在项目pro里加上 QT +&#x3D; multimedia multimediawidgets  widget里">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用C++实现的仿Wallpaper动态壁纸软件(含源文件)">
 <meta property="og:url" content="http://example.com/2021/07/28/%E4%BD%BF%E7%94%A8C-%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%BB%BFWallpaper%E5%8A%A8%E6%80%81%E5%A3%81%E7%BA%B8%E8%BD%AF%E4%BB%B6/index.html">
 <meta property="og:site_name" content="DearXuan的主页">
-<meta property="og:description" content="在上一篇博客中，已经介绍了wallpaper的实现原理，并用C#实现，本文将使用C++和Qt框架实现，由于之前已经介绍过具体思路，本文将跳过分析过程，直接上代码。 新建Qt项目，系统自动生成widget.h,widget.cpp,main.cpp。 我们将使用widget作为主窗体 窗体设计 在项目pro里加上 1QT +&#x3D; multimedia multimediawidgets widget里">
+<meta property="og:description" content="在上一篇博客中，已经介绍了wallpaper的实现原理，并用C#实现，本文将使用C++和Qt框架实现，由于之前已经介绍过具体思路，本文将跳过分析过程，直接上代码。 新建Qt项目，系统自动生成widget.h,widget.cpp,main.cpp。 我们将使用widget作为主窗体 窗体设计 在项目pro里加上 QT +&#x3D; multimedia multimediawidgets  widget里">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2021-07-28T09:46:00.000Z">
 <meta property="article:modified_time" content="2021-08-20T07:43:59.409Z">
 <meta property="article:author" content="DearXuan">
+<meta property="article:tag" content="C&#x2F;C++">
 <meta property="article:tag" content="Wallpaper">
 <meta property="article:tag" content="Qt">
-<meta property="article:tag" content="C&#x2F;C++">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -2208,8 +2208,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629515457631" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629515457631"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629518746516" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629518746516"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2692,7 +2692,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：753 字</p>
+      <p>字数：751 字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -2719,28 +2719,144 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>我们将使用widget作为主窗体</p>
 <p>窗体设计<br><img src="/2021/08/20/%E4%BD%BF%E7%94%A8C-%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%BB%BFWallpaper%E5%8A%A8%E6%80%81%E5%A3%81%E7%BA%B8%E8%BD%AF/dearxuan-0.png" class="lazyload" data-srcset="/2021/08/20/%E4%BD%BF%E7%94%A8C-%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%BB%BFWallpaper%E5%8A%A8%E6%80%81%E5%A3%81%E7%BA%B8%E8%BD%AF/dearxuan-0.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
 <p>在项目pro里加上</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QT += multimedia multimediawidgets</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">QT += multimedia multimediawidgets
+</code></pre>
 <p>widget里添加头文件</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QVideoWidget&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMediaPlayer&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMediaPlaylist&gt;</span></span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">#include &lt;QVideoWidget&gt;
+#include &lt;QMediaPlayer&gt;
+#include &lt;QMediaPlaylist&gt;
+</code></pre>
 <p>创建播放器和播放窗口</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QVideoWidget videoWidget;</span><br><span class="line">QMediaPlayer player;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">QVideoWidget videoWidget;
+QMediaPlayer player;
+</code></pre>
 <p>在设计界面添加四个按钮，添加槽函数</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> slots:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">on_openButton_clicked</span><span class="params">()</span></span>;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">on_playButton_clicked</span><span class="params">()</span></span>;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">on_pauseButton_clicked</span><span class="params">()</span></span>;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">on_exitButton_clicked</span><span class="params">()</span></span>;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">private slots:
+    void on_openButton_clicked();
+ 
+    void on_playButton_clicked();
+ 
+    void on_pauseButton_clicked();
+ 
+    void on_exitButton_clicked();
+</code></pre>
 <p>获取背景层窗体句柄</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">HWND <span class="title">GetBackground</span><span class="params">()</span></span>{</span><br><span class="line">    HWND background = <span class="literal">NULL</span>;</span><br><span class="line">    HWND hwnd = <span class="built_in">FindWindowA</span>(<span class="string">"progman"</span>,<span class="string">"Program Manager"</span>);</span><br><span class="line">    HWND worker = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">do</span>{</span><br><span class="line">        worker = <span class="built_in">FindWindowExA</span>(<span class="literal">NULL</span>,worker,<span class="string">"workerW"</span>,<span class="literal">NULL</span>);</span><br><span class="line">        <span class="keyword">if</span>(worker != <span class="literal">NULL</span>){</span><br><span class="line">            <span class="keyword">char</span> buff[<span class="number">200</span>] = {<span class="number">0</span>};</span><br><span class="line">            <span class="keyword">int</span> ret = <span class="built_in">GetClassNameA</span>(worker,(PCHAR)buff, <span class="built_in"><span class="keyword">sizeof</span></span>(buff) * <span class="number">2</span>);</span><br><span class="line">            <span class="keyword">if</span>(ret == <span class="number">0</span>) {</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">GetParent</span>(worker) == hwnd){</span><br><span class="line">            background = worker;</span><br><span class="line">        }</span><br><span class="line">    } <span class="keyword">while</span> (worker != <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">return</span> background;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">HWND GetBackground(){
+    HWND background = NULL;
+    HWND hwnd = FindWindowA("progman","Program Manager");
+    HWND worker = NULL;
+    do{
+        worker = FindWindowExA(NULL,worker,"workerW",NULL);
+        if(worker != NULL){
+            char buff[200] = {0};
+            int ret = GetClassNameA(worker,(PCHAR)buff, sizeof(buff) * 2);
+            if(ret == 0) {
+                return NULL;
+            }
+        }
+        if(GetParent(worker) == hwnd){
+            background = worker;
+        }
+    } while (worker != NULL);
+    return background;
+}
+</code></pre>
 <p>这里有可能会返回NULL,因为某些系统没有WorkerW窗体，可以在GetBackground()里加上下面这句代码</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">SendMessage</span>(hwnd,<span class="number">0x052C</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">SendMessage(hwnd,0x052C,0,0);
+</code></pre>
 <p> 最终代码</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取背景窗体句柄</span></span><br><span class="line"><span class="function">HWND <span class="title">GetBackground</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="comment">//背景窗体没有窗体名，但是知道它的类名是workerW，且有父窗体Program Maneger，所以只要</span></span><br><span class="line">    <span class="comment">//遍历所有workW类型的窗体，逐一比较它的父窗体是不是Program Manager就可以找到背景窗体</span></span><br><span class="line">    HWND hwnd = <span class="built_in">FindWindowA</span>(<span class="string">"progman"</span>, <span class="string">"Program Manager"</span>);</span><br><span class="line">    HWND worker = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">do</span> {</span><br><span class="line">        worker = <span class="built_in">FindWindowExA</span>(<span class="literal">NULL</span>, worker, <span class="string">"workerW"</span>, <span class="literal">NULL</span>);</span><br><span class="line">        <span class="keyword">if</span> (worker != <span class="literal">NULL</span>) {</span><br><span class="line">            <span class="keyword">char</span> buff[<span class="number">200</span>] = {<span class="number">0</span>};</span><br><span class="line">            <span class="keyword">int</span> ret = <span class="built_in">GetClassNameA</span>(worker, (PCHAR) buff, <span class="built_in"><span class="keyword">sizeof</span></span>(buff) * <span class="number">2</span>);</span><br><span class="line">            <span class="keyword">if</span> (ret == <span class="number">0</span>) {</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">GetParent</span>(worker) == hwnd) {</span><br><span class="line">            <span class="keyword">return</span> worker;<span class="comment">//返回结果</span></span><br><span class="line">        }</span><br><span class="line">    } <span class="keyword">while</span> (worker != <span class="literal">NULL</span>);</span><br><span class="line">    <span class="comment">//没有找到</span></span><br><span class="line">    <span class="comment">//发送消息生成一个WorkerW窗体</span></span><br><span class="line">    <span class="built_in">SendMessage</span>(hwnd,<span class="number">0x052C</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="comment">//重复上面步骤</span></span><br><span class="line">    <span class="keyword">do</span> {</span><br><span class="line">        worker = <span class="built_in">FindWindowExA</span>(<span class="literal">NULL</span>, worker, <span class="string">"workerW"</span>, <span class="literal">NULL</span>);</span><br><span class="line">        <span class="keyword">if</span> (worker != <span class="literal">NULL</span>) {</span><br><span class="line">            <span class="keyword">char</span> buff[<span class="number">200</span>] = {<span class="number">0</span>};</span><br><span class="line">            <span class="keyword">int</span> ret = <span class="built_in">GetClassNameA</span>(worker, (PCHAR) buff, <span class="built_in"><span class="keyword">sizeof</span></span>(buff) * <span class="number">2</span>);</span><br><span class="line">            <span class="keyword">if</span> (ret == <span class="number">0</span>) {</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">GetParent</span>(worker) == hwnd) {</span><br><span class="line">            <span class="keyword">return</span> worker;<span class="comment">//返回结果</span></span><br><span class="line">        }</span><br><span class="line">    } <span class="keyword">while</span> (worker != <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">//获取背景窗体句柄
+HWND GetBackground() {
+    //背景窗体没有窗体名，但是知道它的类名是workerW，且有父窗体Program Maneger，所以只要
+    //遍历所有workW类型的窗体，逐一比较它的父窗体是不是Program Manager就可以找到背景窗体
+    HWND hwnd = FindWindowA("progman", "Program Manager");
+    HWND worker = NULL;
+    do {
+        worker = FindWindowExA(NULL, worker, "workerW", NULL);
+        if (worker != NULL) {
+            char buff[200] = {0};
+            int ret = GetClassNameA(worker, (PCHAR) buff, sizeof(buff) * 2);
+            if (ret == 0) {
+                return NULL;
+            }
+        }
+        if (GetParent(worker) == hwnd) {
+            return worker;//返回结果
+        }
+    } while (worker != NULL);
+    //没有找到
+    //发送消息生成一个WorkerW窗体
+    SendMessage(hwnd,0x052C,0,0);
+    //重复上面步骤
+    do {
+        worker = FindWindowExA(NULL, worker, "workerW", NULL);
+        if (worker != NULL) {
+            char buff[200] = {0};
+            int ret = GetClassNameA(worker, (PCHAR) buff, sizeof(buff) * 2);
+            if (ret == 0) {
+                return NULL;
+            }
+        }
+        if (GetParent(worker) == hwnd) {
+            return worker;//返回结果
+        }
+    } while (worker != NULL);
+    return NULL;
+}
+</code></pre>
 <p>在C#制作动态壁纸软件时，我专门为刷新背景做了一个exe文件，因此这里可以直接调用</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ReFreshBackground</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="built_in">WinExec</span>(<span class="string">"D:\\documents\\Wallpaper\\ReFreshBackground.exe"</span>,<span class="number">0</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">void ReFreshBackground(){
+    WinExec("D:\\documents\\Wallpaper\\ReFreshBackground.exe",0);
+}
+</code></pre>
 <p>当我们点击“打开”按钮时，如果是第一次打开，需要新建窗体并设置为背景层窗体的子窗体，而之后就不用了，因此设立布尔变量firstPlay来判断是否第一次打开文件</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> firstPlay = <span class="literal">true</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Widget::on_openButton_clicked</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    QString file = QFileDialog::<span class="built_in">getOpenFileName</span>(</span><br><span class="line">                <span class="keyword">this</span>,</span><br><span class="line">                <span class="string">"打开文件"</span>,</span><br><span class="line">                <span class="string">""</span>,</span><br><span class="line">                <span class="string">""</span>);</span><br><span class="line">    <span class="keyword">if</span>(!file.<span class="built_in">isEmpty</span>()){</span><br><span class="line">        <span class="keyword">if</span>(firstPlay){</span><br><span class="line">            HWND hwnd = (HWND) videoWidget.<span class="built_in">winId</span>();</span><br><span class="line">            <span class="built_in">SetBackground</span>(hwnd);</span><br><span class="line">            videoWidget.<span class="built_in">setWindowFlags</span>(Qt::FramelessWindowHint);</span><br><span class="line">            videoWidget.<span class="built_in">showFullScreen</span>();</span><br><span class="line">            firstPlay = <span class="literal">false</span>;</span><br><span class="line">        }</span><br><span class="line">        player.<span class="built_in">setMedia</span>(<span class="built_in">QMediaContent</span>(QUrl::<span class="built_in">fromLocalFile</span>(file)));</span><br><span class="line">        player.<span class="built_in">setVideoOutput</span>(&amp;videoWidget);</span><br><span class="line">        player.<span class="built_in">play</span>();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">bool firstPlay = true;
+void Widget::on_openButton_clicked()
+{
+    QString file = QFileDialog::getOpenFileName(
+                this,
+                "打开文件",
+                "",
+                "");
+    if(!file.isEmpty()){
+        if(firstPlay){
+            HWND hwnd = (HWND) videoWidget.winId();
+            SetBackground(hwnd);
+            videoWidget.setWindowFlags(Qt::FramelessWindowHint);
+            videoWidget.showFullScreen();
+            firstPlay = false;
+        }
+        player.setMedia(QMediaContent(QUrl::fromLocalFile(file)));
+        player.setVideoOutput(&amp;videoWidget);
+        player.play();
+    }
+}
+</code></pre>
 <p>给别的按钮设置槽函数</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Widget::on_playButton_clicked</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    player.<span class="built_in">play</span>();</span><br><span class="line">}</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Widget::on_pauseButton_clicked</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    player.<span class="built_in">pause</span>();</span><br><span class="line">}</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Widget::on_exitButton_clicked</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">if</span>(!firstPlay){</span><br><span class="line">        <span class="built_in">ReFreshBackground</span>();</span><br><span class="line">    }</span><br><span class="line">    qApp-&gt;<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">void Widget::on_playButton_clicked()
+{
+    player.play();
+}
+ 
+void Widget::on_pauseButton_clicked()
+{
+    player.pause();
+}
+ 
+void Widget::on_exitButton_clicked()
+{
+    if(!firstPlay){
+        ReFreshBackground();
+    }
+    qApp-&gt;exit(0);
+}
+</code></pre>
 <p>在退出时也需要先判断是否打开了文件，如果没有打开，则不需要刷新壁纸。</p>
 <p>将child窗体设置为背景层窗体的子窗体</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SetBackground</span><span class="params">(HWND child)</span></span>{</span><br><span class="line">    <span class="built_in">SetParent</span>(child,<span class="built_in">GetBackground</span>());</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">void SetBackground(HWND child){
+    SetParent(child,GetBackground());
+}
+</code></pre>
 <p>最终效果</p>
 <p><img src="/2021/08/20/%E4%BD%BF%E7%94%A8C-%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%BB%BFWallpaper%E5%8A%A8%E6%80%81%E5%A3%81%E7%BA%B8%E8%BD%AF/dearxuan-1.png" class="lazyload" data-srcset="/2021/08/20/%E4%BD%BF%E7%94%A8C-%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%BB%BFWallpaper%E5%8A%A8%E6%80%81%E5%A3%81%E7%BA%B8%E8%BD%AF/dearxuan-1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
 <p>内存和GPU占用</p>
@@ -2779,7 +2895,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Wallpaper/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Wallpaper</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Qt/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Qt</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C-C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C/C++</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C-C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C/C++</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Wallpaper/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Wallpaper</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Qt/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Qt</p></a></div>
 
 
         
@@ -2972,37 +3088,6 @@ windows的桌面是由不同的二窗体构成，包括图标层，背景层，�
 
 
         </div>
-      
-    
-      
-        <br>
-        <div class="social-wrapper">
-          
-            
-          
-            
-          
-            
-          
-        </div>
-      
-    
-      
-        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
-</div>
-      
-    
-      
-        
-          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
-</div>
-        
-      
-    
-      
-        本站使用
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/5.0.0.alpha.1" target="_blank" class="codename">Volantis</a>
-        作为主题
       
     
       
@@ -3498,7 +3583,7 @@ windows的桌面是由不同的二窗体构成，包括图标层，背景层，�
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629515457631')
+    volantis.js('/js/rightMenu.js?time=1629518746516')
   </script>
 
 
@@ -3611,19 +3696,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629515457631")
+        volantis.js("/js/plugins/sites.js?time=1629518746516")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629515457631")
+        volantis.js("/js/plugins/friends.js?time=1629518746516")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629515457631")
+        volantis.js("/js/plugins/contributors.js?time=1629518746516")
       }
     
   };
@@ -3696,59 +3781,11 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629515457634')
+      await volantis.js('/js/aplayer.js?time=1629518746518')
       volantis.APlayerController.music = true;
     
   })();
 // message see: /layout/_plugins/message/script.ejs
-
-  var checkMetings = setInterval(function() {
-  if (!document.querySelectorAll('meting-js')[0].aplayer) return;
-  if (!document.querySelectorAll('meting-js')[0].aplayer.on) return;
-  clearInterval(checkMetings);
-  try {
-    var Metings = document.querySelectorAll('meting-js');
-    Metings.forEach((item, index) => {
-      var rightMenuAplayer = $(item)[0].meta.id === volantis.APlayerController.id && volantis.APlayerController.music;
-      if(rightMenuAplayer)  MainAPlayer.checkAPlayer();
-      var thisAplayer =Metings[index].aplayer;
-      thisAplayer.on('play', function(e) {
-      let icon = document.getElementById('#aplayerHeaderIcon')
-      if(icon) volantis.dom.$(icon).removeClass('music').addClass('music')
-      var index = thisAplayer.list.index;
-      var title = thisAplayer.list.audios[index].title;
-      var artist = thisAplayer.list.audios[index].artist;
-        volantis.message('音乐通知', '正在播放：' + title + ' - ' + artist, {
-            icon: 'fas fa-play'
-          }
-        )
-        if(rightMenuAplayer) volantis.APlayerController.status = 'play';
-      });
-      thisAplayer.on('pause', function(e) {
-        let icon = document.getElementById('#aplayerHeaderIcon')
-        if(icon) volantis.dom.$(icon).removeClass('music')
-        var index =thisAplayer.list.index;
-        var title = thisAplayer.list.audios[index].title;
-        var artist = thisAplayer.list.audios[index].artist;
-        setTimeout(() => {
-          // 歌曲播放结束也会触发 pause 事件
-          if(thisAplayer.paused)
-            volantis.message('音乐通知', '暂停播放：' + title + ' - ' + artist, {
-                icon: 'fas fa-pause'
-              }
-            )
-        }, 100)
-        if(rightMenuAplayer) volantis.APlayerController.status = 'pause';
-      });
-      thisAplayer.on('error', function (e) {
-        if(rightMenuAplayer) volantis.APlayerController.status = 'error';
-      });
-    });
-
-  } catch (error) {
-
-  }
-}, 100);
 
 </script>
 
@@ -3779,7 +3816,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629515457631.js"></script>
+<script src="/js/app.js?time=1629518746516.js"></script>
 
 
 <!-- optional -->
@@ -3792,7 +3829,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629515457631");
+    return volantis.js("/js/search/hexo.js?time=1629518746516");
   }
 
   function loadSearchService() {
@@ -4074,8 +4111,8 @@ volantis.pjax.push(()=>{
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629515457631')
-      volantis.js('/js/message.js?time=1629515457631', () => {
+      volantis.css('/css/message.css?time=1629518746516')
+      volantis.js('/js/message.js?time=1629518746516', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4119,8 +4156,8 @@ volantis.pjax.push(()=>{
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629515457631')
-      volantis.js('/js/message.js?time=1629515457631', () => {
+      volantis.css('/css/message.css?time=1629518746516')
+      volantis.js('/js/message.js?time=1629518746516', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4280,7 +4317,7 @@ volantis.pjax.push(()=>{
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Wallpaper/","name":"Wallpaper"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Wallpaper/Qt/","name":"Qt"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/07/28/使用C-实现的仿Wallpaper动态壁纸软件/","name":"使用C++实现的仿Wallpaper动态壁纸软件(含源文件)"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"使用C++实现的仿Wallpaper动态壁纸软件(含源文件)","description":"","datePublished":"2021-07-28T09:46:00.000Z","dateModified":"2021-08-20T07:43:59.409Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/07/28/%E4%BD%BF%E7%94%A8C-%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%BB%BFWallpaper%E5%8A%A8%E6%80%81%E5%A3%81%E7%BA%B8%E8%BD%AF%E4%BB%B6/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/07/28/%E4%BD%BF%E7%94%A8C-%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%BB%BFWallpaper%E5%8A%A8%E6%80%81%E5%A3%81%E7%BA%B8%E8%BD%AF%E4%BB%B6/","wordCount":0,"articleSection":"Wallpaper","keywords":"Wallpaper,Qt,C/C++"}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Wallpaper/","name":"Wallpaper"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Wallpaper/Qt/","name":"Qt"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/07/28/使用C-实现的仿Wallpaper动态壁纸软件/","name":"使用C++实现的仿Wallpaper动态壁纸软件(含源文件)"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"使用C++实现的仿Wallpaper动态壁纸软件(含源文件)","description":"","datePublished":"2021-07-28T09:46:00.000Z","dateModified":"2021-08-20T07:43:59.409Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/07/28/%E4%BD%BF%E7%94%A8C-%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%BB%BFWallpaper%E5%8A%A8%E6%80%81%E5%A3%81%E7%BA%B8%E8%BD%AF%E4%BB%B6/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/07/28/%E4%BD%BF%E7%94%A8C-%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%BB%BFWallpaper%E5%8A%A8%E6%80%81%E5%A3%81%E7%BA%B8%E8%BD%AF%E4%BB%B6/","wordCount":0,"articleSection":"Wallpaper","keywords":"C/C++,Wallpaper,Qt"}]</script>
 
 
 <!-- more -->
@@ -4364,7 +4401,6 @@ volantis.pjax.push(()=>{
     <!--浏览器恶搞标题-->
     
       <script type="text/javascript" src="/js/onfocus.js"></script>
-    
     
   </body>
 </html>

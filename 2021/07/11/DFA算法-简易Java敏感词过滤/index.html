@@ -20,7 +20,7 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629515457652" as="style">
+  <link rel="preload" href="/css/style.css?time=1629518746538" as="style">
   <!-- 页面元数据 -->
   <title>DFA算法-简易Java敏感词过滤(含源文件和上万敏感词列表) - DearXuan的主页</title>
   <meta name="keywords" content="Java,算法,DFA算法,敏感词过滤,编程,算法">
@@ -2209,8 +2209,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629515457652" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629515457652"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629518746538" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629518746538"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2718,13 +2718,231 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <p>敏感词过滤说白了就是简单的字符串替换，Java本身已经提供了相关函数，但是一旦遇到长文本，或者敏感词数量庞大，效率下降就会非常明显。本文将介绍利用多叉树进行敏感词存储和过滤的方法。</p>
 <h3 id="多叉树"><a href="#多叉树" class="headerlink" title="多叉树"></a>多叉树</h3><p>多叉树是一种特殊的数据结构，如下图<br><img src="/2021/07/11/DFA%E7%AE%97%E6%B3%95-%E7%AE%80%E6%98%93Java%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87/dearxuan-0.png" class="lazyload" data-srcset="/2021/07/11/DFA%E7%AE%97%E6%B3%95-%E7%AE%80%E6%98%93Java%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87/dearxuan-0.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>Head为头节点，下面的ABCDE均为子树。那么多叉树是如何存储敏感词的呢？首先将敏感词分解为一个一个的字符，例如敏感词”CSDN”，第一个字符是C，则在Head下创建子树”C”(如果已经存在则跳过这一步)。第二个字符是S，则在子树”C”下面创建”S”接下来是D，N，创建完N就可以结束了。如此循环，就可以创建出类似上图的多叉树。<br><br><br>检测敏感词时，对于字符串中的每一个字符，先查找Head下是否有存在对应子树，例如字符串”ELN”，先读取第一个字符E，并检查Head，发现存在子树”E”；于是读取第二个字符L，并检查子树E的子树，发现存在L；最后读取第三个字符N，发现子树N还是存在。此时发现子树N后面没有内容，这说明ELN是一个敏感词，于是将ELN替换成”***“。<br><br><br>这种算法会出现一个小意外，如果一个敏感词恰好是另一个敏感词的前缀，就会导致较短的敏感词被长的敏感词覆盖，这种情况可以通过添加结束标记来区分。不过我的想法是，如果出现这种情况，直接把前缀屏蔽掉就行了，这样后半段也不算敏感词了(好像实际工作中不能这样做)，因此我没有添加结束标记。</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>首先要先写一个数据结构来模拟多叉树，下图里Word就是一颗树，里面保存着当前字符c和子树next，compareTo是用来排序的，以提高查找效率。<br><br></p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Word</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Word</span>&gt;</span>{</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">char</span> c;</span><br><span class="line">    <span class="keyword">public</span> List next = <span class="keyword">null</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Word</span><span class="params">(<span class="keyword">char</span> c)</span></span>{</span><br><span class="line">        <span class="keyword">this</span>.c = c;</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Word word)</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> c - word.c;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="java">public class Word implements Comparable&lt;Word&gt;{
+    public char c;
+    public List next = null;
+ 
+    public Word(char c){
+        this.c = c;
+    }
+ 
+    @Override
+    public int compareTo(Word word) {
+        return c - word.c;
+    }
+}
+</code></pre>
 <p>上图的List继承了ArrayList，主要是因为ArrayList可以动态添加元素，便于偷懒</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">List</span> <span class="keyword">extends</span> <span class="title">ArrayList</span>&lt;<span class="title">Word</span>&gt; </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Word <span class="title">get</span><span class="params">(<span class="keyword">char</span> c)</span></span>{</span><br><span class="line">        <span class="keyword">for</span>(Word w :<span class="keyword">this</span>){</span><br><span class="line">            <span class="keyword">if</span>(w.c == c) <span class="keyword">return</span> w;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 二分查找，必须先升序排序</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> c 需要查找的字符</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> Word对象：如果找到   null:如果没找到</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Word <span class="title">binaryGet</span><span class="params">(<span class="keyword">char</span> c)</span></span>{</span><br><span class="line">        <span class="keyword">int</span> left,right,key;</span><br><span class="line">        Word word;</span><br><span class="line">        left = <span class="number">0</span>;right = <span class="keyword">this</span>.size()-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right){</span><br><span class="line">            key = (left + right) / <span class="number">2</span>;</span><br><span class="line">            word = get(key);</span><br><span class="line">            <span class="keyword">if</span>(word.c == c){</span><br><span class="line">                <span class="keyword">return</span> word;</span><br><span class="line">            }<span class="keyword">else</span> <span class="keyword">if</span>(word.c &gt; c){</span><br><span class="line">                right = key - <span class="number">1</span>;</span><br><span class="line">            }<span class="keyword">else</span> {</span><br><span class="line">                left = key + <span class="number">1</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Word <span class="title">add</span><span class="params">(<span class="keyword">char</span> c)</span></span>{</span><br><span class="line">        Word word = <span class="keyword">new</span> Word(c);</span><br><span class="line">        <span class="keyword">super</span>.add(word);</span><br><span class="line">        <span class="keyword">return</span> word;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="java">import java.util.ArrayList;
+ 
+public class List extends ArrayList&lt;Word&gt; {
+    public Word get(char c){
+        for(Word w :this){
+            if(w.c == c) return w;
+        }
+        return null;
+    }
+ 
+    /**
+     * 二分查找，必须先升序排序
+     * @param c 需要查找的字符
+     * @return Word对象：如果找到   null:如果没找到
+     */
+    public Word binaryGet(char c){
+        int left,right,key;
+        Word word;
+        left = 0;right = this.size()-1;
+        while (left &lt;= right){
+            key = (left + right) / 2;
+            word = get(key);
+            if(word.c == c){
+                return word;
+            }else if(word.c &gt; c){
+                right = key - 1;
+            }else {
+                left = key + 1;
+            }
+        }
+        return null;
+    }
+ 
+    public Word add(char c){
+        Word word = new Word(c);
+        super.add(word);
+        return word;
+    }
+}
+</code></pre>
 <p>以下是核心代码</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">SensitiveWordFilter</span> </span>{</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> List wordList;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">char</span> replace = <span class="string">'*'</span>; <span class="comment">// 替代字符</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">char</span>[] skip = <span class="keyword">new</span> <span class="keyword">char</span>[]{ <span class="comment">// 遇到这些字符就会跳过，例如,如果"AB"是敏感词，那么"A B","A=B"也会被屏蔽</span></span><br><span class="line">            <span class="string">'!'</span>,<span class="string">'*'</span>,<span class="string">'-'</span>,<span class="string">'+'</span>,<span class="string">'_'</span>,<span class="string">'='</span>,<span class="string">','</span>,<span class="string">'.'</span>,<span class="string">'@'</span></span><br><span class="line">    };</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 敏感词替换</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> text 待替换文本</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 替换后的文本</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">Filter</span><span class="params">(String text)</span></span>{</span><br><span class="line">        <span class="keyword">if</span>(wordList == <span class="keyword">null</span> || wordList.size() == <span class="number">0</span>) <span class="keyword">return</span> text;</span><br><span class="line">        <span class="keyword">char</span>[] __char__ = text.toCharArray(); <span class="comment">// 把String转化成char数组，便于遍历</span></span><br><span class="line">        <span class="keyword">int</span> i,j;</span><br><span class="line">        Word word;</span><br><span class="line">        <span class="keyword">boolean</span> flag; <span class="comment">// 是否需要替换</span></span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;__char__.length;i++){ <span class="comment">// 遍历所有字符</span></span><br><span class="line">            <span class="keyword">char</span> c = __char__[i];</span><br><span class="line">            word = wordList.binaryGet(c); <span class="comment">// 使用二分查找来寻找字符，提高效率</span></span><br><span class="line">            <span class="keyword">if</span>(word != <span class="keyword">null</span>){ <span class="comment">// word != null说明找到了</span></span><br><span class="line">                flag = <span class="keyword">false</span>;</span><br><span class="line">                j = i+<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span> (j &lt; __char__.length){ <span class="comment">// 开始逐个比较后面的字符</span></span><br><span class="line">                    <span class="keyword">if</span>(skip(__char__[j])) { <span class="comment">// 跳过空格之类的无关字符</span></span><br><span class="line">                        j++;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    }</span><br><span class="line">                    <span class="keyword">if</span>(word.next != <span class="keyword">null</span>){ <span class="comment">// 字符串尚未结束，不确定是否存在敏感词</span></span><br><span class="line">                        <span class="comment">/*</span></span><br><span class="line"><span class="comment">                        以下代码并没有使用二分查找，因为以同一个字符开头的敏感词较少</span></span><br><span class="line"><span class="comment">                        例如，wordList中记录了所有敏感词的开头第一个字，它的数量通常会有上千个</span></span><br><span class="line"><span class="comment">                        假如现在锁定了字符“T”开头的敏感词，而“T”开头的敏感词只有10个，这时使用二分查找的效率反而低于顺序查找</span></span><br><span class="line"><span class="comment">                         */</span></span><br><span class="line">                        word = word.next.get(__char__[j]);</span><br><span class="line">                        <span class="keyword">if</span>(word == <span class="keyword">null</span>){</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        }</span><br><span class="line">                        j++;</span><br><span class="line">                    }<span class="keyword">else</span> { <span class="comment">// 字符串已结束，存在敏感词汇</span></span><br><span class="line">                        flag = <span class="keyword">true</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    }</span><br><span class="line">                }</span><br><span class="line">                <span class="keyword">if</span>(word != <span class="keyword">null</span> &amp;&amp; word.next == <span class="keyword">null</span>){</span><br><span class="line">                    flag = <span class="keyword">true</span>;</span><br><span class="line">                }</span><br><span class="line">                <span class="keyword">if</span>(flag){ <span class="comment">// 如果flag==true，说明检测出敏感粗，需要替换</span></span><br><span class="line">                    <span class="keyword">while</span> (i&lt;j){</span><br><span class="line">                        <span class="keyword">if</span>(skip(__char__[i])){ <span class="comment">// 跳过空格之类的无关字符，如果要把空格也替换成'*'，则删除这个if语句</span></span><br><span class="line">                            i++;</span><br><span class="line">                            <span class="keyword">continue</span>;</span><br><span class="line">                        }</span><br><span class="line">                        __char__[i] = replace;</span><br><span class="line">                        i++;</span><br><span class="line">                    }</span><br><span class="line">                    i--;</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String(__char__);</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 加载敏感词列表</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> words 敏感词数组</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">loadWord</span><span class="params">(ArrayList&lt;String&gt; words)</span></span>{</span><br><span class="line">        <span class="keyword">if</span>(words == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">char</span>[] chars;</span><br><span class="line">        List now;</span><br><span class="line">        Word word;</span><br><span class="line">        wordList = <span class="keyword">new</span> List();</span><br><span class="line">        <span class="keyword">for</span>(String __word__:words){</span><br><span class="line">            <span class="keyword">if</span>(__word__ == <span class="keyword">null</span>) <span class="keyword">continue</span>;</span><br><span class="line">            chars = __word__.toCharArray();</span><br><span class="line">            now = wordList;</span><br><span class="line">            word = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">char</span> c:chars){</span><br><span class="line">                <span class="keyword">if</span>(word != <span class="keyword">null</span>) {</span><br><span class="line">                    <span class="keyword">if</span>(word.next == <span class="keyword">null</span>) word.next = <span class="keyword">new</span> List();</span><br><span class="line">                    now = word.next;</span><br><span class="line">                }</span><br><span class="line">                word = now.get(c);</span><br><span class="line">                <span class="keyword">if</span>(word == <span class="keyword">null</span>) word = now.add(c);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        sort(wordList);</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 加载敏感词txt文件，每个敏感词独占一行，不可出现空格，空行，逗号等非文字内容,必须使用UTF-8编码</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> path txt文件的绝对地址</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">loadWordFromFile</span><span class="params">(String path)</span></span>{</span><br><span class="line">        String encoding = <span class="string">"UTF-8"</span>;</span><br><span class="line">        File file = <span class="keyword">new</span> File(path);</span><br><span class="line">        <span class="keyword">try</span>{</span><br><span class="line">            <span class="keyword">if</span>(file.isFile() &amp;&amp; file.exists()){</span><br><span class="line">                InputStreamReader inputStreamReader = <span class="keyword">new</span> InputStreamReader(</span><br><span class="line">                        <span class="keyword">new</span> FileInputStream(file),encoding</span><br><span class="line">                );</span><br><span class="line">                BufferedReader bufferedReader = <span class="keyword">new</span> BufferedReader(inputStreamReader);</span><br><span class="line">                String line;</span><br><span class="line">                ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                <span class="keyword">while</span> ((line = bufferedReader.readLine()) != <span class="keyword">null</span>){</span><br><span class="line">                    list.add(line);</span><br><span class="line">                }</span><br><span class="line">                bufferedReader.close();</span><br><span class="line">                inputStreamReader.close();</span><br><span class="line">                loadWord(list);</span><br><span class="line">            }</span><br><span class="line">        } <span class="keyword">catch</span> (IOException e) {</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 对敏感词多叉树递增排序</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> list 待排序List</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(List list)</span></span>{</span><br><span class="line">        <span class="keyword">if</span>(list == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        Collections.sort(list); <span class="comment">// 递增排序</span></span><br><span class="line">        <span class="keyword">for</span>(Word word:list){</span><br><span class="line">            sort(word.next);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断是否跳过当前字符</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> c 待检测字符</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> true:需要跳过   false:不需要跳过</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">skip</span><span class="params">(<span class="keyword">char</span> c)</span></span>{</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c1:skip){</span><br><span class="line">            <span class="keyword">if</span>(c1 == c) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="java">import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
+ 
+ 
+public final class SensitiveWordFilter {
+    public static List wordList;
+    private final static char replace = '*'; // 替代字符
+    private final static char[] skip = new char[]{ // 遇到这些字符就会跳过，例如,如果"AB"是敏感词，那么"A B","A=B"也会被屏蔽
+            '!','*','-','+','_','=',',','.','@'
+    };
+ 
+    /**
+     * 敏感词替换
+     * @param text 待替换文本
+     * @return 替换后的文本
+     */
+    public static String Filter(String text){
+        if(wordList == null || wordList.size() == 0) return text;
+        char[] __char__ = text.toCharArray(); // 把String转化成char数组，便于遍历
+        int i,j;
+        Word word;
+        boolean flag; // 是否需要替换
+        for(i=0;i&lt;__char__.length;i++){ // 遍历所有字符
+            char c = __char__[i];
+            word = wordList.binaryGet(c); // 使用二分查找来寻找字符，提高效率
+            if(word != null){ // word != null说明找到了
+                flag = false;
+                j = i+1;
+                while (j &lt; __char__.length){ // 开始逐个比较后面的字符
+                    if(skip(__char__[j])) { // 跳过空格之类的无关字符
+                        j++;
+                        continue;
+                    }
+                    if(word.next != null){ // 字符串尚未结束，不确定是否存在敏感词
+                        /*
+                        以下代码并没有使用二分查找，因为以同一个字符开头的敏感词较少
+                        例如，wordList中记录了所有敏感词的开头第一个字，它的数量通常会有上千个
+                        假如现在锁定了字符“T”开头的敏感词，而“T”开头的敏感词只有10个，这时使用二分查找的效率反而低于顺序查找
+                         */
+                        word = word.next.get(__char__[j]);
+                        if(word == null){
+                            break;
+                        }
+                        j++;
+                    }else { // 字符串已结束，存在敏感词汇
+                        flag = true;
+                        break;
+                    }
+                }
+                if(word != null &amp;&amp; word.next == null){
+                    flag = true;
+                }
+                if(flag){ // 如果flag==true，说明检测出敏感粗，需要替换
+                    while (i&lt;j){
+                        if(skip(__char__[i])){ // 跳过空格之类的无关字符，如果要把空格也替换成'*'，则删除这个if语句
+                            i++;
+                            continue;
+                        }
+                        __char__[i] = replace;
+                        i++;
+                    }
+                    i--;
+                }
+            }
+        }
+        return new String(__char__);
+    }
+ 
+    /**
+     * 加载敏感词列表
+     * @param words 敏感词数组
+     */
+    public static void loadWord(ArrayList&lt;String&gt; words){
+        if(words == null) return;
+        char[] chars;
+        List now;
+        Word word;
+        wordList = new List();
+        for(String __word__:words){
+            if(__word__ == null) continue;
+            chars = __word__.toCharArray();
+            now = wordList;
+            word = null;
+            for(char c:chars){
+                if(word != null) {
+                    if(word.next == null) word.next = new List();
+                    now = word.next;
+                }
+                word = now.get(c);
+                if(word == null) word = now.add(c);
+            }
+        }
+        sort(wordList);
+    }
+ 
+    /**
+     * 加载敏感词txt文件，每个敏感词独占一行，不可出现空格，空行，逗号等非文字内容,必须使用UTF-8编码
+     * @param path txt文件的绝对地址
+     */
+    public static void loadWordFromFile(String path){
+        String encoding = "UTF-8";
+        File file = new File(path);
+        try{
+            if(file.isFile() &amp;&amp; file.exists()){
+                InputStreamReader inputStreamReader = new InputStreamReader(
+                        new FileInputStream(file),encoding
+                );
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String line;
+                ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();
+                while ((line = bufferedReader.readLine()) != null){
+                    list.add(line);
+                }
+                bufferedReader.close();
+                inputStreamReader.close();
+                loadWord(list);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+ 
+    /**
+     * 对敏感词多叉树递增排序
+     * @param list 待排序List
+     */
+    private static void sort(List list){
+        if(list == null) return;
+        Collections.sort(list); // 递增排序
+        for(Word word:list){
+            sort(word.next);
+        }
+    }
+ 
+    /**
+     * 判断是否跳过当前字符
+     * @param c 待检测字符
+     * @return true:需要跳过   false:不需要跳过
+     */
+    private static boolean skip(char c){
+        for(char c1:skip){
+            if(c1 == c) return true;
+        }
+        return false;
+    }
+}
+</code></pre>
 <p>测试</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>{</span><br><span class="line">        SensitiveWordFilter.loadWordFromFile(<span class="string">"D:/SensitiveWordList.txt"</span>);</span><br><span class="line">        StringBuilder stringBuilder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">long</span> t1,t2;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++){</span><br><span class="line">            stringBuilder.append(<span class="string">"123TM,D123"</span>);</span><br><span class="line">        }</span><br><span class="line">        String s = stringBuilder.toString();</span><br><span class="line">        String result = <span class="keyword">null</span>;</span><br><span class="line">        t1 = System.nanoTime();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10000</span>;i++){</span><br><span class="line">            result = SensitiveWordFilter.Filter(s);</span><br><span class="line">        }</span><br><span class="line">        t2 = System.nanoTime();</span><br><span class="line">        System.out.println(result);</span><br><span class="line">        System.out.println((t2 - t1) / <span class="number">1000000</span> + <span class="string">"毫秒"</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="java">public class Main {
+    public static void main(String[] args) throws Exception{
+        SensitiveWordFilter.loadWordFromFile("D:/SensitiveWordList.txt");
+        StringBuilder stringBuilder = new StringBuilder();
+        long t1,t2;
+        for(int i=0;i&lt;100;i++){
+            stringBuilder.append("123TM,D123");
+        }
+        String s = stringBuilder.toString();
+        String result = null;
+        t1 = System.nanoTime();
+        for(int i=0;i&lt;10000;i++){
+            result = SensitiveWordFilter.Filter(s);
+        }
+        t2 = System.nanoTime();
+        System.out.println(result);
+        System.out.println((t2 - t1) / 1000000 + "毫秒");
+    }
+}
+</code></pre>
 <p>测试使用的敏感词库总共包含14596个敏感词(可能有个别重复),在测试代码里生成了一个长度为1000的字符串，总共包含100个相同敏感词，敏感词中间有逗号隔开<br><br><br>重复执行过滤10000次，并打印结果和时间，结果如下<br><img src="/2021/07/11/DFA%E7%AE%97%E6%B3%95-%E7%AE%80%E6%98%93Java%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87/dearxuan-1.png" class="lazyload" data-srcset="/2021/07/11/DFA%E7%AE%97%E6%B3%95-%E7%AE%80%E6%98%93Java%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87/dearxuan-1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br> 可以看到程序成功地过滤了敏感词，并保留了逗号，总耗时335毫秒，平均每次过滤仅需要0.03毫秒，并且是在上万个敏感词和超长字符串的情况下。</p>
 <h3 id="源文件-敏感词列表"><a href="#源文件-敏感词列表" class="headerlink" title="源文件+敏感词列表"></a>源文件+敏感词列表</h3><p> 在寻找敏感词列表时发现很多人的分享都被取消了，为了防止敏感词列表被检测出敏感词，使用了zip格式并加密。敏感词库存在部分重复，不过不影响使用。</p>
 <p>密码:dearxuan<br></p>
@@ -2968,37 +3186,6 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
 
 
         </div>
-      
-    
-      
-        <br>
-        <div class="social-wrapper">
-          
-            
-          
-            
-          
-            
-          
-        </div>
-      
-    
-      
-        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
-</div>
-      
-    
-      
-        
-          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
-</div>
-        
-      
-    
-      
-        本站使用
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/5.0.0.alpha.1" target="_blank" class="codename">Volantis</a>
-        作为主题
       
     
       
@@ -3494,7 +3681,7 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629515457652')
+    volantis.js('/js/rightMenu.js?time=1629518746538')
   </script>
 
 
@@ -3607,19 +3794,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629515457652")
+        volantis.js("/js/plugins/sites.js?time=1629518746538")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629515457652")
+        volantis.js("/js/plugins/friends.js?time=1629518746538")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629515457652")
+        volantis.js("/js/plugins/contributors.js?time=1629518746538")
       }
     
   };
@@ -3692,59 +3879,11 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629515457656')
+      await volantis.js('/js/aplayer.js?time=1629518746540')
       volantis.APlayerController.music = true;
     
   })();
 // message see: /layout/_plugins/message/script.ejs
-
-  var checkMetings = setInterval(function() {
-  if (!document.querySelectorAll('meting-js')[0].aplayer) return;
-  if (!document.querySelectorAll('meting-js')[0].aplayer.on) return;
-  clearInterval(checkMetings);
-  try {
-    var Metings = document.querySelectorAll('meting-js');
-    Metings.forEach((item, index) => {
-      var rightMenuAplayer = $(item)[0].meta.id === volantis.APlayerController.id && volantis.APlayerController.music;
-      if(rightMenuAplayer)  MainAPlayer.checkAPlayer();
-      var thisAplayer =Metings[index].aplayer;
-      thisAplayer.on('play', function(e) {
-      let icon = document.getElementById('#aplayerHeaderIcon')
-      if(icon) volantis.dom.$(icon).removeClass('music').addClass('music')
-      var index = thisAplayer.list.index;
-      var title = thisAplayer.list.audios[index].title;
-      var artist = thisAplayer.list.audios[index].artist;
-        volantis.message('音乐通知', '正在播放：' + title + ' - ' + artist, {
-            icon: 'fas fa-play'
-          }
-        )
-        if(rightMenuAplayer) volantis.APlayerController.status = 'play';
-      });
-      thisAplayer.on('pause', function(e) {
-        let icon = document.getElementById('#aplayerHeaderIcon')
-        if(icon) volantis.dom.$(icon).removeClass('music')
-        var index =thisAplayer.list.index;
-        var title = thisAplayer.list.audios[index].title;
-        var artist = thisAplayer.list.audios[index].artist;
-        setTimeout(() => {
-          // 歌曲播放结束也会触发 pause 事件
-          if(thisAplayer.paused)
-            volantis.message('音乐通知', '暂停播放：' + title + ' - ' + artist, {
-                icon: 'fas fa-pause'
-              }
-            )
-        }, 100)
-        if(rightMenuAplayer) volantis.APlayerController.status = 'pause';
-      });
-      thisAplayer.on('error', function (e) {
-        if(rightMenuAplayer) volantis.APlayerController.status = 'error';
-      });
-    });
-
-  } catch (error) {
-
-  }
-}, 100);
 
 </script>
 
@@ -3775,7 +3914,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629515457652.js"></script>
+<script src="/js/app.js?time=1629518746538.js"></script>
 
 
 <!-- optional -->
@@ -3788,7 +3927,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629515457652");
+    return volantis.js("/js/search/hexo.js?time=1629518746538");
   }
 
   function loadSearchService() {
@@ -4070,8 +4209,8 @@ volantis.pjax.push(()=>{
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629515457652')
-      volantis.js('/js/message.js?time=1629515457652', () => {
+      volantis.css('/css/message.css?time=1629518746538')
+      volantis.js('/js/message.js?time=1629518746538', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4115,8 +4254,8 @@ volantis.pjax.push(()=>{
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629515457652')
-      volantis.js('/js/message.js?time=1629515457652', () => {
+      volantis.css('/css/message.css?time=1629518746538')
+      volantis.js('/js/message.js?time=1629518746538', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4360,7 +4499,6 @@ volantis.pjax.push(()=>{
     <!--浏览器恶搞标题-->
     
       <script type="text/javascript" src="/js/onfocus.js"></script>
-    
     
   </body>
 </html>

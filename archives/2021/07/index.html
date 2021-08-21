@@ -20,7 +20,7 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629515457675" as="style">
+  <link rel="preload" href="/css/style.css?time=1629518746563" as="style">
   <!-- 页面元数据 -->
   <title>归档：2021/7 - DearXuan的主页</title>
   <meta name="keywords" content="编程,算法">
@@ -2204,8 +2204,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629515457675" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629515457675"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629518746563" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629518746563"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2681,7 +2681,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 我们将使用widget作为主窗体
 窗体设计
 在项目pro里加上
-1QT += multimedia multimediawidgets
+QT += multimedia multimediawidgets
+
 widg...
       
     
@@ -2776,7 +2777,12 @@ windows的桌面是由不同的二窗体构成，包括图标层，背景层，�
     
       
         内存修改作弊是指用户修改内存数据来达到修改分数，金币，生命的作弊手段，这种作弊方法最常见，门槛也最低，只需要简单地掌握CE类修改器的使用方法即可。
-源程序123456789101112131415161718192021222324#include &lt;iostream&gt;#include &lt;windows.h&gt;#include &lt;conio.h&gt;int sc...
+源程序#include &lt;iostream&gt;
+#include &lt;windows.h&gt;
+#include &lt;conio.h&gt;
+int score = 0;
+int main(){
+    int a,b,c,s...
       
     
   </div>
@@ -2916,7 +2922,9 @@ windows的桌面是由不同的二窗体构成，包括图标层，背景层，�
     
       
         功能本程序的主要目的是便于阅读XML文件。在网上复制一些XML文本时，常常出现格式错误，更有甚者，整个文本就一行，一行有几百个字符。这些奇奇怪怪的格式大大增加了理解难度，本程序将模仿记事本，提供基础的文件读写，编辑功能，并在此基础上增加了格式对齐和高亮功能。
-1234567891011&lt;?xml version="1.0" encoding="utf-8" ?&gt; &lt;Clas...
+&lt;?xml version="1.0" encoding="utf-8" ?&gt; 
+&lt;Class&gt; 
+ &lt;...
       
     
   </div>
@@ -3318,37 +3326,6 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
 
 
         </div>
-      
-    
-      
-        <br>
-        <div class="social-wrapper">
-          
-            
-          
-            
-          
-            
-          
-        </div>
-      
-    
-      
-        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
-</div>
-      
-    
-      
-        
-          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
-</div>
-        
-      
-    
-      
-        本站使用
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/5.0.0.alpha.1" target="_blank" class="codename">Volantis</a>
-        作为主题
       
     
       
@@ -3844,7 +3821,7 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629515457675')
+    volantis.js('/js/rightMenu.js?time=1629518746563')
   </script>
 
 
@@ -3957,19 +3934,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629515457675")
+        volantis.js("/js/plugins/sites.js?time=1629518746563")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629515457675")
+        volantis.js("/js/plugins/friends.js?time=1629518746563")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629515457675")
+        volantis.js("/js/plugins/contributors.js?time=1629518746563")
       }
     
   };
@@ -4042,59 +4019,11 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629515457677')
+      await volantis.js('/js/aplayer.js?time=1629518746565')
       volantis.APlayerController.music = true;
     
   })();
 // message see: /layout/_plugins/message/script.ejs
-
-  var checkMetings = setInterval(function() {
-  if (!document.querySelectorAll('meting-js')[0].aplayer) return;
-  if (!document.querySelectorAll('meting-js')[0].aplayer.on) return;
-  clearInterval(checkMetings);
-  try {
-    var Metings = document.querySelectorAll('meting-js');
-    Metings.forEach((item, index) => {
-      var rightMenuAplayer = $(item)[0].meta.id === volantis.APlayerController.id && volantis.APlayerController.music;
-      if(rightMenuAplayer)  MainAPlayer.checkAPlayer();
-      var thisAplayer =Metings[index].aplayer;
-      thisAplayer.on('play', function(e) {
-      let icon = document.getElementById('#aplayerHeaderIcon')
-      if(icon) volantis.dom.$(icon).removeClass('music').addClass('music')
-      var index = thisAplayer.list.index;
-      var title = thisAplayer.list.audios[index].title;
-      var artist = thisAplayer.list.audios[index].artist;
-        volantis.message('音乐通知', '正在播放：' + title + ' - ' + artist, {
-            icon: 'fas fa-play'
-          }
-        )
-        if(rightMenuAplayer) volantis.APlayerController.status = 'play';
-      });
-      thisAplayer.on('pause', function(e) {
-        let icon = document.getElementById('#aplayerHeaderIcon')
-        if(icon) volantis.dom.$(icon).removeClass('music')
-        var index =thisAplayer.list.index;
-        var title = thisAplayer.list.audios[index].title;
-        var artist = thisAplayer.list.audios[index].artist;
-        setTimeout(() => {
-          // 歌曲播放结束也会触发 pause 事件
-          if(thisAplayer.paused)
-            volantis.message('音乐通知', '暂停播放：' + title + ' - ' + artist, {
-                icon: 'fas fa-pause'
-              }
-            )
-        }, 100)
-        if(rightMenuAplayer) volantis.APlayerController.status = 'pause';
-      });
-      thisAplayer.on('error', function (e) {
-        if(rightMenuAplayer) volantis.APlayerController.status = 'error';
-      });
-    });
-
-  } catch (error) {
-
-  }
-}, 100);
 
 </script>
 
@@ -4125,7 +4054,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629515457675.js"></script>
+<script src="/js/app.js?time=1629518746563.js"></script>
 
 
 <!-- optional -->
@@ -4138,7 +4067,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629515457675");
+    return volantis.js("/js/search/hexo.js?time=1629518746563");
   }
 
   function loadSearchService() {
@@ -4420,8 +4349,8 @@ volantis.pjax.push(()=>{
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629515457675')
-      volantis.js('/js/message.js?time=1629515457675', () => {
+      volantis.css('/css/message.css?time=1629518746563')
+      volantis.js('/js/message.js?time=1629518746563', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4465,8 +4394,8 @@ volantis.pjax.push(()=>{
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629515457675')
-      volantis.js('/js/message.js?time=1629515457675', () => {
+      volantis.css('/css/message.css?time=1629518746563')
+      volantis.js('/js/message.js?time=1629518746563', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4710,7 +4639,6 @@ volantis.pjax.push(()=>{
     <!--浏览器恶搞标题-->
     
       <script type="text/javascript" src="/js/onfocus.js"></script>
-    
     
   </body>
 </html>

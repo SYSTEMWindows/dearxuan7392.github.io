@@ -20,26 +20,26 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629515457617" as="style">
+  <link rel="preload" href="/css/style.css?time=1629518746507" as="style">
   <!-- 页面元数据 -->
   <title>C#的GPU加速方法 - DearXuan的主页</title>
-  <meta name="keywords" content="C#,Dll,GPU编程,硬件加速,C/C++,编程,算法">
-  <meta name="description" content="本文将通过C#调用dll的方法来实现并发计算 在VS2019里新建动态链接库项目，在pch.h里定义函数 1234567891011121314&#x2F;&#x2F; pch.h: 这是预编译标头文件。&#x2F;&#x2F; 下方列出的文件仅编译一次，提高了将来生成的生成性能。&#x2F;&#x2F; 这还将影响 IntelliSense 性能，包括代码完成和许多代码浏览功能。&#x2F;&#x2F; 但是，如果此处列出的文件中的任何一个在生成之间有更新，它们全部都将被重">
+  <meta name="keywords" content="C#,C/C++,Dll,GPU编程,硬件加速,编程,算法">
+  <meta name="description" content="本文将通过C#调用dll的方法来实现并发计算 在VS2019里新建动态链接库项目，在pch.h里定义函数 &#x2F;&#x2F; pch.h: 这是预编译标头文件。 &#x2F;&#x2F; 下方列出的文件仅编译一次，提高了将来生成的生成性能。 &#x2F;&#x2F; 这还将影响 IntelliSense 性能，包括代码完成和许多代码浏览功能。 &#x2F;&#x2F; 但是，如果此处列出的文件中的任何一个在生成之间有更新，它们全部都将被重新编译。 &#x2F;&#x2F; 请勿在此处添加要">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C#的GPU加速方法">
 <meta property="og:url" content="http://example.com/2021/08/13/C-%E7%9A%84GPU%E5%8A%A0%E9%80%9F%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="DearXuan的主页">
-<meta property="og:description" content="本文将通过C#调用dll的方法来实现并发计算 在VS2019里新建动态链接库项目，在pch.h里定义函数 1234567891011121314&#x2F;&#x2F; pch.h: 这是预编译标头文件。&#x2F;&#x2F; 下方列出的文件仅编译一次，提高了将来生成的生成性能。&#x2F;&#x2F; 这还将影响 IntelliSense 性能，包括代码完成和许多代码浏览功能。&#x2F;&#x2F; 但是，如果此处列出的文件中的任何一个在生成之间有更新，它们全部都将被重">
+<meta property="og:description" content="本文将通过C#调用dll的方法来实现并发计算 在VS2019里新建动态链接库项目，在pch.h里定义函数 &#x2F;&#x2F; pch.h: 这是预编译标头文件。 &#x2F;&#x2F; 下方列出的文件仅编译一次，提高了将来生成的生成性能。 &#x2F;&#x2F; 这还将影响 IntelliSense 性能，包括代码完成和许多代码浏览功能。 &#x2F;&#x2F; 但是，如果此处列出的文件中的任何一个在生成之间有更新，它们全部都将被重新编译。 &#x2F;&#x2F; 请勿在此处添加要">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2021-08-13T06:11:00.000Z">
 <meta property="article:modified_time" content="2021-08-20T07:43:46.602Z">
 <meta property="article:author" content="DearXuan">
 <meta property="article:tag" content="C#">
+<meta property="article:tag" content="C&#x2F;C++">
 <meta property="article:tag" content="Dll">
 <meta property="article:tag" content="GPU编程">
 <meta property="article:tag" content="硬件加速">
-<meta property="article:tag" content="C&#x2F;C++">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -2210,8 +2210,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629515457617" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629515457617"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629518746507" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629518746507"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2718,9 +2718,43 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div id="page-plugins-helper"></div>
   <p>本文将通过C#调用dll的方法来实现并发计算</p>
 <p>在VS2019里新建动态链接库项目，在pch.h里定义函数</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pch.h: 这是预编译标头文件。</span></span><br><span class="line"><span class="comment">// 下方列出的文件仅编译一次，提高了将来生成的生成性能。</span></span><br><span class="line"><span class="comment">// 这还将影响 IntelliSense 性能，包括代码完成和许多代码浏览功能。</span></span><br><span class="line"><span class="comment">// 但是，如果此处列出的文件中的任何一个在生成之间有更新，它们全部都将被重新编译。</span></span><br><span class="line"><span class="comment">// 请勿在此处添加要频繁更新的文件，这将使得性能优势无效。</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> PCH_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PCH_H</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 添加要在此处预编译的标头</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"framework.h"</span></span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> _declspec(dllexport) <span class="function"><span class="keyword">void</span> <span class="title">Sum</span><span class="params">(<span class="keyword">int</span>* s,<span class="keyword">int</span> a[],<span class="keyword">int</span> b[],<span class="keyword">int</span> length)</span></span>;</span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">//PCH_H</span></span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">// pch.h: 这是预编译标头文件。
+// 下方列出的文件仅编译一次，提高了将来生成的生成性能。
+// 这还将影响 IntelliSense 性能，包括代码完成和许多代码浏览功能。
+// 但是，如果此处列出的文件中的任何一个在生成之间有更新，它们全部都将被重新编译。
+// 请勿在此处添加要频繁更新的文件，这将使得性能优势无效。
+ 
+#ifndef PCH_H
+#define PCH_H
+ 
+// 添加要在此处预编译的标头
+#include "framework.h"
+extern "C" _declspec(dllexport) void Sum(int* s,int a[],int b[],int length);
+ 
+#endif //PCH_H
+</code></pre>
 <p>在pch.cpp里实现该函数</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pch.cpp: 与预编译标头对应的源文件</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"pch.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;amp.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 当使用预编译的头时，需要使用此源文件，编译才能成功。</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Concurrency;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> _declspec(dllexport) <span class="function"><span class="keyword">void</span> <span class="title">Sum</span><span class="params">(<span class="keyword">int</span>* s, <span class="keyword">int</span> a[], <span class="keyword">int</span> b[],<span class="keyword">int</span> length)</span> </span>{</span><br><span class="line">    <span class="function">array_view&lt;<span class="keyword">const</span> <span class="keyword">int</span>, 1&gt; <span class="title">aArray</span><span class="params">(length, a)</span></span>;</span><br><span class="line">    <span class="function">array_view&lt;<span class="keyword">const</span> <span class="keyword">int</span>, 1&gt; <span class="title">bArray</span><span class="params">(length, b)</span></span>;</span><br><span class="line">    <span class="function">array_view&lt;<span class="keyword">int</span>, 1&gt; <span class="title">sum</span><span class="params">(length, s)</span></span>;</span><br><span class="line">    <span class="built_in">parallel_for_each</span>(</span><br><span class="line">        sum.extent,</span><br><span class="line">        [=](index&lt;<span class="number">1</span>&gt; idx) <span class="built_in"><span class="keyword">restrict</span></span>(amp) {</span><br><span class="line">            sum[idx] = aArray[idx] + bArray[idx];</span><br><span class="line">        }</span><br><span class="line">    );</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">// pch.cpp: 与预编译标头对应的源文件
+ 
+#include "pch.h"
+#include &lt;amp.h&gt;
+ 
+// 当使用预编译的头时，需要使用此源文件，编译才能成功。
+ 
+using namespace Concurrency;
+ 
+extern "C" _declspec(dllexport) void Sum(int* s, int a[], int b[],int length) {
+    array_view&lt;const int, 1&gt; aArray(length, a);
+    array_view&lt;const int, 1&gt; bArray(length, b);
+    array_view&lt;int, 1&gt; sum(length, s);
+    parallel_for_each(
+        sum.extent,
+        [=](index&lt;1&gt; idx) restrict(amp) {
+            sum[idx] = aArray[idx] + bArray[idx];
+        }
+    );
+}
+</code></pre>
 <p>该函数接收4个参数，分别用来储存结果，a数组，b数组，数组长度，并将a和b数组相加，结果储存在s里面。</p>
 <p>array_view表示包含在一个容器中的数据的N维视图，各项参数的含义如下</p>
 <p>const int：类型，</p>
@@ -2729,24 +2763,118 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>length：长度</p>
 <p>a：数据源</p>
 <p>如果是二维数组，则要改成下面的形式</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">array_view&lt;<span class="keyword">const</span> <span class="keyword">int</span>, 2&gt; <span class="title">aArray</span><span class="params">(width,height, a)</span></span>;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">array_view&lt;const int, 2&gt; aArray(width,height, a);
+</code></pre>
 <p>parallel_for_each语句能够进行并发计算,index&lt;1&gt;指idx是一维的，如果是二维数组，需要改成index&lt;2&gt;，此时idx相当于(i,j)，通过idx[0]和idx[1]获得行号和列号</p>
 <p>例如</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> row = idx[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">int</span> col = idx[<span class="number">1</span>];</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">int row = idx[0];
+int col = idx[1];
+</code></pre>
 <p>aArray[idx]和aArray(row,col)是等效的</p>
 <p>将上述代码生成dll，并放在C#程序的目录下</p>
 <p>导入刚刚写的dll</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[DllImport("Dll1.dll", EntryPoint = "Sum", CallingConvention = CallingConvention.Cdecl)]</span><br><span class="line">public static extern void Sum(IntPtr s,int[] a, int[] b,int length);</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C#">[DllImport("Dll1.dll", EntryPoint = "Sum", CallingConvention = CallingConvention.Cdecl)]
+public static extern void Sum(IntPtr s,int[] a, int[] b,int length);
+</code></pre>
 <p>生成随机数数组，求和</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">static void Main(string[] args)</span><br><span class="line">{</span><br><span class="line">    const int size = 100;</span><br><span class="line">    int[] s = new int[size];</span><br><span class="line">    int[] a = new int[size];</span><br><span class="line">    int[] b = new int[size];</span><br><span class="line">    Random random = new Random();</span><br><span class="line">    for(int i = 0; i &lt; size; i++)</span><br><span class="line">    {</span><br><span class="line">        a[i] = random.Next(0, 100);</span><br><span class="line">        b[i] = random.Next(100, 200);</span><br><span class="line">    }</span><br><span class="line">    unsafe</span><br><span class="line">    {</span><br><span class="line">        IntPtr p = Marshal.UnsafeAddrOfPinnedArrayElement(s, 0);</span><br><span class="line">        Sum(p, a, b, size);</span><br><span class="line">    }</span><br><span class="line">    for(int i = 0; i &lt; size; i++)</span><br><span class="line">    {</span><br><span class="line">        Console.WriteLine(a[i] + "+" + b[i] + "=" + s[i]);</span><br><span class="line">    }</span><br><span class="line">    Console.ReadLine();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C#">static void Main(string[] args)
+{
+    const int size = 100;
+    int[] s = new int[size];
+    int[] a = new int[size];
+    int[] b = new int[size];
+    Random random = new Random();
+    for(int i = 0; i &lt; size; i++)
+    {
+        a[i] = random.Next(0, 100);
+        b[i] = random.Next(100, 200);
+    }
+    unsafe
+    {
+        IntPtr p = Marshal.UnsafeAddrOfPinnedArrayElement(s, 0);
+        Sum(p, a, b, size);
+    }
+    for(int i = 0; i &lt; size; i++)
+    {
+        Console.WriteLine(a[i] + "+" + b[i] + "=" + s[i]);
+    }
+    Console.ReadLine();
+}
+</code></pre>
 <p><img src="/2021/08/20/C-%E7%9A%84GPU%E5%8A%A0%E9%80%9F%E6%96%B9/dearxuan-0.png" class="lazyload" data-srcset="/2021/08/20/C-%E7%9A%84GPU%E5%8A%A0%E9%80%9F%E6%96%B9/dearxuan-0.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>使用StopWatch类来计算耗时(命名空间System.Diagnostics)</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Stopwatch watch1 = new Stopwatch();</span><br><span class="line">watch1.Start();</span><br><span class="line">for(int i = 0; i &lt; size; i++)</span><br><span class="line">{</span><br><span class="line">    s[i] = a[i] + b[i];</span><br><span class="line">}</span><br><span class="line">watch1.Stop();</span><br><span class="line">Console.WriteLine("CPU耗时:" + watch1.Elapsed.TotalMilliseconds);</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Stopwatch watch2 = <span class="keyword">new</span> <span class="built_in">Stopwatch</span>();</span><br><span class="line">watch2.<span class="built_in">Start</span>();</span><br><span class="line"><span class="built_in">Sum</span>(p, a, b, size);</span><br><span class="line">watch2.<span class="built_in">Stop</span>();</span><br><span class="line">Console.<span class="built_in">WriteLine</span>(<span class="string">"GPU耗时:"</span> + watch2.Elapsed.TotalMilliseconds);</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C#">Stopwatch watch1 = new Stopwatch();
+watch1.Start();
+for(int i = 0; i &lt; size; i++)
+{
+    s[i] = a[i] + b[i];
+}
+watch1.Stop();
+Console.WriteLine("CPU耗时:" + watch1.Elapsed.TotalMilliseconds);
+</code></pre>
+<pre><code class="C++">Stopwatch watch2 = new Stopwatch();
+watch2.Start();
+Sum(p, a, b, size);
+watch2.Stop();
+Console.WriteLine("GPU耗时:" + watch2.Elapsed.TotalMilliseconds);
+</code></pre>
 <p>由于加载dll本身需要时间，所以在计时之前需要先调用一次Sum函数。<br><img src="/2021/08/20/C-%E7%9A%84GPU%E5%8A%A0%E9%80%9F%E6%96%B9/dearxuan-1.png" class="lazyload" data-srcset="/2021/08/20/C-%E7%9A%84GPU%E5%8A%A0%E9%80%9F%E6%96%B9/dearxuan-1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br>测试代码是计算4亿个数的和，可以看到GPU计算比CPU计算少了300毫秒，但是CPU在循环2亿次的情况下居然仅仅比GPU多了300毫秒，这是因为GPU无法从内存读取数据，需要把数据先复制到显存里才能计算，计算完又需要把数据复制回来，而主要时间开销都在数据的复制里面。</p>
 <p>现实情况下，循环体里不可能只有一行代码，假设循环体里有10个语句，那么CPU的执行时间就会翻10倍，而GPU的执行时间也会翻10倍，但是由于主要耗时操作是数据的复制，所以实际增长不会特别明显。</p>
 <p>下面我们修改一下代码。</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> _declspec(dllexport) <span class="function"><span class="keyword">void</span> <span class="title">Sum</span><span class="params">(<span class="keyword">int</span>* s, <span class="keyword">int</span> a[], <span class="keyword">int</span> b[],<span class="keyword">int</span> length)</span> </span>{</span><br><span class="line">    <span class="function">array_view&lt;<span class="keyword">const</span> <span class="keyword">int</span>, 1&gt; <span class="title">aArray</span><span class="params">(length, a)</span></span>;</span><br><span class="line">    <span class="function">array_view&lt;<span class="keyword">const</span> <span class="keyword">int</span>, 1&gt; <span class="title">bArray</span><span class="params">(length, b)</span></span>;</span><br><span class="line">    <span class="function">array_view&lt;<span class="keyword">int</span>, 1&gt; <span class="title">sum</span><span class="params">(length, s)</span></span>;</span><br><span class="line">    <span class="built_in">parallel_for_each</span>(</span><br><span class="line">        sum.extent,</span><br><span class="line">        [=](index&lt;<span class="number">1</span>&gt; idx) <span class="built_in"><span class="keyword">restrict</span></span>(amp) {</span><br><span class="line">            sum[idx] = aArray[idx] + bArray[idx];</span><br><span class="line">            <span class="keyword">if</span> (idx[<span class="number">0</span>] % <span class="number">5</span> == <span class="number">0</span>) {</span><br><span class="line">                sum[idx] += <span class="number">5</span>;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span> (idx[<span class="number">0</span>] % <span class="number">7</span> == <span class="number">0</span>) {</span><br><span class="line">                sum[idx] += <span class="number">7</span>;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span> (idx[<span class="number">0</span>] % <span class="number">11</span> == <span class="number">0</span>) {</span><br><span class="line">                sum[idx] += <span class="number">11</span>;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span> (idx[<span class="number">0</span>] % <span class="number">13</span> == <span class="number">0</span>) {</span><br><span class="line">                sum[idx] += <span class="number">13</span>;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span> (idx[<span class="number">0</span>] % <span class="number">17</span> == <span class="number">0</span>) {</span><br><span class="line">                sum[idx] += <span class="number">17</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    );</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">watch1.Start();</span><br><span class="line">for(int i = 0; i &lt; size; i++)</span><br><span class="line">{</span><br><span class="line">    s[i] = a[i] + b[i];</span><br><span class="line">    if (i % 5 == 0)</span><br><span class="line">    {</span><br><span class="line">        s[i] += 5;</span><br><span class="line">    }</span><br><span class="line">    if (i % 7 == 0)</span><br><span class="line">    {</span><br><span class="line">        s[i] += 7;</span><br><span class="line">    }</span><br><span class="line">    if (i % 11 == 0)</span><br><span class="line">    {</span><br><span class="line">        s[i] += 11;</span><br><span class="line">    }</span><br><span class="line">    if (i % 13 == 0)</span><br><span class="line">    {</span><br><span class="line">        s[i] += 13;</span><br><span class="line">    }</span><br><span class="line">    if (i % 17 == 0)</span><br><span class="line">    {</span><br><span class="line">        s[i] += 17;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line">watch1.Stop();</span><br><span class="line">Console.WriteLine("CPU耗时:" + watch1.Elapsed.TotalMilliseconds);</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">extern "C" _declspec(dllexport) void Sum(int* s, int a[], int b[],int length) {
+    array_view&lt;const int, 1&gt; aArray(length, a);
+    array_view&lt;const int, 1&gt; bArray(length, b);
+    array_view&lt;int, 1&gt; sum(length, s);
+    parallel_for_each(
+        sum.extent,
+        [=](index&lt;1&gt; idx) restrict(amp) {
+            sum[idx] = aArray[idx] + bArray[idx];
+            if (idx[0] % 5 == 0) {
+                sum[idx] += 5;
+            }
+            if (idx[0] % 7 == 0) {
+                sum[idx] += 7;
+            }
+            if (idx[0] % 11 == 0) {
+                sum[idx] += 11;
+            }
+            if (idx[0] % 13 == 0) {
+                sum[idx] += 13;
+            }
+            if (idx[0] % 17 == 0) {
+                sum[idx] += 17;
+            }
+        }
+    );
+}
+</code></pre>
+<pre><code class="C#">watch1.Start();
+for(int i = 0; i &lt; size; i++)
+{
+    s[i] = a[i] + b[i];
+    if (i % 5 == 0)
+    {
+        s[i] += 5;
+    }
+    if (i % 7 == 0)
+    {
+        s[i] += 7;
+    }
+    if (i % 11 == 0)
+    {
+        s[i] += 11;
+    }
+    if (i % 13 == 0)
+    {
+        s[i] += 13;
+    }
+    if (i % 17 == 0)
+    {
+        s[i] += 17;
+    }
+}
+watch1.Stop();
+Console.WriteLine("CPU耗时:" + watch1.Elapsed.TotalMilliseconds);
+</code></pre>
 <p>这次改用100万量级的数据</p>
 <p><img src="/2021/08/20/C-%E7%9A%84GPU%E5%8A%A0%E9%80%9F%E6%96%B9/dearxuan-2.png" class="lazyload" data-srcset="/2021/08/20/C-%E7%9A%84GPU%E5%8A%A0%E9%80%9F%E6%96%B9/dearxuan-2.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
 <p> 现在GPU的优势就完全体现出来了</p>
@@ -2781,7 +2909,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C#</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Dll/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Dll</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/GPU%E7%BC%96%E7%A8%8B/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>GPU编程</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>硬件加速</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C-C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C/C++</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C#</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C-C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C/C++</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Dll/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Dll</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/GPU%E7%BC%96%E7%A8%8B/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>GPU编程</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>硬件加速</p></a></div>
 
 
         
@@ -2975,37 +3103,6 @@ float Q_rsqrt(float numbe...</p>
 
 
         </div>
-      
-    
-      
-        <br>
-        <div class="social-wrapper">
-          
-            
-          
-            
-          
-            
-          
-        </div>
-      
-    
-      
-        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
-</div>
-      
-    
-      
-        
-          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
-</div>
-        
-      
-    
-      
-        本站使用
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/5.0.0.alpha.1" target="_blank" class="codename">Volantis</a>
-        作为主题
       
     
       
@@ -3501,7 +3598,7 @@ float Q_rsqrt(float numbe...</p>
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629515457617')
+    volantis.js('/js/rightMenu.js?time=1629518746506')
   </script>
 
 
@@ -3614,19 +3711,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629515457617")
+        volantis.js("/js/plugins/sites.js?time=1629518746506")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629515457617")
+        volantis.js("/js/plugins/friends.js?time=1629518746506")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629515457617")
+        volantis.js("/js/plugins/contributors.js?time=1629518746506")
       }
     
   };
@@ -3699,59 +3796,11 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629515457619')
+      await volantis.js('/js/aplayer.js?time=1629518746509')
       volantis.APlayerController.music = true;
     
   })();
 // message see: /layout/_plugins/message/script.ejs
-
-  var checkMetings = setInterval(function() {
-  if (!document.querySelectorAll('meting-js')[0].aplayer) return;
-  if (!document.querySelectorAll('meting-js')[0].aplayer.on) return;
-  clearInterval(checkMetings);
-  try {
-    var Metings = document.querySelectorAll('meting-js');
-    Metings.forEach((item, index) => {
-      var rightMenuAplayer = $(item)[0].meta.id === volantis.APlayerController.id && volantis.APlayerController.music;
-      if(rightMenuAplayer)  MainAPlayer.checkAPlayer();
-      var thisAplayer =Metings[index].aplayer;
-      thisAplayer.on('play', function(e) {
-      let icon = document.getElementById('#aplayerHeaderIcon')
-      if(icon) volantis.dom.$(icon).removeClass('music').addClass('music')
-      var index = thisAplayer.list.index;
-      var title = thisAplayer.list.audios[index].title;
-      var artist = thisAplayer.list.audios[index].artist;
-        volantis.message('音乐通知', '正在播放：' + title + ' - ' + artist, {
-            icon: 'fas fa-play'
-          }
-        )
-        if(rightMenuAplayer) volantis.APlayerController.status = 'play';
-      });
-      thisAplayer.on('pause', function(e) {
-        let icon = document.getElementById('#aplayerHeaderIcon')
-        if(icon) volantis.dom.$(icon).removeClass('music')
-        var index =thisAplayer.list.index;
-        var title = thisAplayer.list.audios[index].title;
-        var artist = thisAplayer.list.audios[index].artist;
-        setTimeout(() => {
-          // 歌曲播放结束也会触发 pause 事件
-          if(thisAplayer.paused)
-            volantis.message('音乐通知', '暂停播放：' + title + ' - ' + artist, {
-                icon: 'fas fa-pause'
-              }
-            )
-        }, 100)
-        if(rightMenuAplayer) volantis.APlayerController.status = 'pause';
-      });
-      thisAplayer.on('error', function (e) {
-        if(rightMenuAplayer) volantis.APlayerController.status = 'error';
-      });
-    });
-
-  } catch (error) {
-
-  }
-}, 100);
 
 </script>
 
@@ -3782,7 +3831,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629515457617.js"></script>
+<script src="/js/app.js?time=1629518746506.js"></script>
 
 
 <!-- optional -->
@@ -3795,7 +3844,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629515457617");
+    return volantis.js("/js/search/hexo.js?time=1629518746506");
   }
 
   function loadSearchService() {
@@ -4077,8 +4126,8 @@ volantis.pjax.push(()=>{
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629515457617')
-      volantis.js('/js/message.js?time=1629515457617', () => {
+      volantis.css('/css/message.css?time=1629518746506')
+      volantis.js('/js/message.js?time=1629518746506', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4122,8 +4171,8 @@ volantis.pjax.push(()=>{
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629515457617')
-      volantis.js('/js/message.js?time=1629515457617', () => {
+      volantis.css('/css/message.css?time=1629518746506')
+      volantis.js('/js/message.js?time=1629518746506', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4283,7 +4332,7 @@ volantis.pjax.push(()=>{
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/C/","name":"C#"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/08/13/C-的GPU加速方法/","name":"C#的GPU加速方法"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"C#的GPU加速方法","description":"","datePublished":"2021-08-13T06:11:00.000Z","dateModified":"2021-08-20T07:43:46.602Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/08/13/C-%E7%9A%84GPU%E5%8A%A0%E9%80%9F%E6%96%B9%E6%B3%95/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/08/13/C-%E7%9A%84GPU%E5%8A%A0%E9%80%9F%E6%96%B9%E6%B3%95/","wordCount":0,"articleSection":"C#","keywords":"C#,Dll,GPU编程,硬件加速,C/C++"}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/C/","name":"C#"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/08/13/C-的GPU加速方法/","name":"C#的GPU加速方法"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"C#的GPU加速方法","description":"","datePublished":"2021-08-13T06:11:00.000Z","dateModified":"2021-08-20T07:43:46.602Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/08/13/C-%E7%9A%84GPU%E5%8A%A0%E9%80%9F%E6%96%B9%E6%B3%95/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/08/13/C-%E7%9A%84GPU%E5%8A%A0%E9%80%9F%E6%96%B9%E6%B3%95/","wordCount":0,"articleSection":"C#","keywords":"C#,C/C++,Dll,GPU编程,硬件加速"}]</script>
 
 
 <!-- more -->
@@ -4367,7 +4416,6 @@ volantis.pjax.push(()=>{
     <!--浏览器恶搞标题-->
     
       <script type="text/javascript" src="/js/onfocus.js"></script>
-    
     
   </body>
 </html>

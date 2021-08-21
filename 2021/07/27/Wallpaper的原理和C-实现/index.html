@@ -20,7 +20,7 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629515457624" as="style">
+  <link rel="preload" href="/css/style.css?time=1629518746512" as="style">
   <!-- 页面元数据 -->
   <title>Wallpaper的原理和C#实现 - DearXuan的主页</title>
   <meta name="keywords" content="C#,Wallpaper,编程,算法">
@@ -2207,8 +2207,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629515457624" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629515457624"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629518746512" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629518746512"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2723,13 +2723,86 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>在主窗体的load事件里新建VideoForm。为了让VideoForm能够夹在图标层和背景层中间，需要将VideoForm的父窗体设置为背景窗体。</p>
 <p>现在需要查找背景窗体的句柄，使用窗口查看器发现背景窗体没有窗体名称，因此无法直接定位，但是我们知道它的类名是WorkW，它的父窗体是Program Manager，所以我们可以遍历所有WorkW窗体，如果其中一个窗体的父窗体是Program Manager，那么这个窗体就是背景窗体。</p>
 <p>C#不支持直接这种接近底层的操作，因此需要调用user32.dll实现</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">[DllImport("user32.dll", EntryPoint = "SetParent")]</span><br><span class="line">private static extern int SetParent(int hWndChild,int hWndNewParent);</span><br><span class="line">[DllImport("user32.dll", EntryPoint = "FindWindowA")]</span><br><span class="line">private static extern IntPtr FindWindowA(string lpClassName, string lpWindowName);</span><br><span class="line">[DllImport("user32.dll", EntryPoint = "FindWindowExA")]</span><br><span class="line">private static extern IntPtr FindWindowExA(IntPtr hWndParent, IntPtr hWndChildAfter, string lpszClass, string lpszWindow);</span><br><span class="line">[DllImport("user32.dll", EntryPoint = "GetClassNameA")]</span><br><span class="line">private static extern IntPtr GetClassNameA(IntPtr hWnd, IntPtr lpClassName, int nMaxCount);</span><br><span class="line">[DllImport("user32.dll", EntryPoint = "GetParent")]</span><br><span class="line">private static extern IntPtr GetParent(IntPtr hWnd);</span><br><span class="line"> </span><br><span class="line">public static void SetFather(Form form)</span><br><span class="line">{</span><br><span class="line">    SetParent((int)form.Handle, GetBackground());</span><br><span class="line">}</span><br><span class="line"> </span><br><span class="line">private static int GetBackground()</span><br><span class="line">{</span><br><span class="line">    unsafe</span><br><span class="line">    {</span><br><span class="line">        IntPtr background = IntPtr.Zero;</span><br><span class="line">        IntPtr father = FindWindowA("progman", "Program Manager");</span><br><span class="line">        IntPtr workerW = IntPtr.Zero;</span><br><span class="line">        do</span><br><span class="line">        {</span><br><span class="line">            workerW = FindWindowExA(IntPtr.Zero, workerW, "workerW", null);</span><br><span class="line">            if (workerW != IntPtr.Zero)</span><br><span class="line">            {</span><br><span class="line">                char[] buff = new char[200];</span><br><span class="line">                IntPtr b = Marshal.UnsafeAddrOfPinnedArrayElement(buff, 0);</span><br><span class="line">                int ret = (int)GetClassNameA(workerW, b, 400);</span><br><span class="line">                if (ret == 0) throw new Exception("出错");</span><br><span class="line">            }</span><br><span class="line">            if (GetParent(workerW) == father)</span><br><span class="line">            {</span><br><span class="line">                background = workerW;</span><br><span class="line">            }</span><br><span class="line">        } while (workerW != IntPtr.Zero);</span><br><span class="line">        return (int)background;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C#">[DllImport("user32.dll", EntryPoint = "SetParent")]
+private static extern int SetParent(int hWndChild,int hWndNewParent);
+[DllImport("user32.dll", EntryPoint = "FindWindowA")]
+private static extern IntPtr FindWindowA(string lpClassName, string lpWindowName);
+[DllImport("user32.dll", EntryPoint = "FindWindowExA")]
+private static extern IntPtr FindWindowExA(IntPtr hWndParent, IntPtr hWndChildAfter, string lpszClass, string lpszWindow);
+[DllImport("user32.dll", EntryPoint = "GetClassNameA")]
+private static extern IntPtr GetClassNameA(IntPtr hWnd, IntPtr lpClassName, int nMaxCount);
+[DllImport("user32.dll", EntryPoint = "GetParent")]
+private static extern IntPtr GetParent(IntPtr hWnd);
+ 
+public static void SetFather(Form form)
+{
+    SetParent((int)form.Handle, GetBackground());
+}
+ 
+private static int GetBackground()
+{
+    unsafe
+    {
+        IntPtr background = IntPtr.Zero;
+        IntPtr father = FindWindowA("progman", "Program Manager");
+        IntPtr workerW = IntPtr.Zero;
+        do
+        {
+            workerW = FindWindowExA(IntPtr.Zero, workerW, "workerW", null);
+            if (workerW != IntPtr.Zero)
+            {
+                char[] buff = new char[200];
+                IntPtr b = Marshal.UnsafeAddrOfPinnedArrayElement(buff, 0);
+                int ret = (int)GetClassNameA(workerW, b, 400);
+                if (ret == 0) throw new Exception("出错");
+            }
+            if (GetParent(workerW) == father)
+            {
+                background = workerW;
+            }
+        } while (workerW != IntPtr.Zero);
+        return (int)background;
+    }
+}
+</code></pre>
 <p>其中GetBackground函数负责查找背景层窗体，SetFather负责把一个窗体设置成另一个窗体的子窗体。为了使用指针功能，需要先开启不安全的代码功能 :项目—??属性(??是你的项目名称)—允许不安全代码。</p>
 <p>这个方法在Windows 10 21H1 19043.1110上测试有效，但是不保证在其他系统有效，例如，在vista系统上就会返回空指针，这可能是因为vista系统上的背景窗体不满足上面所讲的关系。一旦返回空指针，会导致设置父窗体失败，最后视频会在图标层上方播放，此时的动态壁纸软件就彻底变成了一个全屏播放器。</p>
 <p>如果遇到上面这种情况，可以使用MicrosoftSpy来查找背景窗体，并根据具体情况改写上面的代码。</p>
 <p>这里利用了windows窗口的一个特性：如果A窗体在B窗体上面，那么A窗体也会在B窗体的子窗体上面。</p>
 <p>给控制窗体的四个按钮写上事件</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">private void Form1_Load(object sender, EventArgs e)</span><br><span class="line">{</span><br><span class="line">    main = new VideoForm();</span><br><span class="line">    player = main.player;</span><br><span class="line">    Window.SetFather(main);</span><br><span class="line">    main.Show();</span><br><span class="line">}</span><br><span class="line">private void button1_Click(object sender, EventArgs e)//打开</span><br><span class="line">{</span><br><span class="line">    OpenFileDialog open = new OpenFileDialog();</span><br><span class="line">    open.Filter = "媒体文件(所有类型)|*.mp4;*.mpeg;*.wma;*.wmv;*.wav;*.avi|所有文件|*.*";</span><br><span class="line">    if (open.ShowDialog() == DialogResult.OK)</span><br><span class="line">    {</span><br><span class="line">        player.URL = open.FileName;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"> </span><br><span class="line">private void button2_Click(object sender, EventArgs e)//播放</span><br><span class="line">{</span><br><span class="line">    player.Ctlcontrols.play();</span><br><span class="line">}</span><br><span class="line"> </span><br><span class="line">private void button3_Click(object sender, EventArgs e)//暂停</span><br><span class="line">{</span><br><span class="line">    player.Ctlcontrols.pause();</span><br><span class="line">}</span><br><span class="line"> </span><br><span class="line">private void button4_Click(object sender, EventArgs e)//退出</span><br><span class="line">{</span><br><span class="line">    main.Dispose();</span><br><span class="line">    System.Environment.Exit(0);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C#">private void Form1_Load(object sender, EventArgs e)
+{
+    main = new VideoForm();
+    player = main.player;
+    Window.SetFather(main);
+    main.Show();
+}
+private void button1_Click(object sender, EventArgs e)//打开
+{
+    OpenFileDialog open = new OpenFileDialog();
+    open.Filter = "媒体文件(所有类型)|*.mp4;*.mpeg;*.wma;*.wmv;*.wav;*.avi|所有文件|*.*";
+    if (open.ShowDialog() == DialogResult.OK)
+    {
+        player.URL = open.FileName;
+    }
+}
+ 
+private void button2_Click(object sender, EventArgs e)//播放
+{
+    player.Ctlcontrols.play();
+}
+ 
+private void button3_Click(object sender, EventArgs e)//暂停
+{
+    player.Ctlcontrols.pause();
+}
+ 
+private void button4_Click(object sender, EventArgs e)//退出
+{
+    main.Dispose();
+    System.Environment.Exit(0);
+}
+</code></pre>
 <p>其中main是视频播放窗体，player是播放器</p>
 <p>运行<br><img src="/2021/08/20/Wallpaper%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8CC-%E5%AE%9E/dearxuan-1.png" class="lazyload" data-srcset="/2021/08/20/Wallpaper%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8CC-%E5%AE%9E/dearxuan-1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
 <p>点击退出</p>
@@ -2737,14 +2810,48 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p> 虽然程序退出了，但是桌面变成了一张白纸，极其难看，目前暂不知道为什么会发生这种情况，个人猜测是windows考虑到背景是一张静态图，所以不会实时刷新，而刚刚被覆盖掉的地方就会保持最后一次刷新的颜色，刚才点击“退出”时，由于先dispose了视频播放窗体，导致背景变成白板，如果不点击“退出”，直接结束进程，那么背景就会变成黑板，因为MediaPlayer就是黑色的</p>
 <p><img src="/2021/08/20/Wallpaper%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8CC-%E5%AE%9E/dearxuan-3.png" class="lazyload" data-srcset="/2021/08/20/Wallpaper%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8CC-%E5%AE%9E/dearxuan-3.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
 <p>既然如此，我们只需要让背景刷新一下就可以，显然在切换壁纸的时候，windows不得不刷新背景，所以我们可以先获取当前壁纸，然后把壁纸切换成当前壁纸，这样实际效果看起来没有任何变化，但是让windows为我们刷新了一次背景。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[DllImport("user32.dll", EntryPoint = "SystemParametersInfo")]</span><br><span class="line">public static extern int SystemParametersInfo(int uAction, int uParam, StringBuilder lpvParam, int fuWinIni);</span><br><span class="line"> </span><br><span class="line">public static bool Refresh()</span><br><span class="line">{</span><br><span class="line">    StringBuilder wallpaper = new StringBuilder(200);</span><br><span class="line">    SystemParametersInfo(0x73, 200, wallpaper, 0);</span><br><span class="line">    int ret = SystemParametersInfo(20, 1, wallpaper, 3);</span><br><span class="line">    if(ret != 0)</span><br><span class="line">    {</span><br><span class="line">        RegistryKey hk = Registry.CurrentUser;</span><br><span class="line">        RegistryKey run = hk.CreateSubKey(@"Control Panel\Desktop\");</span><br><span class="line">        run.SetValue("Wallpaper", wallpaper.ToString());</span><br><span class="line">        return true;</span><br><span class="line">    }</span><br><span class="line">    return false;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C#">[DllImport("user32.dll", EntryPoint = "SystemParametersInfo")]
+public static extern int SystemParametersInfo(int uAction, int uParam, StringBuilder lpvParam, int fuWinIni);
+ 
+public static bool Refresh()
+{
+    StringBuilder wallpaper = new StringBuilder(200);
+    SystemParametersInfo(0x73, 200, wallpaper, 0);
+    int ret = SystemParametersInfo(20, 1, wallpaper, 3);
+    if(ret != 0)
+    {
+        RegistryKey hk = Registry.CurrentUser;
+        RegistryKey run = hk.CreateSubKey(@"Control Panel\Desktop\");
+        run.SetValue("Wallpaper", wallpaper.ToString());
+        return true;
+    }
+    return false;
+}
+</code></pre>
 <p>改写“退出”按钮事件</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">private void button4_Click(object sender, EventArgs e)//退出</span><br><span class="line">{</span><br><span class="line">    main.Hide();</span><br><span class="line">    this.Hide();</span><br><span class="line">    Window.Refresh();</span><br><span class="line">    main.Dispose();</span><br><span class="line">    System.Environment.Exit(0);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C#">private void button4_Click(object sender, EventArgs e)//退出
+{
+    main.Hide();
+    this.Hide();
+    Window.Refresh();
+    main.Dispose();
+    System.Environment.Exit(0);
+}
+</code></pre>
 <p>之所以先隐藏，是因为在dispose和refresh执行的空隙里会有一瞬间的白屏，如果先隐藏就可以避免这种情况。</p>
 <p>因为视频壁纸需要常驻后台，而控制窗口不可能常驻桌面，所以我们需要改写它的Formclosing，取消窗体关闭事件，并隐藏窗体</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">private void Form1_FormClosing(object sender, FormClosingEventArgs e)</span><br><span class="line">{</span><br><span class="line">    e.Cancel = true;</span><br><span class="line">    this.Hide();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C#">private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+{
+    e.Cancel = true;
+    this.Hide();
+}
+</code></pre>
 <p>给窗体加上NotifyIcon控件，该控件可以显示任务栏角标，改写双击事件，双击角标时显示控制窗体</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)</span><br><span class="line">{</span><br><span class="line">    this.Show();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C#">private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+{
+    this.Show();
+}
+</code></pre>
 <p>到现在完整的Wallpaper已经制作完成，但是目前仅能播放视频。当然也包括图片，但是你需要设置MediaPlayer的循环播放，否则图片显示几秒后就会变成纯黑壁纸。</p>
 <p>看看GPU占用情况</p>
 <p><img src="/2021/08/20/Wallpaper%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8CC-%E5%AE%9E/dearxuan-4.png" class="lazyload" data-srcset="/2021/08/20/Wallpaper%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8CC-%E5%AE%9E/dearxuan-4.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
@@ -2864,7 +2971,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <a class='next' href='/2021/07/25/%E9%92%88%E5%AF%B9%E5%86%85%E5%AD%98%E4%BF%AE%E6%94%B9%E7%9A%84%E5%8F%8D%E4%BD%9C%E5%BC%8A%E6%96%B9%E6%B3%95/'>
           <p class='title'>针对内存修改的反作弊方法<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
           <p class='content'>内存修改作弊是指用户修改内存数据来达到修改分数，金币，生命的作弊手段，这种作弊方法最常见，门槛也最低，只需要简单地掌握CE类修改器的使用方法即可。
-源程序12345678910111213141...</p>
+源程序#include &lt;iostrea...</p>
         </a>
       
     </div>
@@ -2975,37 +3082,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
         </div>
-      
-    
-      
-        <br>
-        <div class="social-wrapper">
-          
-            
-          
-            
-          
-            
-          
-        </div>
-      
-    
-      
-        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
-</div>
-      
-    
-      
-        
-          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
-</div>
-        
-      
-    
-      
-        本站使用
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/5.0.0.alpha.1" target="_blank" class="codename">Volantis</a>
-        作为主题
       
     
       
@@ -3501,7 +3577,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629515457624')
+    volantis.js('/js/rightMenu.js?time=1629518746512')
   </script>
 
 
@@ -3614,19 +3690,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629515457624")
+        volantis.js("/js/plugins/sites.js?time=1629518746512")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629515457624")
+        volantis.js("/js/plugins/friends.js?time=1629518746512")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629515457624")
+        volantis.js("/js/plugins/contributors.js?time=1629518746512")
       }
     
   };
@@ -3699,59 +3775,11 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629515457626')
+      await volantis.js('/js/aplayer.js?time=1629518746515')
       volantis.APlayerController.music = true;
     
   })();
 // message see: /layout/_plugins/message/script.ejs
-
-  var checkMetings = setInterval(function() {
-  if (!document.querySelectorAll('meting-js')[0].aplayer) return;
-  if (!document.querySelectorAll('meting-js')[0].aplayer.on) return;
-  clearInterval(checkMetings);
-  try {
-    var Metings = document.querySelectorAll('meting-js');
-    Metings.forEach((item, index) => {
-      var rightMenuAplayer = $(item)[0].meta.id === volantis.APlayerController.id && volantis.APlayerController.music;
-      if(rightMenuAplayer)  MainAPlayer.checkAPlayer();
-      var thisAplayer =Metings[index].aplayer;
-      thisAplayer.on('play', function(e) {
-      let icon = document.getElementById('#aplayerHeaderIcon')
-      if(icon) volantis.dom.$(icon).removeClass('music').addClass('music')
-      var index = thisAplayer.list.index;
-      var title = thisAplayer.list.audios[index].title;
-      var artist = thisAplayer.list.audios[index].artist;
-        volantis.message('音乐通知', '正在播放：' + title + ' - ' + artist, {
-            icon: 'fas fa-play'
-          }
-        )
-        if(rightMenuAplayer) volantis.APlayerController.status = 'play';
-      });
-      thisAplayer.on('pause', function(e) {
-        let icon = document.getElementById('#aplayerHeaderIcon')
-        if(icon) volantis.dom.$(icon).removeClass('music')
-        var index =thisAplayer.list.index;
-        var title = thisAplayer.list.audios[index].title;
-        var artist = thisAplayer.list.audios[index].artist;
-        setTimeout(() => {
-          // 歌曲播放结束也会触发 pause 事件
-          if(thisAplayer.paused)
-            volantis.message('音乐通知', '暂停播放：' + title + ' - ' + artist, {
-                icon: 'fas fa-pause'
-              }
-            )
-        }, 100)
-        if(rightMenuAplayer) volantis.APlayerController.status = 'pause';
-      });
-      thisAplayer.on('error', function (e) {
-        if(rightMenuAplayer) volantis.APlayerController.status = 'error';
-      });
-    });
-
-  } catch (error) {
-
-  }
-}, 100);
 
 </script>
 
@@ -3782,7 +3810,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629515457624.js"></script>
+<script src="/js/app.js?time=1629518746512.js"></script>
 
 
 <!-- optional -->
@@ -3795,7 +3823,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629515457624");
+    return volantis.js("/js/search/hexo.js?time=1629518746512");
   }
 
   function loadSearchService() {
@@ -4077,8 +4105,8 @@ volantis.pjax.push(()=>{
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629515457624')
-      volantis.js('/js/message.js?time=1629515457624', () => {
+      volantis.css('/css/message.css?time=1629518746512')
+      volantis.js('/js/message.js?time=1629518746512', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4122,8 +4150,8 @@ volantis.pjax.push(()=>{
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629515457624')
-      volantis.js('/js/message.js?time=1629515457624', () => {
+      volantis.css('/css/message.css?time=1629518746512')
+      volantis.js('/js/message.js?time=1629518746512', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4367,7 +4395,6 @@ volantis.pjax.push(()=>{
     <!--浏览器恶搞标题-->
     
       <script type="text/javascript" src="/js/onfocus.js"></script>
-    
     
   </body>
 </html>

@@ -20,24 +20,24 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629515457620" as="style">
+  <link rel="preload" href="/css/style.css?time=1629518746510" as="style">
   <!-- 页面元数据 -->
   <title>Wallpaper透视效果的C++实现 - DearXuan的主页</title>
-  <meta name="keywords" content="Wallpaper,Qt,C/C++,编程,算法">
-  <meta name="description" content="Wallpaper的透视图实际上包含了两张图，一张是非透视图，即正常情况下能够被看到的图片，另一张是透视图，即鼠标移到上面才会部分显示的图片。 本文将使用Qt框架实现类似效果 最终效果 代码桌面子窗体将自己的窗体设置成桌面的子窗体，其原理在之前的Wallpaper文章中已经介绍过，故直接放出代码，不再解释。 123456789101112131415161718192021222324252627">
+  <meta name="keywords" content="C/C++,Wallpaper,Qt,编程,算法">
+  <meta name="description" content="Wallpaper的透视图实际上包含了两张图，一张是非透视图，即正常情况下能够被看到的图片，另一张是透视图，即鼠标移到上面才会部分显示的图片。 本文将使用Qt框架实现类似效果 最终效果 代码桌面子窗体将自己的窗体设置成桌面的子窗体，其原理在之前的Wallpaper文章中已经介绍过，故直接放出代码，不再解释。 void SetFather(HWND child){     HWND hwnd &#x3D; G">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Wallpaper透视效果的C++实现">
 <meta property="og:url" content="http://example.com/2021/08/07/Wallpaper%E9%80%8F%E8%A7%86%E6%95%88%E6%9E%9C%E7%9A%84C-%E5%AE%9E%E7%8E%B0/index.html">
 <meta property="og:site_name" content="DearXuan的主页">
-<meta property="og:description" content="Wallpaper的透视图实际上包含了两张图，一张是非透视图，即正常情况下能够被看到的图片，另一张是透视图，即鼠标移到上面才会部分显示的图片。 本文将使用Qt框架实现类似效果 最终效果 代码桌面子窗体将自己的窗体设置成桌面的子窗体，其原理在之前的Wallpaper文章中已经介绍过，故直接放出代码，不再解释。 123456789101112131415161718192021222324252627">
+<meta property="og:description" content="Wallpaper的透视图实际上包含了两张图，一张是非透视图，即正常情况下能够被看到的图片，另一张是透视图，即鼠标移到上面才会部分显示的图片。 本文将使用Qt框架实现类似效果 最终效果 代码桌面子窗体将自己的窗体设置成桌面的子窗体，其原理在之前的Wallpaper文章中已经介绍过，故直接放出代码，不再解释。 void SetFather(HWND child){     HWND hwnd &#x3D; G">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2021-08-07T13:54:00.000Z">
 <meta property="article:modified_time" content="2021-08-20T07:43:53.522Z">
 <meta property="article:author" content="DearXuan">
+<meta property="article:tag" content="C&#x2F;C++">
 <meta property="article:tag" content="Wallpaper">
 <meta property="article:tag" content="Qt">
-<meta property="article:tag" content="C&#x2F;C++">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -2208,8 +2208,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629515457620" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629515457620"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629518746510" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629518746510"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2718,25 +2718,155 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>本文将使用Qt框架实现类似效果</p>
 <h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><p><img src="/2021/08/20/Wallpaper%E9%80%8F%E8%A7%86%E6%95%88%E6%9E%9C%E7%9A%84C-%E5%AE%9E/dearxuan-0.gif" class="lazyload" data-srcset="/2021/08/20/Wallpaper%E9%80%8F%E8%A7%86%E6%95%88%E6%9E%9C%E7%9A%84C-%E5%AE%9E/dearxuan-0.gif" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"></p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="桌面子窗体"><a href="#桌面子窗体" class="headerlink" title="桌面子窗体"></a>桌面子窗体</h3><p>将自己的窗体设置成桌面的子窗体，其原理在之前的Wallpaper文章中已经介绍过，故直接放出代码，不再解释。</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SetFather</span><span class="params">(HWND child)</span></span>{</span><br><span class="line">    HWND hwnd = <span class="built_in">GetBackground</span>();</span><br><span class="line">    <span class="keyword">if</span>(hwnd == <span class="literal">NULL</span>){</span><br><span class="line">        <span class="built_in">SendMessage</span>(hwnd,<span class="number">0x052C</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">        hwnd = <span class="built_in">GetBackground</span>();</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span>(hwnd != <span class="literal">NULL</span>){</span><br><span class="line">        <span class="built_in">SetParent</span>(child,hwnd);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"> </span><br><span class="line"><span class="function">HWND <span class="title">GetBackground</span><span class="params">()</span></span>{</span><br><span class="line">    HWND hwnd = <span class="built_in">FindWindowA</span>(<span class="string">"progman"</span>,<span class="string">"Program Manager"</span>);</span><br><span class="line">    HWND worker = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">do</span>{</span><br><span class="line">        worker = <span class="built_in">FindWindowExA</span>(<span class="literal">NULL</span>,worker,<span class="string">"workerW"</span>,<span class="literal">NULL</span>);</span><br><span class="line">        <span class="keyword">if</span>(worker != <span class="literal">NULL</span>){</span><br><span class="line">            <span class="keyword">char</span> buff[<span class="number">200</span>] = {<span class="number">0</span>};</span><br><span class="line">            <span class="keyword">int</span> ret = <span class="built_in">GetClassNameA</span>(worker,(PCHAR)buff,<span class="built_in"><span class="keyword">sizeof</span></span>(buff)*<span class="number">2</span>);</span><br><span class="line">            <span class="keyword">if</span>(ret == <span class="number">0</span>){</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">GetParent</span>(worker) == hwnd){</span><br><span class="line">            <span class="keyword">return</span> worker;</span><br><span class="line">        }</span><br><span class="line">    }<span class="keyword">while</span>(worker != <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">void SetFather(HWND child){
+    HWND hwnd = GetBackground();
+    if(hwnd == NULL){
+        SendMessage(hwnd,0x052C,0,0);
+        hwnd = GetBackground();
+    }
+    if(hwnd != NULL){
+        SetParent(child,hwnd);
+    }
+}
+ 
+HWND GetBackground(){
+    HWND hwnd = FindWindowA("progman","Program Manager");
+    HWND worker = NULL;
+    do{
+        worker = FindWindowExA(NULL,worker,"workerW",NULL);
+        if(worker != NULL){
+            char buff[200] = {0};
+            int ret = GetClassNameA(worker,(PCHAR)buff,sizeof(buff)*2);
+            if(ret == 0){
+                return NULL;
+            }
+        }
+        if(GetParent(worker) == hwnd){
+            return worker;
+        }
+    }while(worker != NULL);
+    return NULL;
+}
+</code></pre>
 <h2 id="鼠标事件捕捉"><a href="#鼠标事件捕捉" class="headerlink" title="鼠标事件捕捉"></a>鼠标事件捕捉</h2><p>由于将窗体设置成了背景层的子窗体，而背景层上面还有一层图标层，所以我们自己写的窗体将无法接受鼠标事件，也就无法对鼠标移动做出反应，因此我们需要使用HOOK拦截系统的鼠标事件，HOOK程序将会在鼠标移动事件发生之前优先执行，这样就可以捕捉到鼠标移动事件。</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">HHOOK hook;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetHook</span><span class="params">()</span></span>{</span><br><span class="line">    hook = <span class="built_in">SetWindowsHookEx</span>(WH_MOUSE_LL,mouseProc,<span class="built_in">GetModuleHandle</span>(<span class="literal">NULL</span>),<span class="literal">NULL</span>);</span><br><span class="line">}</span><br><span class="line"><span class="function">LRESULT CALLBACK <span class="title">mouseProc</span><span class="params">(<span class="keyword">int</span> nCode,WPARAM wParam,LPARAM lParam)</span></span>{</span><br><span class="line">    <span class="keyword">if</span>(nCode == HC_ACTION){</span><br><span class="line">        <span class="keyword">if</span>(wParam == WM_MOUSEMOVE){</span><br><span class="line">            main-&gt;<span class="built_in">repaint</span>();<span class="comment">//界面重绘，main是本窗体，相当于this</span></span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">HHOOK hook;
+void GetHook(){
+    hook = SetWindowsHookEx(WH_MOUSE_LL,mouseProc,GetModuleHandle(NULL),NULL);
+}
+LRESULT CALLBACK mouseProc(int nCode,WPARAM wParam,LPARAM lParam){
+    if(nCode == HC_ACTION){
+        if(wParam == WM_MOUSEMOVE){
+            main-&gt;repaint();//界面重绘，main是本窗体，相当于this
+        }
+    }
+    return false;
+}
+</code></pre>
 <h2 id="绘图与蒙版"><a href="#绘图与蒙版" class="headerlink" title="绘图与蒙版"></a>绘图与蒙版</h2><p>实现透视效果的原理是先绘制非透视图，然后根据鼠标位置绘制透视图的一小部分，为了方便，我们称非透视图为“背景图”，称透视图为“前景图”，因为透视图是覆盖在非透视图上面的。</p>
 <p>全局变量</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">QPixmap *foreground;<span class="comment">//前景图,透视图</span></span><br><span class="line">QPixmap *background;<span class="comment">//背景图,非透视图</span></span><br><span class="line">QPixmap *cut;<span class="comment">//透视图裁剪后的图片</span></span><br><span class="line">QBitmap *maskBitmap;<span class="comment">//蒙版</span></span><br><span class="line">QPixmap *maskPic;<span class="comment">//裁剪后的蒙版</span></span><br><span class="line">QColor *color;<span class="comment">//透视颜色</span></span><br><span class="line"><span class="keyword">int</span> x1,x2,y1,y2;<span class="comment">//透视区域的坐标</span></span><br><span class="line"><span class="keyword">int</span> startX,startY;<span class="comment">//蒙版起始坐标</span></span><br><span class="line"><span class="keyword">int</span> radius;<span class="comment">//透视半径</span></span><br><span class="line"><span class="keyword">int</span> Desktop_width,Desktop_height;<span class="comment">//桌面的尺寸</span></span><br><span class="line"><span class="keyword">bool</span> repaintable = <span class="literal">true</span>;<span class="comment">//重绘</span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">QPixmap *foreground;//前景图,透视图
+QPixmap *background;//背景图,非透视图
+QPixmap *cut;//透视图裁剪后的图片
+QBitmap *maskBitmap;//蒙版
+QPixmap *maskPic;//裁剪后的蒙版
+QColor *color;//透视颜色
+int x1,x2,y1,y2;//透视区域的坐标
+int startX,startY;//蒙版起始坐标
+int radius;//透视半径
+int Desktop_width,Desktop_height;//桌面的尺寸
+bool repaintable = true;//重绘
+</code></pre>
 <p>LoadPicture()函数用来加载图片</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Widget::LoadPicture</span><span class="params">(QString fore,QString back)</span></span>{</span><br><span class="line">    foreground = <span class="keyword">new</span> <span class="built_in">QPixmap</span>();</span><br><span class="line">    background = <span class="keyword">new</span> <span class="built_in">QPixmap</span>();</span><br><span class="line">    cut = <span class="keyword">new</span> <span class="built_in">QPixmap</span>();</span><br><span class="line">    foreground-&gt;<span class="built_in">load</span>(fore);</span><br><span class="line">    background-&gt;<span class="built_in">load</span>(back);</span><br><span class="line">    QDesktopWidget *desktop = QApplication::<span class="built_in">desktop</span>();</span><br><span class="line">    QRect rect = desktop-&gt;<span class="built_in">screenGeometry</span>();</span><br><span class="line">    Desktop_width = rect.<span class="built_in">width</span>();</span><br><span class="line">    Desktop_height = rect.<span class="built_in">height</span>();</span><br><span class="line">    *foreground = foreground-&gt;<span class="built_in">scaled</span>(rect.<span class="built_in">width</span>(),rect.<span class="built_in">height</span>(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation);</span><br><span class="line">    *background = background-&gt;<span class="built_in">scaled</span>(rect.<span class="built_in">width</span>(),rect.<span class="built_in">height</span>(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">void Widget::LoadPicture(QString fore,QString back){
+    foreground = new QPixmap();
+    background = new QPixmap();
+    cut = new QPixmap();
+    foreground-&gt;load(fore);
+    background-&gt;load(back);
+    QDesktopWidget *desktop = QApplication::desktop();
+    QRect rect = desktop-&gt;screenGeometry();
+    Desktop_width = rect.width();
+    Desktop_height = rect.height();
+    *foreground = foreground-&gt;scaled(rect.width(),rect.height(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
+    *background = background-&gt;scaled(rect.width(),rect.height(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
+}
+</code></pre>
 <p>在SetRadius()函数中，需要初始化蒙版，先定义一个长为2*radius的正方形QBitmap，然后画上颜色为color(黑色)的圆形</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Widget::SetRadius</span><span class="params">(<span class="keyword">int</span> r)</span></span>{</span><br><span class="line">    <span class="keyword">if</span>(radius == r) <span class="keyword">return</span>;</span><br><span class="line">    radius = r;</span><br><span class="line">    <span class="function">QSize <span class="title">size</span><span class="params">(<span class="number">2</span>*radius, <span class="number">2</span>*radius)</span></span>;</span><br><span class="line">    maskBitmap = <span class="keyword">new</span> <span class="built_in">QBitmap</span>(size);</span><br><span class="line">    maskPic = <span class="keyword">new</span> <span class="built_in">QPixmap</span>(size);</span><br><span class="line">    color = <span class="keyword">new</span> <span class="built_in">QColor</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="function">QPainter <span class="title">painter</span><span class="params">(maskBitmap)</span></span>;</span><br><span class="line">    painter.<span class="built_in">setRenderHint</span>(QPainter::Antialiasing);</span><br><span class="line">    painter.<span class="built_in">setRenderHint</span>(QPainter::SmoothPixmapTransform);</span><br><span class="line">    painter.<span class="built_in">fillRect</span>(<span class="number">0</span>, <span class="number">0</span>, size.<span class="built_in">width</span>(), size.<span class="built_in">height</span>(), Qt::white);</span><br><span class="line">    painter.<span class="built_in">setBrush</span>(*color);</span><br><span class="line">    painter.<span class="built_in">drawRoundedRect</span>(<span class="number">0</span>, <span class="number">0</span>, size.<span class="built_in">width</span>(), size.<span class="built_in">height</span>(), radius, radius);</span><br><span class="line">    <span class="built_in">repaint</span>();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">void Widget::SetRadius(int r){
+    if(radius == r) return;
+    radius = r;
+    QSize size(2*radius, 2*radius);
+    maskBitmap = new QBitmap(size);
+    maskPic = new QPixmap(size);
+    color = new QColor(0,0,0);
+    QPainter painter(maskBitmap);
+    painter.setRenderHint(QPainter::Antialiasing);
+    painter.setRenderHint(QPainter::SmoothPixmapTransform);
+    painter.fillRect(0, 0, size.width(), size.height(), Qt::white);
+    painter.setBrush(*color);
+    painter.drawRoundedRect(0, 0, size.width(), size.height(), radius, radius);
+    repaint();
+}
+</code></pre>
 <p>根据鼠标位置计算出正确的区域大小，这是一个以鼠标为中心，2*radius为长的正方形，(x1,y1)是左上角坐标，(x2,y2)是右下角坐标，这两个坐标构成了一个裁剪框，但是这个坐标有可能会超出屏幕范围，一旦超出，就会导致裁剪的时候出现图片拉伸，所以需要加上判断语句来限制大小。</p>
 <p>接着根据限制后的大小和位置，在前景图(透视图)上裁剪出相应区域。</p>
 <p>startX和startY是蒙版的起始位置，如果(x1,y1)超出屏幕区域，就意味着裁剪框将不是正方形，而蒙版却是正方形的，所以必须对蒙版也进行裁剪，使蒙版的大小恰好等于裁剪框的大小。</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Widget::paintEvent</span><span class="params">(QPaintEvent *)</span></span>{</span><br><span class="line">    <span class="built_in">GetCursorPos</span>(&amp;p);</span><br><span class="line">    x1 = p.x - radius;</span><br><span class="line">    y1 = p.y - radius;</span><br><span class="line">    x2 = p.x + radius;</span><br><span class="line">    y2 = p.y + radius;</span><br><span class="line">    <span class="keyword">if</span>(x1 &lt; <span class="number">0</span>) {</span><br><span class="line">        startX = -x1;</span><br><span class="line">        x1 = <span class="number">0</span>;</span><br><span class="line">    }<span class="keyword">else</span>{</span><br><span class="line">        startX = <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span>(y1 &lt; <span class="number">0</span>) {</span><br><span class="line">        startY = -y1;</span><br><span class="line">        y1 = <span class="number">0</span>;</span><br><span class="line">    }<span class="keyword">else</span>{</span><br><span class="line">        startY = <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span>(x2 &gt; Desktop_width) x2 = Desktop_width;</span><br><span class="line">    <span class="keyword">if</span>(y2 &gt; Desktop_height) y2 = Desktop_height;</span><br><span class="line">    *cut = foreground-&gt;<span class="built_in">copy</span>(x1,y1,x2-x1,y2-y1);<span class="comment">//裁剪前景图(透视图)</span></span><br><span class="line">    *maskPic = maskBitmap-&gt;<span class="built_in">copy</span>(startX,startY,x2-x1,y2-y1);<span class="comment">//裁剪蒙版</span></span><br><span class="line">    cut-&gt;<span class="built_in">setMask</span>(maskPic-&gt;<span class="built_in">createMaskFromColor</span>(*color,Qt::MaskOutColor));<span class="comment">//给cut设置蒙版</span></span><br><span class="line">    <span class="function">QPainter <span class="title">painter</span><span class="params">(<span class="keyword">this</span>)</span></span>;</span><br><span class="line">    painter.<span class="built_in">drawPixmap</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="built_in">width</span>(),<span class="built_in">height</span>(),*background);<span class="comment">//先画背景图</span></span><br><span class="line">    painter.<span class="built_in">drawPixmap</span>(x1,y1,x2-x1,y2-y1,*cut);<span class="comment">//在画前景图(透视图)，覆盖在背景图上面</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">void Widget::paintEvent(QPaintEvent *){
+    GetCursorPos(&amp;p);
+    x1 = p.x - radius;
+    y1 = p.y - radius;
+    x2 = p.x + radius;
+    y2 = p.y + radius;
+    if(x1 &lt; 0) {
+        startX = -x1;
+        x1 = 0;
+    }else{
+        startX = 0;
+    }
+    if(y1 &lt; 0) {
+        startY = -y1;
+        y1 = 0;
+    }else{
+        startY = 0;
+    }
+    if(x2 &gt; Desktop_width) x2 = Desktop_width;
+    if(y2 &gt; Desktop_height) y2 = Desktop_height;
+    *cut = foreground-&gt;copy(x1,y1,x2-x1,y2-y1);//裁剪前景图(透视图)
+    *maskPic = maskBitmap-&gt;copy(startX,startY,x2-x1,y2-y1);//裁剪蒙版
+    cut-&gt;setMask(maskPic-&gt;createMaskFromColor(*color,Qt::MaskOutColor));//给cut设置蒙版
+    QPainter painter(this);
+    painter.drawPixmap(0,0,width(),height(),*background);//先画背景图
+    painter.drawPixmap(x1,y1,x2-x1,y2-y1,*cut);//在画前景图(透视图)，覆盖在背景图上面
+}
+</code></pre>
 <h2 id="内存释放"><a href="#内存释放" class="headerlink" title="内存释放"></a>内存释放</h2><p>HOOK会降低计算机效率，所以在使用完毕后必须释放，当关闭程序时windows系统会自动释放HOOK，但是我们希望用户在主动关闭壁纸但是还未退出程序时也要释放掉HOOK，同时摧毁窗体。</p>
 <p>Dispose()函数的用途就是摧毁窗体，然后释放HOOK</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Widget::Dispose</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="keyword">this</span>-&gt;<span class="built_in">hide</span>();</span><br><span class="line">    <span class="built_in">UnhookWindowsHookEx</span>(hook);</span><br><span class="line">    <span class="keyword">this</span>-&gt;<span class="built_in">close</span>();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">void Widget::Dispose(){
+    this-&gt;hide();
+    UnhookWindowsHookEx(hook);
+    this-&gt;close();
+}
+</code></pre>
 <h2 id="任务栏角标"><a href="#任务栏角标" class="headerlink" title="任务栏角标"></a>任务栏角标</h2><p>之前文章已经介绍过，这里直接放出代码。</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Set::AddTray</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="comment">//QSystemTrayIcon tray;   在.h文件中定义</span></span><br><span class="line">    tray.<span class="built_in">setToolTip</span>(<span class="string">"X-Ray"</span>);</span><br><span class="line">    tray.<span class="built_in">setIcon</span>(<span class="built_in">QIcon</span>(<span class="string">":Icon/ico.ico"</span>));</span><br><span class="line">    QMenu *menu = <span class="keyword">new</span> <span class="built_in">QMenu</span>();</span><br><span class="line">    QAction *action_showDialog = <span class="keyword">new</span> <span class="built_in">QAction</span>(<span class="string">"打开主窗口"</span>);</span><br><span class="line">    QAction *action_free = <span class="keyword">new</span> <span class="built_in">QAction</span>(<span class="string">"释放内存"</span>);</span><br><span class="line">    QAction *action_exit = <span class="keyword">new</span> <span class="built_in">QAction</span>(<span class="string">"退出"</span>);</span><br><span class="line">    menu-&gt;<span class="built_in">addAction</span>(action_showDialog);</span><br><span class="line">    menu-&gt;<span class="built_in">addAction</span>(action_free);</span><br><span class="line">    menu-&gt;<span class="built_in">addSeparator</span>();</span><br><span class="line">    menu-&gt;<span class="built_in">addAction</span>(action_exit);</span><br><span class="line">    tray.<span class="built_in">setContextMenu</span>(menu);</span><br><span class="line">    <span class="built_in">connect</span>(action_showDialog,<span class="built_in">SIGNAL</span>(<span class="built_in">triggered</span>(<span class="keyword">bool</span>)),<span class="keyword">this</span>,<span class="built_in">SLOT</span>(<span class="built_in">ShowDialog</span>()));</span><br><span class="line">    <span class="built_in">connect</span>(action_free,<span class="built_in">SIGNAL</span>(<span class="built_in">triggered</span>(<span class="keyword">bool</span>)),<span class="keyword">this</span>,<span class="built_in">SLOT</span>(<span class="built_in">on_button_free_clicked</span>()));</span><br><span class="line">    <span class="built_in">connect</span>(action_exit,<span class="built_in">SIGNAL</span>(<span class="built_in">triggered</span>(<span class="keyword">bool</span>)),<span class="keyword">this</span>,<span class="built_in">SLOT</span>(<span class="built_in">on_button_exit_clicked</span>()));</span><br><span class="line">    tray.<span class="built_in">show</span>();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="C++">void Set::AddTray(){
+    //QSystemTrayIcon tray;   在.h文件中定义
+    tray.setToolTip("X-Ray");
+    tray.setIcon(QIcon(":Icon/ico.ico"));
+    QMenu *menu = new QMenu();
+    QAction *action_showDialog = new QAction("打开主窗口");
+    QAction *action_free = new QAction("释放内存");
+    QAction *action_exit = new QAction("退出");
+    menu-&gt;addAction(action_showDialog);
+    menu-&gt;addAction(action_free);
+    menu-&gt;addSeparator();
+    menu-&gt;addAction(action_exit);
+    tray.setContextMenu(menu);
+    connect(action_showDialog,SIGNAL(triggered(bool)),this,SLOT(ShowDialog()));
+    connect(action_free,SIGNAL(triggered(bool)),this,SLOT(on_button_free_clicked()));
+    connect(action_exit,SIGNAL(triggered(bool)),this,SLOT(on_button_exit_clicked()));
+    tray.show();
+}
+</code></pre>
 <p>源文件<br><a target="_blank" rel="noopener" href="https://dearx.lanzoui.com/ixRT2scl3nc">https://dearx.lanzoui.com/ixRT2scl3nc</a></p>
 
   
@@ -2769,7 +2899,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Wallpaper/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Wallpaper</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Qt/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Qt</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C-C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C/C++</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C-C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C/C++</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Wallpaper/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Wallpaper</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Qt/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Qt</p></a></div>
 
 
         
@@ -2843,7 +2973,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>C#的GPU加速方法</p>
           <p class='content'>本文将通过C#调用dll的方法来实现并发计算
 在VS2019里新建动态链接库项目，在pch.h里定义函数
-1234567891011121314// pch.h: 这是预编译标头文件。// 下方...</p>
+// pch.h: 这是预编译标头文件。
+// 下方列出的文件仅编译一次，提高了将来生成...</p>
         </a>
       
       
@@ -2975,37 +3106,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
         </div>
-      
-    
-      
-        <br>
-        <div class="social-wrapper">
-          
-            
-          
-            
-          
-            
-          
-        </div>
-      
-    
-      
-        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
-</div>
-      
-    
-      
-        
-          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
-</div>
-        
-      
-    
-      
-        本站使用
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/5.0.0.alpha.1" target="_blank" class="codename">Volantis</a>
-        作为主题
       
     
       
@@ -3501,7 +3601,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629515457620')
+    volantis.js('/js/rightMenu.js?time=1629518746510')
   </script>
 
 
@@ -3614,19 +3714,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629515457620")
+        volantis.js("/js/plugins/sites.js?time=1629518746510")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629515457620")
+        volantis.js("/js/plugins/friends.js?time=1629518746510")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629515457620")
+        volantis.js("/js/plugins/contributors.js?time=1629518746510")
       }
     
   };
@@ -3699,59 +3799,11 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629515457623')
+      await volantis.js('/js/aplayer.js?time=1629518746512')
       volantis.APlayerController.music = true;
     
   })();
 // message see: /layout/_plugins/message/script.ejs
-
-  var checkMetings = setInterval(function() {
-  if (!document.querySelectorAll('meting-js')[0].aplayer) return;
-  if (!document.querySelectorAll('meting-js')[0].aplayer.on) return;
-  clearInterval(checkMetings);
-  try {
-    var Metings = document.querySelectorAll('meting-js');
-    Metings.forEach((item, index) => {
-      var rightMenuAplayer = $(item)[0].meta.id === volantis.APlayerController.id && volantis.APlayerController.music;
-      if(rightMenuAplayer)  MainAPlayer.checkAPlayer();
-      var thisAplayer =Metings[index].aplayer;
-      thisAplayer.on('play', function(e) {
-      let icon = document.getElementById('#aplayerHeaderIcon')
-      if(icon) volantis.dom.$(icon).removeClass('music').addClass('music')
-      var index = thisAplayer.list.index;
-      var title = thisAplayer.list.audios[index].title;
-      var artist = thisAplayer.list.audios[index].artist;
-        volantis.message('音乐通知', '正在播放：' + title + ' - ' + artist, {
-            icon: 'fas fa-play'
-          }
-        )
-        if(rightMenuAplayer) volantis.APlayerController.status = 'play';
-      });
-      thisAplayer.on('pause', function(e) {
-        let icon = document.getElementById('#aplayerHeaderIcon')
-        if(icon) volantis.dom.$(icon).removeClass('music')
-        var index =thisAplayer.list.index;
-        var title = thisAplayer.list.audios[index].title;
-        var artist = thisAplayer.list.audios[index].artist;
-        setTimeout(() => {
-          // 歌曲播放结束也会触发 pause 事件
-          if(thisAplayer.paused)
-            volantis.message('音乐通知', '暂停播放：' + title + ' - ' + artist, {
-                icon: 'fas fa-pause'
-              }
-            )
-        }, 100)
-        if(rightMenuAplayer) volantis.APlayerController.status = 'pause';
-      });
-      thisAplayer.on('error', function (e) {
-        if(rightMenuAplayer) volantis.APlayerController.status = 'error';
-      });
-    });
-
-  } catch (error) {
-
-  }
-}, 100);
 
 </script>
 
@@ -3782,7 +3834,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629515457620.js"></script>
+<script src="/js/app.js?time=1629518746510.js"></script>
 
 
 <!-- optional -->
@@ -3795,7 +3847,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629515457620");
+    return volantis.js("/js/search/hexo.js?time=1629518746510");
   }
 
   function loadSearchService() {
@@ -4077,8 +4129,8 @@ volantis.pjax.push(()=>{
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629515457620')
-      volantis.js('/js/message.js?time=1629515457620', () => {
+      volantis.css('/css/message.css?time=1629518746510')
+      volantis.js('/js/message.js?time=1629518746510', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4122,8 +4174,8 @@ volantis.pjax.push(()=>{
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629515457620')
-      volantis.js('/js/message.js?time=1629515457620', () => {
+      volantis.css('/css/message.css?time=1629518746510')
+      volantis.js('/js/message.js?time=1629518746510', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4283,7 +4335,7 @@ volantis.pjax.push(()=>{
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Wallpaper/","name":"Wallpaper"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Wallpaper/Qt/","name":"Qt"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/08/07/Wallpaper透视效果的C-实现/","name":"Wallpaper透视效果的C++实现"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Wallpaper透视效果的C++实现","description":"","datePublished":"2021-08-07T13:54:00.000Z","dateModified":"2021-08-20T07:43:53.522Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/08/07/Wallpaper%E9%80%8F%E8%A7%86%E6%95%88%E6%9E%9C%E7%9A%84C-%E5%AE%9E%E7%8E%B0/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/08/07/Wallpaper%E9%80%8F%E8%A7%86%E6%95%88%E6%9E%9C%E7%9A%84C-%E5%AE%9E%E7%8E%B0/","wordCount":0,"articleSection":"Wallpaper","keywords":"Wallpaper,Qt,C/C++"}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Wallpaper/","name":"Wallpaper"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Wallpaper/Qt/","name":"Qt"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/08/07/Wallpaper透视效果的C-实现/","name":"Wallpaper透视效果的C++实现"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Wallpaper透视效果的C++实现","description":"","datePublished":"2021-08-07T13:54:00.000Z","dateModified":"2021-08-20T07:43:53.522Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/08/07/Wallpaper%E9%80%8F%E8%A7%86%E6%95%88%E6%9E%9C%E7%9A%84C-%E5%AE%9E%E7%8E%B0/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/08/07/Wallpaper%E9%80%8F%E8%A7%86%E6%95%88%E6%9E%9C%E7%9A%84C-%E5%AE%9E%E7%8E%B0/","wordCount":0,"articleSection":"Wallpaper","keywords":"C/C++,Wallpaper,Qt"}]</script>
 
 
 <!-- more -->
@@ -4367,7 +4419,6 @@ volantis.pjax.push(()=>{
     <!--浏览器恶搞标题-->
     
       <script type="text/javascript" src="/js/onfocus.js"></script>
-    
     
   </body>
 </html>
