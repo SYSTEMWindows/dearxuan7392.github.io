@@ -20,7 +20,7 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629559084989" as="style">
+  <link rel="preload" href="/css/style.css?time=1629560258492" as="style">
   <!-- 页面元数据 -->
   <title>C#序列化对象的二进制储存方法及底层原理研究 - DearXuan的主页</title>
   <meta name="keywords" content="C#,序列化对象,二进制,底层原理,编程,算法">
@@ -2206,8 +2206,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629559084989" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629559084989"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629560258492" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629560258492"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2598,7 +2598,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
       }
       var l = "",
-      o = ["山有木兮木有枝，心悦君兮君不知。", "人生若只如初见，何事秋风悲画扇。","十年生死两茫茫，不思量，自难忘。", "曾经沧海难为水，除却巫山不是云。","洛中何郁郁，冠带自相索。","只愿君心似我心，定不负相思意。","愿得一心人，白头不相离。","入我相思门，知我相思苦。"].map(function (r) {
+      o = [ 
+            "在天愿做比翼鸟，在地愿为连理枝。",
+            "十年生死两茫茫，不思量，自难忘。",
+            "山有木兮木有枝，心悦君兮君不知。", 
+            "只愿君心似我心，定不负相思意。",
+            "人生若只如初见，何事秋风悲画扇。",
+            "入我相思门，知我相思苦。",
+            "曾经沧海难为水，除却巫山不是云。",
+            "洛中何郁郁，冠带自相索。",
+            "愿得一心人，白头不相离。",
+            "落红不是无情物，化作春泥更护花。"
+          ].map(function (r) {
       return r + ""
       }),
       a = 2,
@@ -3598,7 +3609,7 @@ class Struct1
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629559084989')
+    volantis.js('/js/rightMenu.js?time=1629560258491')
   </script>
 
 
@@ -3711,19 +3722,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629559084989")
+        volantis.js("/js/plugins/sites.js?time=1629560258491")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629559084989")
+        volantis.js("/js/plugins/friends.js?time=1629560258491")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629559084989")
+        volantis.js("/js/plugins/contributors.js?time=1629560258491")
       }
     
   };
@@ -3796,7 +3807,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629559084993')
+      await volantis.js('/js/aplayer.js?time=1629560258494')
       volantis.APlayerController.music = true;
     
   })();
@@ -3831,7 +3842,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629559084989.js"></script>
+<script src="/js/app.js?time=1629560258492.js"></script>
 
 
 <!-- optional -->
@@ -3844,7 +3855,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629559084989");
+    return volantis.js("/js/search/hexo.js?time=1629560258492");
   }
 
   function loadSearchService() {
@@ -4156,7 +4167,7 @@ volantis.pjax.push(()=>{
       fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
     }
   }
-  volantis.js('/js/parallax.js?time=1629559084989').then(()=>{
+  volantis.js('/js/parallax.js?time=1629560258491').then(()=>{
     parallax()
   })
   volantis.pjax.push(next_parallax);
@@ -4175,8 +4186,8 @@ volantis.pjax.push(()=>{
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629559084989')
-      volantis.js('/js/message.js?time=1629559084989', () => {
+      volantis.css('/css/message.css?time=1629560258491')
+      volantis.js('/js/message.js?time=1629560258491', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4220,8 +4231,8 @@ volantis.pjax.push(()=>{
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629559084989')
-      volantis.js('/js/message.js?time=1629559084989', () => {
+      volantis.css('/css/message.css?time=1629560258491')
+      volantis.js('/js/message.js?time=1629560258491', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
