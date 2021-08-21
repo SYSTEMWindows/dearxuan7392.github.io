@@ -23,7 +23,7 @@ const RightMenu = (() => {
   const urlRegx = /^((https|http)?:\/\/)+[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/;
 
   fn.init = () => {
-    fn.visible(_menuMusic, false);
+    fn.visible(_menuMusic, true);
     fn.visible(_menuOption, false);
     if (_readBkg) _readBkg.parentNode.removeChild(_readBkg);
 
@@ -243,13 +243,6 @@ const RightMenu = (() => {
     } else {
       fn.visible(_printHtml, false);
       fn.visible(_readingModel, false);
-    }
-
-    if (volantis.APlayerController.status === 'play') {
-      optionFlag = true;
-      fn.visible(_menuMusic);
-    } else {
-      fn.visible(_menuMusic, false);
     }
 
     _menuLoad.forEach(ele => {

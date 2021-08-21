@@ -117,10 +117,6 @@ html >::-webkit-scrollbar-thumb:hover {
 }
 body {
   background-color: var(--color-site-body);
-  background-image: url("/image/girl.jpg");
-  background-attachment: fixed;
-  background-position: center center;
-  background-size: cover;
   text-rendering: optimizelegibility;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   line-height: 1.6;
