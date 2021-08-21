@@ -20,7 +20,7 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629534830060" as="style">
+  <link rel="preload" href="/css/style.css?time=1629542110628" as="style">
   <!-- 页面元数据 -->
   <title>针对内存修改的反作弊方法 - DearXuan的主页</title>
   <meta name="keywords" content="C/C++,反作弊,编程,算法">
@@ -168,10 +168,6 @@ html >::-webkit-scrollbar-thumb:hover {
 }
 body {
   background-color: var(--color-site-body);
-  background-image: url("/image/girl.jpg");
-  background-attachment: fixed;
-  background-position: center center;
-  background-size: cover;
   text-rendering: optimizelegibility;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   line-height: 1.6;
@@ -2207,8 +2203,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629534830060" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629534830060"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629542110628" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629542110628"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2441,7 +2437,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div class="m_search">
         <form name="searchform" class="form u-search-form">
           <i class="icon fas fa-search fa-fw"></i>
-          <input type="text" class="input u-search-input" placeholder="找点好玩的?" />
+          <input type="text" class="input u-search-input" placeholder="搜点有意思的?" />
         </form>
       </div>
 
@@ -2568,7 +2564,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
       <div id="none" class='cover-wrapper post dock' style="display: none;">
         
-  <div class='cover-bg lazyload placeholder' data-bg="https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture"></div>
+  <div id="parallax-window"></div>
 
 <div class='cover-body'>
   <div class='top'>
@@ -2634,7 +2630,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper" id="pjax-container">
           
 <div id="l_main" class=''>
-  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  <article class="article post white-box reveal md shadow floatable article-type-post" id="post" itemscope itemprop="blogPost">
   
 
 
@@ -3051,7 +3047,7 @@ windows的桌面是由不同的二窗体构成，包括图标层，背景层，�
   
 
   
-  <article class="post white-box reveal shadow" id="comments">
+  <article class="post white-box reveal shadow floatable" id="comments">
     <p ct><i class='fas fa-comments'></i> 评论</p>
     
 
@@ -3657,7 +3653,7 @@ windows的桌面是由不同的二窗体构成，包括图标层，背景层，�
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629534830060')
+    volantis.js('/js/rightMenu.js?time=1629542110628')
   </script>
 
 
@@ -3770,19 +3766,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629534830060")
+        volantis.js("/js/plugins/sites.js?time=1629542110628")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629534830060")
+        volantis.js("/js/plugins/friends.js?time=1629542110628")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629534830060")
+        volantis.js("/js/plugins/contributors.js?time=1629542110628")
       }
     
   };
@@ -3855,7 +3851,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629534830062')
+      await volantis.js('/js/aplayer.js?time=1629542110630')
       volantis.APlayerController.music = true;
     
   })();
@@ -3890,7 +3886,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629534830060.js"></script>
+<script src="/js/app.js?time=1629542110628.js"></script>
 
 
 <!-- optional -->
@@ -3903,7 +3899,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629534830060");
+    return volantis.js("/js/search/hexo.js?time=1629542110628");
   }
 
   function loadSearchService() {
@@ -4173,6 +4169,55 @@ volantis.pjax.push(()=>{
 
 
 
+  
+<script>
+  var imgs=["/image/background/1.jpg", "/image/background/2.jpg", "/image/background/3.jpg", "/image/background/4.jpg", "/image/background/5.jpg", "/image/background/6.jpg", "/image/background/7.jpg", "/image/background/8.jpg", "/image/background/9.jpg"];
+  var index=0;
+  
+      function shuffle(arr){
+        /*From countercurrent-time*/
+        var n = arr.length;
+        while(n--) {
+          var index = Math.floor(Math.random() * n);
+          var temp = arr[index];
+          arr[index] = arr[n];
+          arr[n] = temp;
+        }
+      }
+      shuffle(imgs);
+  
+
+  function parallax(){
+    let ParallaxWindow = document.querySelector("#parallax-window");
+    
+      ParallaxWindow = document.querySelector("html");
+    
+    Parallax.window = ParallaxWindow;
+    Parallax.options.fade = 1500;
+    next_parallax();
+    Parallax.init();
+    if (imgs.length>1) {
+      let IntervalParallax = setInterval(function () {
+        next_parallax();
+      }, '60000');
+    }
+  }
+
+  function next_parallax() {
+    if (imgs.length>=1) {
+      Parallax.options.src = imgs[index % imgs.length];
+      Parallax.start();
+      index++;
+      fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
+    }
+  }
+  volantis.js('/js/parallax.js?time=1629542110628').then(()=>{
+    parallax()
+  })
+  volantis.pjax.push(next_parallax);
+</script>
+
+
 
 <!-- pjax 标签必须存在于所有页面 否则 pjax error -->
 <pjax>
@@ -4185,8 +4230,8 @@ volantis.pjax.push(()=>{
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629534830060')
-      volantis.js('/js/message.js?time=1629534830060', () => {
+      volantis.css('/css/message.css?time=1629542110628')
+      volantis.js('/js/message.js?time=1629542110628', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4230,8 +4275,8 @@ volantis.pjax.push(()=>{
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629534830060')
-      volantis.js('/js/message.js?time=1629534830060', () => {
+      volantis.css('/css/message.css?time=1629542110628')
+      volantis.js('/js/message.js?time=1629542110628', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
