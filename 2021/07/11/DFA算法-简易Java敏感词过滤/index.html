@@ -20,7 +20,7 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629608820865" as="style">
+  <link rel="preload" href="/css/style.css?time=1629609664785" as="style">
   <!-- 页面元数据 -->
   <title>DFA算法-简易Java敏感词过滤(含源文件和上万敏感词列表) - DearXuan的主页</title>
   <meta name="keywords" content="Java,算法,DFA算法,敏感词过滤,编程,算法">
@@ -2363,8 +2363,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629608820865" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629608820865"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629609664785" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629609664785"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2433,6 +2433,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
     <script src="/live2d-widget/autoload.js"></script>
+    <script language="javascript">  
+      function imgdragstart(){return false;}
+    </script>
   </head>
   <body>
     <header id="l_header" class="l_header auto shadow floatable show" style='opacity: 0' >
@@ -3893,7 +3896,7 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629608820865')
+    volantis.js('/js/rightMenu.js?time=1629609664785')
   </script>
 
 
@@ -4006,19 +4009,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629608820865")
+        volantis.js("/js/plugins/sites.js?time=1629609664785")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629608820865")
+        volantis.js("/js/plugins/friends.js?time=1629609664785")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629608820865")
+        volantis.js("/js/plugins/contributors.js?time=1629609664785")
       }
     
   };
@@ -4091,7 +4094,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629608820868')
+      await volantis.js('/js/aplayer.js?time=1629609664786')
       volantis.APlayerController.music = true;
     
   })();
@@ -4126,7 +4129,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629608820865.js"></script>
+<script src="/js/app.js?time=1629609664785.js"></script>
 
 
 <!-- optional -->
@@ -4139,7 +4142,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629608820865");
+    return volantis.js("/js/search/hexo.js?time=1629609664785");
   }
 
   function loadSearchService() {
@@ -4451,7 +4454,7 @@ volantis.pjax.push(()=>{
       fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
     }
   }
-  volantis.js('/js/parallax.js?time=1629608820865').then(()=>{
+  volantis.js('/js/parallax.js?time=1629609664785').then(()=>{
     parallax()
   })
   volantis.pjax.push(next_parallax);
@@ -4470,8 +4473,8 @@ volantis.pjax.push(()=>{
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629608820865')
-      volantis.js('/js/message.js?time=1629608820865', () => {
+      volantis.css('/css/message.css?time=1629609664785')
+      volantis.js('/js/message.js?time=1629609664785', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4515,8 +4518,8 @@ volantis.pjax.push(()=>{
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629608820865')
-      volantis.js('/js/message.js?time=1629608820865', () => {
+      volantis.css('/css/message.css?time=1629609664785')
+      volantis.js('/js/message.js?time=1629609664785', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4785,5 +4788,8 @@ volantis.pjax.push(()=>{
         return false;
       }
     </script>
+    <script language="javascript">  
+      for(i in document.images)document.images[i].ondragstart=imgdragstart;  
+      </script>  
   </body>
 </html>

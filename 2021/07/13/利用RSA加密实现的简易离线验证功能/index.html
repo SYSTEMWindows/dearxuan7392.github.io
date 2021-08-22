@@ -20,7 +20,7 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629608820862" as="style">
+  <link rel="preload" href="/css/style.css?time=1629609664782" as="style">
   <!-- 页面元数据 -->
   <title>利用RSA加密实现的简易离线验证功能(C#,含代码) - DearXuan的主页</title>
   <meta name="keywords" content="C#,RSA加密,离线验证,编程,算法">
@@ -2362,8 +2362,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629608820862" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629608820862"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629609664782" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629609664782"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2432,6 +2432,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
     <script src="/live2d-widget/autoload.js"></script>
+    <script language="javascript">  
+      function imgdragstart(){return false;}
+    </script>
   </head>
   <body>
     <header id="l_header" class="l_header auto shadow floatable show" style='opacity: 0' >
@@ -3765,7 +3768,7 @@ public static void WriteFile(string key)
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629608820862')
+    volantis.js('/js/rightMenu.js?time=1629609664782')
   </script>
 
 
@@ -3878,19 +3881,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629608820862")
+        volantis.js("/js/plugins/sites.js?time=1629609664782")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629608820862")
+        volantis.js("/js/plugins/friends.js?time=1629609664782")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629608820862")
+        volantis.js("/js/plugins/contributors.js?time=1629609664782")
       }
     
   };
@@ -3963,7 +3966,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629608820864')
+      await volantis.js('/js/aplayer.js?time=1629609664784')
       volantis.APlayerController.music = true;
     
   })();
@@ -3998,7 +4001,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629608820862.js"></script>
+<script src="/js/app.js?time=1629609664782.js"></script>
 
 
 <!-- optional -->
@@ -4011,7 +4014,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629608820862");
+    return volantis.js("/js/search/hexo.js?time=1629609664782");
   }
 
   function loadSearchService() {
@@ -4323,7 +4326,7 @@ volantis.pjax.push(()=>{
       fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
     }
   }
-  volantis.js('/js/parallax.js?time=1629608820862').then(()=>{
+  volantis.js('/js/parallax.js?time=1629609664782').then(()=>{
     parallax()
   })
   volantis.pjax.push(next_parallax);
@@ -4342,8 +4345,8 @@ volantis.pjax.push(()=>{
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629608820862')
-      volantis.js('/js/message.js?time=1629608820862', () => {
+      volantis.css('/css/message.css?time=1629609664782')
+      volantis.js('/js/message.js?time=1629609664782', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4387,8 +4390,8 @@ volantis.pjax.push(()=>{
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629608820862')
-      volantis.js('/js/message.js?time=1629608820862', () => {
+      volantis.css('/css/message.css?time=1629609664782')
+      volantis.js('/js/message.js?time=1629609664782', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4657,5 +4660,8 @@ volantis.pjax.push(()=>{
         return false;
       }
     </script>
+    <script language="javascript">  
+      for(i in document.images)document.images[i].ondragstart=imgdragstart;  
+      </script>  
   </body>
 </html>
