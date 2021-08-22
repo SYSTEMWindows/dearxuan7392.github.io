@@ -20,7 +20,7 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629611500957" as="style">
+  <link rel="preload" href="/css/style.css?time=1629614620259" as="style">
   <!-- 页面元数据 -->
   <title>Wallpaper透视效果的C++实现 - DearXuan的主页</title>
   <meta name="keywords" content="C/C++,Wallpaper,Qt,编程,算法">
@@ -2114,21 +2114,6 @@ ul.list-v >li>a:hover {
     color: var(--color-text);
     background: #6f6f72;
   }
-  :root:not([data-user-color-scheme]) .gt-container .gt-header-textarea {
-    background-color: var(--color-card);
-  }
-  :root:not([data-user-color-scheme]) .gt-container .gt-header-textarea:hover {
-    background-color: var(--color-block);
-  }
-  :root:not([data-user-color-scheme]) .gt-container .gt-comment-content {
-    background-color: var(--color-card);
-  }
-  :root:not([data-user-color-scheme]) .gt-container .gt-comment-content:hover {
-    box-shadow: none;
-  }
-  :root:not([data-user-color-scheme]) .gt-container .gt-comment-admin .gt-comment-content {
-    background-color: var(--color-card);
-  }
   :root:not([data-user-color-scheme]) .ohhho pre {
     background: var(--color-meta);
     border: 1px solid var(--color-block);
@@ -2306,21 +2291,6 @@ ul.list-v >li>a:hover {
   color: var(--color-text);
   background: #6f6f72;
 }
-[data-user-color-scheme='dark'] .gt-container .gt-header-textarea {
-  background-color: var(--color-card);
-}
-[data-user-color-scheme='dark'] .gt-container .gt-header-textarea:hover {
-  background-color: var(--color-block);
-}
-[data-user-color-scheme='dark'] .gt-container .gt-comment-content {
-  background-color: var(--color-card);
-}
-[data-user-color-scheme='dark'] .gt-container .gt-comment-content:hover {
-  box-shadow: none;
-}
-[data-user-color-scheme='dark'] .gt-container .gt-comment-admin .gt-comment-content {
-  background-color: var(--color-card);
-}
 [data-user-color-scheme='dark'] .ohhho pre {
   background: var(--color-meta);
   border: 1px solid var(--color-block);
@@ -2362,8 +2332,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629611500957" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629611500957"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629614620259" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629614620259"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -3220,7 +3190,9 @@ bool repaintable = true;//重绘
     
 
     
-      <div id="gitalk-container"></div>
+      <div id="twikoo_container">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
 
     
 
@@ -3813,7 +3785,7 @@ bool repaintable = true;//重绘
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629611500957')
+    volantis.js('/js/rightMenu.js?time=1629614620259')
   </script>
 
 
@@ -3926,19 +3898,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629611500957")
+        volantis.js("/js/plugins/sites.js?time=1629614620259")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629611500957")
+        volantis.js("/js/plugins/friends.js?time=1629614620259")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629611500957")
+        volantis.js("/js/plugins/contributors.js?time=1629614620259")
       }
     
   };
@@ -4011,7 +3983,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629611500960')
+      await volantis.js('/js/aplayer.js?time=1629614620261')
       volantis.APlayerController.music = true;
     
   })();
@@ -4021,24 +3993,57 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-  <script type="text/javascript">
-  function pjax_gitalk() {
-    if(!document.querySelector("#gitalk-container"))return;
+  <script>
+  function load_twikoo() {
+    if(!document.querySelectorAll("#twikoo_container")[0])return;
+    volantis.js("https://cdn.jsdelivr.net/npm/twikoo@latest", pjax_twikoo)
+  }
+  function pjax_twikoo() {
+    if(!document.querySelectorAll("#twikoo_container")[0])return;
     let path = pdata.commentPath;
+    let placeholder = pdata.commentPlaceholder || "" || "";
     if (path.length == 0) {
       let defaultPath = '';
-      path = defaultPath || decodeURI(window.location.pathname);
+      path = defaultPath || "decodeURI(window.location.pathname)"; //神奇的pathname
     }
-    if (document.getElementById('gitalk-container') != null) {
-      var gitalk = new Gitalk(Object.assign({"clientID":"28f450e18a2313cb1b65","clientSecret":"b6c508a5e43609979b803e46e4c3538844fd3222","repo":"dearxuan7392.github.io","owner":"dearxuan7392","admin":["dearxuan7392"],"path":null}, {
-	  id: path,
-	  distractionFreeMode: false  // Facebook-like distraction free mode
-    }));
-      gitalk.render('gitalk-container');
-    }
+    twikoo.init(Object.assign({"js":"https://cdn.jsdelivr.net/npm/twikoo@latest","path":null,"envId":"556e9264-6524-403a-8741-5c88b5fe7eb7","placeholder":null}, {
+      el: '#twikoo_container',
+      path: path,
+      placeholder: placeholder,
+      onCommentLoaded: function() {
+        const nodeList = document.querySelectorAll('.tk-content img:not([fancybox]):not([class*="emo"])');
+        nodeList.forEach(item => {
+          item.setAttribute('fancybox', 'true');
+          const url = item.getAttribute('data-lazy-src') || item.getAttribute('src');
+          const alt = item.getAttribute('alt') || '';
+          const template = `<a class='fancybox' href='${url}' data-fancybox='Twikoo' data-caption='${alt}'>${item.outerHTML}</a>`;
+          const node = document.createElement('template');
+          node.innerHTML = template;
+          item.parentNode.replaceChild(node.content.lastChild, item);
+        })
+        
+        if(nodeList.length !== 0) {
+          const checkFancyBox = setInterval(() => {
+            if(typeof volantisFancyBox === "undefined") return;
+            clearInterval(checkFancyBox);
+            if (typeof Fancybox === "undefined") {
+              volantisFancyBox.loadFancyBox();
+            } else {
+              volantisFancyBox.initFancyBox();
+            }
+          })
+        }
+      }
+    }))
   }
-  volantis.js('https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js').then(pjax_gitalk)
-  volantis.pjax.push(pjax_gitalk);
+  load_twikoo();
+  volantis.pjax.push(()=>{
+    if (typeof twikoo == "undefined") {
+      load_twikoo();
+    } else {
+      pjax_twikoo();
+    }
+  },'twikoo');
 </script>
 
 
@@ -4046,7 +4051,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629611500957.js"></script>
+<script src="/js/app.js?time=1629614620259.js"></script>
 
 
 <!-- optional -->
@@ -4059,7 +4064,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629611500957");
+    return volantis.js("/js/search/hexo.js?time=1629614620259");
   }
 
   function loadSearchService() {
@@ -4371,7 +4376,7 @@ volantis.pjax.push(()=>{
       fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
     }
   }
-  volantis.js('/js/parallax.js?time=1629611500957').then(()=>{
+  volantis.js('/js/parallax.js?time=1629614620259').then(()=>{
     parallax()
   })
   volantis.pjax.push(next_parallax);
@@ -4390,8 +4395,8 @@ volantis.pjax.push(()=>{
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629611500957')
-      volantis.js('/js/message.js?time=1629611500957', () => {
+      volantis.css('/css/message.css?time=1629614620259')
+      volantis.js('/js/message.js?time=1629614620259', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4435,8 +4440,8 @@ volantis.pjax.push(()=>{
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629611500957')
-      volantis.js('/js/message.js?time=1629611500957', () => {
+      volantis.css('/css/message.css?time=1629614620259')
+      volantis.js('/js/message.js?time=1629614620259', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
