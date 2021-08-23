@@ -20,7 +20,7 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629635205445" as="style">
+  <link rel="preload" href="/css/style.css?time=1629695977549" as="style">
   <!-- 页面元数据 -->
   <title>DFA算法-简易Java敏感词过滤(含源文件和上万敏感词列表) - DearXuan的主页</title>
   <meta name="keywords" content="Java,算法,DFA算法,敏感词过滤,编程,算法">
@@ -33,7 +33,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2021-07-11T14:39:00.000Z">
-<meta property="article:modified_time" content="2021-08-20T07:22:05.471Z">
+<meta property="article:modified_time" content="2021-08-23T05:12:49.185Z">
 <meta property="article:author" content="DearXuan">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="算法">
@@ -2333,8 +2333,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629635205445" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629635205445"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629695977549" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629695977549"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -3135,12 +3135,9 @@ public final class SensitiveWordFilter {
 }
 </code></pre>
 <p>测试使用的敏感词库总共包含14596个敏感词(可能有个别重复),在测试代码里生成了一个长度为1000的字符串，总共包含100个相同敏感词，敏感词中间有逗号隔开<br><br><br>重复执行过滤10000次，并打印结果和时间，结果如下<br><img src="/2021/07/11/DFA%E7%AE%97%E6%B3%95-%E7%AE%80%E6%98%93Java%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87/dearxuan-1.png" class="lazyload" data-srcset="/2021/07/11/DFA%E7%AE%97%E6%B3%95-%E7%AE%80%E6%98%93Java%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87/dearxuan-1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="DearXuan"><br> 可以看到程序成功地过滤了敏感词，并保留了逗号，总耗时335毫秒，平均每次过滤仅需要0.03毫秒，并且是在上万个敏感词和超长字符串的情况下。</p>
-<h3 id="源文件-敏感词列表"><a href="#源文件-敏感词列表" class="headerlink" title="源文件+敏感词列表"></a>源文件+敏感词列表</h3><p> 在寻找敏感词列表时发现很多人的分享都被取消了，为了防止敏感词列表被检测出敏感词，使用了zip格式并加密。敏感词库存在部分重复，不过不影响使用。</p>
-<p>密码:dearxuan<br></p>
-<p>密码:dearxuan<br></p>
-<p>密码:dearxuan<br></p>
-<p>源代码+敏感词列表:<a target="_blank" rel="noopener" href="https://dearx.lanzoui.com/iIh95ralmrc">https://dearx.lanzoui.com/iIh95ralmrc</a><br><br>单独敏感词列表:<a target="_blank" rel="noopener" href="https://dearx.lanzoui.com/iFQSrralmsd">https://dearx.lanzoui.com/iFQSrralmsd</a><br></p>
-
+<h3 id="源文件-敏感词列表"><a href="#源文件-敏感词列表" class="headerlink" title="源文件+敏感词列表"></a>源文件+敏感词列表</h3><p> 在寻找敏感词列表时发现很多人的分享都被取消了，为了防止敏感词列表被检测出敏感词，使用了zip格式并加密。敏感词库存在部分重复，不过不影响使用。<br><font color="red"><br>密码:dearxuan<br><br>密码:dearxuan<br><br>密码:dearxuan<br><br></font></p>
+<div class="tag link"><a class="link-card" title="源代码+敏感词列表" target="_blank" rel="noopener" href="https://dearx.lanzoui.com/iIh95ralmrc"><div class="left"><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/256/safari.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/256/safari.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></div><div class="right"><p class="text">源代码+敏感词列表</p><p class="url">https://dearx.lanzoui.com/iIh95ralmrc</p></div></a></div>
+<div class="tag link"><a class="link-card" title="单独敏感词列表" target="_blank" rel="noopener" href="https://dearx.lanzoui.com/iFQSrralmsd"><div class="left"><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/256/safari.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/256/safari.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></div><div class="right"><p class="text">单独敏感词列表</p><p class="url">https://dearx.lanzoui.com/iFQSrralmsd</p></div></a></div>
   
   
     
@@ -3159,10 +3156,10 @@ public final class SensitiveWordFilter {
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-20T15:22:05+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-23T13:12:49+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2021年8月20日</p>
+    <p>更新于：2021年8月23日</p>
   </a>
 </div>
 
@@ -3870,7 +3867,7 @@ RSA加密设p,q是两个超级大的素数，N=pq，数据通过欧拉函数φ(N
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629635205445')
+    volantis.js('/js/rightMenu.js?time=1629695977549')
   </script>
 
 
@@ -3983,19 +3980,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629635205445")
+        volantis.js("/js/plugins/sites.js?time=1629695977549")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629635205445")
+        volantis.js("/js/plugins/friends.js?time=1629695977549")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629635205445")
+        volantis.js("/js/plugins/contributors.js?time=1629695977549")
       }
     
   };
@@ -4068,7 +4065,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629635205447')
+      await volantis.js('/js/aplayer.js?time=1629695977551')
       volantis.APlayerController.music = true;
     
   })();
@@ -4136,7 +4133,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629635205445.js"></script>
+<script src="/js/app.js?time=1629695977549.js"></script>
 
 
 <!-- optional -->
@@ -4149,7 +4146,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629635205445");
+    return volantis.js("/js/search/hexo.js?time=1629695977549");
   }
 
   function loadSearchService() {
@@ -4461,7 +4458,7 @@ volantis.pjax.push(()=>{
       fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
     }
   }
-  volantis.js('/js/parallax.js?time=1629635205445').then(()=>{
+  volantis.js('/js/parallax.js?time=1629695977549').then(()=>{
     parallax()
   })
   volantis.pjax.push(next_parallax);
@@ -4480,8 +4477,8 @@ volantis.pjax.push(()=>{
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629635205445')
-      volantis.js('/js/message.js?time=1629635205445', () => {
+      volantis.css('/css/message.css?time=1629695977549')
+      volantis.js('/js/message.js?time=1629695977549', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4525,8 +4522,8 @@ volantis.pjax.push(()=>{
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629635205445')
-      volantis.js('/js/message.js?time=1629635205445', () => {
+      volantis.css('/css/message.css?time=1629695977549')
+      volantis.js('/js/message.js?time=1629695977549', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -4686,7 +4683,7 @@ volantis.pjax.push(()=>{
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Java/","name":"Java"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/07/11/DFA算法-简易Java敏感词过滤/","name":"DFA算法-简易Java敏感词过滤(含源文件和上万敏感词列表)"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"DFA算法-简易Java敏感词过滤(含源文件和上万敏感词列表)","description":"","datePublished":"2021-07-11T14:39:00.000Z","dateModified":"2021-08-20T07:22:05.471Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/07/11/DFA%E7%AE%97%E6%B3%95-%E7%AE%80%E6%98%93Java%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/07/11/DFA%E7%AE%97%E6%B3%95-%E7%AE%80%E6%98%93Java%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/","wordCount":0,"articleSection":"Java","keywords":"Java,算法,DFA算法,敏感词过滤"}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"DearXuan的主页","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"DearXuan的主页"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Java/","name":"Java"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/07/11/DFA算法-简易Java敏感词过滤/","name":"DFA算法-简易Java敏感词过滤(含源文件和上万敏感词列表)"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"DFA算法-简易Java敏感词过滤(含源文件和上万敏感词列表)","description":"","datePublished":"2021-07-11T14:39:00.000Z","dateModified":"2021-08-23T05:12:49.185Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/07/11/DFA%E7%AE%97%E6%B3%95-%E7%AE%80%E6%98%93Java%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"DearXuan的主页","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/07/11/DFA%E7%AE%97%E6%B3%95-%E7%AE%80%E6%98%93Java%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/","wordCount":0,"articleSection":"Java","keywords":"Java,算法,DFA算法,敏感词过滤"}]</script>
 
 
 <!-- more -->
