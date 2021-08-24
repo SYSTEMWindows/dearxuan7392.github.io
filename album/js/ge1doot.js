@@ -1,13 +1,4 @@
-////////////////////////////////////////////////////////////
-// ============= micro HTML5 library =====================
-// @author Gerard Ferrandez / http://www.dhteumeuleu.com/
-// last update: May 27, 2013
-// Released under the MIT license
-// http://www.dhteumeuleu.com/LICENSE.html
-////////////////////////////////////////////////////////////
-
-// ===== ge1doot global =====
-
+//欢迎访问DearXuan的主页:http://www.dearxuan.top
 var ge1doot = ge1doot || {
 	json: null,
 	screen: null,
@@ -37,8 +28,6 @@ var ge1doot = ge1doot || {
 		for (var i = 0, n = url.length; i < n; i++) load(url[i]);
 	}
 }
-
-// ===== html/canvas container =====
 
 ge1doot.Screen = function (setup) {
 	ge1doot.screen = this;
@@ -77,8 +66,6 @@ ge1doot.Screen = function (setup) {
 	!this.setup.resize && this.resize();
 }
 
-// ==== unified touch events handler ====
-
 ge1doot.Pointer = function (setup) {
 	ge1doot.pointer = this;
 	var self        = this;
@@ -105,7 +92,6 @@ ge1doot.Pointer = function (setup) {
 	this.evt        = false;
 	var sX          = 0;
 	var sY          = 0;
-	// prevent default behavior
 	if (setup.tap) this.elem.onclick = function () { return false; }
 	if (!setup.documentMove) {
 		document.ontouchmove = function(e) { e.preventDefault(); }
@@ -251,7 +237,6 @@ ge1doot.Pointer = function (setup) {
 		return false; 
 	}
 }
-// ===== request animation frame =====
 
 window.requestAnimFrame = (function(){
 		return  window.requestAnimationFrame || 
