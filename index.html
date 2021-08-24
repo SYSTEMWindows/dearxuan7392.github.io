@@ -20,7 +20,7 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629779676111" as="style">
+  <link rel="preload" href="/css/style.css?time=1629780854838" as="style">
   <!-- 页面元数据 -->
   <title>DearXuan的主页</title>
   <meta name="keywords" content="编程,算法">
@@ -2329,8 +2329,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629779676111" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629779676111"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629780854838" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629780854838"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2399,6 +2399,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
     <script src="/live2d-widget/autoload.js"></script>
+    
+      <script src="/js/global.js"></script>
     
     
   </head>
@@ -3377,7 +3379,7 @@ float Q_rsqrt(float number) {
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Tue Aug 24 2021 12:34:35 GMT+0800 (中国标准时间)</div>
+            <div id="last-update" style="display: none;">Tue Aug 24 2021 12:54:14 GMT+0800 (中国标准时间)</div>
             <div id="last-update-show">2021-08-24 日</div>
           
         </div>
@@ -3995,7 +3997,7 @@ float Q_rsqrt(float number) {
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629779676111')
+    volantis.js('/js/rightMenu.js?time=1629780854838')
   </script>
 
 
@@ -4108,19 +4110,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629779676111")
+        volantis.js("/js/plugins/sites.js?time=1629780854838")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629779676111")
+        volantis.js("/js/plugins/friends.js?time=1629780854838")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629779676111")
+        volantis.js("/js/plugins/contributors.js?time=1629780854838")
       }
     
   };
@@ -4193,7 +4195,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629779676112')
+      await volantis.js('/js/aplayer.js?time=1629780854839')
       volantis.APlayerController.music = true;
     
   })();
@@ -4261,7 +4263,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629779676111.js"></script>
+<script src="/js/app.js?time=1629780854838.js"></script>
 
 
 <!-- optional -->
@@ -4274,7 +4276,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629779676111");
+    return volantis.js("/js/search/hexo.js?time=1629780854838");
   }
 
   function loadSearchService() {
@@ -4586,7 +4588,7 @@ volantis.pjax.push(()=>{
       fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
     }
   }
-  volantis.js('/js/parallax.js?time=1629779676111').then(()=>{
+  volantis.js('/js/parallax.js?time=1629780854838').then(()=>{
     parallax()
   })
   volantis.pjax.push(next_parallax);
@@ -4605,8 +4607,8 @@ volantis.pjax.push(()=>{
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629779676111')
-      volantis.js('/js/message.js?time=1629779676111', () => {
+      volantis.css('/css/message.css?time=1629780854838')
+      volantis.js('/js/message.js?time=1629780854838', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4650,8 +4652,8 @@ volantis.pjax.push(()=>{
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629779676111')
-      volantis.js('/js/message.js?time=1629779676111', () => {
+      volantis.css('/css/message.css?time=1629780854838')
+      volantis.js('/js/message.js?time=1629780854838', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {

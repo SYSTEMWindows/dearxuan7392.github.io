@@ -603,6 +603,7 @@ th {
   max-width: 100%;
 }
 .cover-wrapper .cover-body .bottom {
+  opacity: 0.8;
   margin-top: 32px;
 }
 .cover-wrapper .cover-body .title {

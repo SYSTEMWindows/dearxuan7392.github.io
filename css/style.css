@@ -4849,6 +4849,7 @@ img.lazyload:not(.placeholder).loaded {
   opacity: 1;
 }
 #l_side {
+  opacity: 0.8;
   width: 240px;
   float: right;
   position: relative;
