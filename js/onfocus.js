@@ -9,7 +9,7 @@ document.addEventListener('visibilitychange', function () {
     }
     else {
         $('[rel="icon"]').attr('href', "/favicon.ico");
-        document.title = '(ฅ>ω<*ฅ) 你终于回来了 ~';
+        document.title = '(ฅ>ω<*ฅ) 想死你了 ~';
         titleTime = setTimeout(function () {
             document.title = OriginTitle;
         }, 2000);
