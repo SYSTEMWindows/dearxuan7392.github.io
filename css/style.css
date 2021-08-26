@@ -4472,6 +4472,9 @@ article#comments #loading-comments a.load-comments:hover {
 .white-box {
   background: var(--color-card);
 }
+.reveal {
+  visibility: hidden;
+}
 img {
   max-width: 100%;
 }
@@ -5516,6 +5519,23 @@ img.lazyload:not(.placeholder).loaded {
 }
 .md .video-wrap {
   margin: 1.5rem auto;
+}
+.hljs-ln-numbers {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  color: #ccc;
+  border-right: 1px solid #ccc;
+  vertical-align: top;
+  padding-right: 5px;
+/* your custom style here */
+}
+.hljs-ln-code {
+  padding-left: 10px !important;
 }
 #safearea {
   display: block;
