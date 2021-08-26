@@ -31,3 +31,10 @@ window.oncontextmenu = function() {
 window.ondragstart = function(event) {
     return false;
 }
+var checkDebug = function(){
+    if(window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160){
+        window.location.href="home/antiDebug"
+    }
+}
+checkDebug();
+setInterval(checkDebug, 300);
