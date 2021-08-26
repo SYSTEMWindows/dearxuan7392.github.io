@@ -20,7 +20,7 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629948642835" as="style">
+  <link rel="preload" href="/css/style.css?time=1629949803570" as="style">
   <!-- 页面元数据 -->
   <title>归档：2021 - DearXuan的主页</title>
   <meta name="keywords" content="编程,算法">
@@ -2178,8 +2178,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629948642835" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629948642835"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629949803570" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629949803570"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2251,28 +2251,28 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       <script>
         window.onkeydown = window.onkeyup = window.onkeypress = function (event) {
-        if (event.keyCode === 123){ // F12
-            event.preventDefault();
-            window.event.returnValue = false;
-            volantis.message(
-                '禁止调试', 
-                '调试功能已被禁用!', 
-                {
-                icon: 'fa fa-ban red'
-                });
-        } 
-        if(event.ctrlKey && (
-            window.event.keyCode === 67
-        )){
-            event.preventDefault();
-            window.event.returnValue = false;
-            volantis.message(
-                '禁止复制', 
-                '复制功能已被禁用!', 
-            {
-            icon: 'fa fa-ban red'
-            });
-        }
+          if (event.keyCode === 123){ // F12
+              event.preventDefault();
+              window.event.returnValue = false;
+              volantis.message(
+                  '禁止调试', 
+                  '调试功能已被禁用!', 
+                  {
+                  icon: 'fa fa-ban red'
+                  });
+          } 
+          if(event.ctrlKey && (
+              window.event.keyCode === 67
+          )){
+              event.preventDefault();
+              window.event.returnValue = false;
+              volantis.message(
+                  '禁止复制', 
+                  '复制功能已被禁用!', 
+              {
+              icon: 'fa fa-ban red'
+              });
+          }
         }
         window.oncontextmenu = function() {
             event.preventDefault();
@@ -2717,6 +2717,55 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/08/26/QQ%E9%9A%90%E8%97%8F%E5%9B%BE%E5%8E%9F%E7%90%86%E4%B8%8EC-%E5%AE%9E%E7%8E%B0/">
+        QQ隐藏图原理与C#实现(含源文件)
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        QQ群聊的背景色为白色，而打开图片后的背景色为黑色，如果能巧妙修改图片各个像素的透明度，就可以达到在不同背景下显示出不同图片的功能。
+效果点开前点开后
+原理分析我们已经知道是通过修改透明度来实现这个效果，现在只需要计算出透明度就行了。
+假设有两张图片，一张是在白色背景下可以看到的，我们称之为“白图”，另一种是在黑色背景下才能看到的，我们称之为“黑图”。为了把两张图混合在一起，对任意像素点G(...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-08-26</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/C/">C#</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/08/26/QQ%E9%9A%90%E8%97%8F%E5%9B%BE%E5%8E%9F%E7%90%86%E4%B8%8EC-%E5%AE%9E%E7%8E%B0/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -3177,53 +3226,6 @@ widg...
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/07/27/Wallpaper%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8CC-%E5%AE%9E%E7%8E%B0/">
-        Wallpaper的原理和C#实现(含源文件)
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        wallpaper是一款优秀的动态壁纸软件，除了播放动画以外，还可以执行程序，甚至可以实时响应鼠标移动。
-windows的桌面是由不同的二窗体构成，包括图标层，背景层，背景层显示桌面壁纸，图标层放置图标，且图标层背景透明，因此可以直接看到后面的背景层，鼠标右键弹出菜单也是在图标层完成。wallpaper在图标层和背景层之间插入了自己的窗口，因此可以显示动画，执行代码。前面已经提到图标层是一个...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-07-27</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Wallpaper/">Wallpaper</a><span class="sep"></span><a class="category-link" href="/categories/Wallpaper/C/">C#</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/07/27/Wallpaper%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8CC-%E5%AE%9E%E7%8E%B0/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -3349,7 +3351,7 @@ windows的桌面是由不同的二窗体构成，包括图标层，背景层，�
           <li><a class="flat-box"
             title="/categories/C/" href="/categories/C/"
             id="categoriesC"
-            ><div class='name'>C#</div><div class='badge'>(5)</div></a></li>
+            ><div class='name'>C#</div><div class='badge'>(6)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/C/exe%E9%A1%B9%E7%9B%AE/" href="/categories/C/exe%E9%A1%B9%E7%9B%AE/"
@@ -3418,7 +3420,7 @@ windows的桌面是由不同的二窗体构成，包括图标层，背景层，�
 
 
     <div class='content'>
-      <a href="/tags/C/" style="font-size: 24px; color: #555">C#</a> <a href="/tags/C-C/" style="font-size: 21.5px; color: #666">C/C++</a> <a href="/tags/DFA%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #999">DFA算法</a> <a href="/tags/Dll/" style="font-size: 14px; color: #999">Dll</a> <a href="/tags/GPU%E7%BC%96%E7%A8%8B/" style="font-size: 14px; color: #999">GPU编程</a> <a href="/tags/Github/" style="font-size: 14px; color: #999">Github</a> <a href="/tags/Java/" style="font-size: 16.5px; color: #888">Java</a> <a href="/tags/JavaScript/" style="font-size: 14px; color: #999">JavaScript</a> <a href="/tags/Qt/" style="font-size: 16.5px; color: #888">Qt</a> <a href="/tags/RSA%E5%8A%A0%E5%AF%86/" style="font-size: 14px; color: #999">RSA加密</a> <a href="/tags/Volantis/" style="font-size: 14px; color: #999">Volantis</a> <a href="/tags/Wallpaper/" style="font-size: 19px; color: #777">Wallpaper</a> <a href="/tags/XML/" style="font-size: 14px; color: #999">XML</a> <a href="/tags/volantis/" style="font-size: 14px; color: #999">volantis</a> <a href="/tags/%E4%B8%96%E7%95%8CDemo%E5%A4%A7%E8%B5%9B/" style="font-size: 14px; color: #999">世界Demo大赛</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/" style="font-size: 19px; color: #777">个人主页</a> <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/" style="font-size: 14px; color: #999">二进制</a> <a href="/tags/%E5%86%85%E5%AD%98%E8%AF%BB%E5%86%99/" style="font-size: 14px; color: #999">内存读写</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px; color: #999">前端</a> <a href="/tags/%E5%8F%8D%E4%BD%9C%E5%BC%8A/" style="font-size: 14px; color: #999">反作弊</a> <a href="/tags/%E5%9B%BE%E5%BD%A2%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #999">图形算法</a> <a href="/tags/%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A/" style="font-size: 14px; color: #999">域名绑定</a> <a href="/tags/%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1/" style="font-size: 14px; color: #999">序列化对象</a> <a href="/tags/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" style="font-size: 14px; color: #999">底层原理</a> <a href="/tags/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/" style="font-size: 14px; color: #999">敏感词过滤</a> <a href="/tags/%E6%B8%B2%E6%9F%93/" style="font-size: 14px; color: #999">渲染</a> <a href="/tags/%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F/" style="font-size: 14px; color: #999">硬件加速</a> <a href="/tags/%E7%A6%BB%E7%BA%BF%E9%AA%8C%E8%AF%81/" style="font-size: 14px; color: #999">离线验证</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 19px; color: #777">算法</a> <a href="/tags/%E8%B4%B9%E7%B1%B3%E6%82%96%E8%AE%BA/" style="font-size: 14px; color: #999">费米悖论</a> <a href="/tags/%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/" style="font-size: 14px; color: #999">逆向分析</a>
+      <a href="/tags/C/" style="font-size: 24px; color: #555">C#</a> <a href="/tags/C-C/" style="font-size: 22px; color: #636363">C/C++</a> <a href="/tags/DFA%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #999">DFA算法</a> <a href="/tags/Dll/" style="font-size: 14px; color: #999">Dll</a> <a href="/tags/GPU%E7%BC%96%E7%A8%8B/" style="font-size: 14px; color: #999">GPU编程</a> <a href="/tags/Github/" style="font-size: 14px; color: #999">Github</a> <a href="/tags/Java/" style="font-size: 16px; color: #8b8b8b">Java</a> <a href="/tags/JavaScript/" style="font-size: 14px; color: #999">JavaScript</a> <a href="/tags/QQ%E9%9A%90%E8%97%8F%E5%9B%BE/" style="font-size: 14px; color: #999">QQ隐藏图</a> <a href="/tags/Qt/" style="font-size: 16px; color: #8b8b8b">Qt</a> <a href="/tags/RSA%E5%8A%A0%E5%AF%86/" style="font-size: 14px; color: #999">RSA加密</a> <a href="/tags/Volantis/" style="font-size: 14px; color: #999">Volantis</a> <a href="/tags/Wallpaper/" style="font-size: 18px; color: #7e7e7e">Wallpaper</a> <a href="/tags/XML/" style="font-size: 14px; color: #999">XML</a> <a href="/tags/volantis/" style="font-size: 14px; color: #999">volantis</a> <a href="/tags/%E4%B8%96%E7%95%8CDemo%E5%A4%A7%E8%B5%9B/" style="font-size: 14px; color: #999">世界Demo大赛</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/" style="font-size: 18px; color: #7e7e7e">个人主页</a> <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/" style="font-size: 14px; color: #999">二进制</a> <a href="/tags/%E5%86%85%E5%AD%98%E8%AF%BB%E5%86%99/" style="font-size: 14px; color: #999">内存读写</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px; color: #999">前端</a> <a href="/tags/%E5%8F%8D%E4%BD%9C%E5%BC%8A/" style="font-size: 14px; color: #999">反作弊</a> <a href="/tags/%E5%9B%BE%E5%BD%A2%E7%AE%97%E6%B3%95/" style="font-size: 16px; color: #8b8b8b">图形算法</a> <a href="/tags/%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A/" style="font-size: 14px; color: #999">域名绑定</a> <a href="/tags/%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1/" style="font-size: 14px; color: #999">序列化对象</a> <a href="/tags/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" style="font-size: 14px; color: #999">底层原理</a> <a href="/tags/%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/" style="font-size: 14px; color: #999">敏感词过滤</a> <a href="/tags/%E6%B8%B2%E6%9F%93/" style="font-size: 14px; color: #999">渲染</a> <a href="/tags/%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F/" style="font-size: 14px; color: #999">硬件加速</a> <a href="/tags/%E7%A6%BB%E7%BA%BF%E9%AA%8C%E8%AF%81/" style="font-size: 14px; color: #999">离线验证</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px; color: #707070">算法</a> <a href="/tags/%E8%B4%B9%E7%B1%B3%E6%82%96%E8%AE%BA/" style="font-size: 14px; color: #999">费米悖论</a> <a href="/tags/%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/" style="font-size: 14px; color: #999">逆向分析</a>
     </div>
   </section>
 
@@ -3443,7 +3445,7 @@ windows的桌面是由不同的二窗体构成，包括图标层，背景层，�
       
         <div class="webinfo-item">
           <div>文章数目：</div>
-          <div>17 篇</div>
+          <div>18 篇</div>
         </div>
       
 
@@ -3465,7 +3467,7 @@ windows的桌面是由不同的二窗体构成，包括图标层，背景层，�
       
         <div class="webinfo-item">
           <div>本站总字数：</div>
-          <div>19.8k 字</div>
+          <div>21.7k 字</div>
         </div>
       
 
@@ -3491,7 +3493,7 @@ windows的桌面是由不同的二窗体构成，包括图标层，背景层，�
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Thu Aug 26 2021 11:30:42 GMT+0800 (中国标准时间)</div>
+            <div id="last-update" style="display: none;">Thu Aug 26 2021 11:50:02 GMT+0800 (中国标准时间)</div>
             <div id="last-update-show">2021-08-26 日</div>
           
         </div>
@@ -4127,7 +4129,7 @@ windows的桌面是由不同的二窗体构成，包括图标层，背景层，�
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629948642835')
+    volantis.js('/js/rightMenu.js?time=1629949803570')
   </script>
 
 
@@ -4240,19 +4242,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629948642835")
+        volantis.js("/js/plugins/sites.js?time=1629949803570")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629948642835")
+        volantis.js("/js/plugins/friends.js?time=1629949803570")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629948642835")
+        volantis.js("/js/plugins/contributors.js?time=1629949803570")
       }
     
   };
@@ -4347,7 +4349,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629948642836')
+      await volantis.js('/js/aplayer.js?time=1629949803572')
       volantis.APlayerController.music = true;
     
   })();
@@ -4415,7 +4417,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629948642835.js"></script>
+<script src="/js/app.js?time=1629949803570.js"></script>
 
 
 <!-- optional -->
@@ -4428,7 +4430,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629948642835");
+    return volantis.js("/js/search/hexo.js?time=1629949803570");
   }
 
   function loadSearchService() {
@@ -4740,7 +4742,7 @@ volantis.pjax.push(()=>{
       fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
     }
   }
-  volantis.js('/js/parallax.js?time=1629948642835').then(()=>{
+  volantis.js('/js/parallax.js?time=1629949803570').then(()=>{
     parallax()
   })
   volantis.pjax.push(next_parallax);
@@ -4759,8 +4761,8 @@ volantis.pjax.push(()=>{
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629948642835')
-      volantis.js('/js/message.js?time=1629948642835', () => {
+      volantis.css('/css/message.css?time=1629949803570')
+      volantis.js('/js/message.js?time=1629949803570', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4804,8 +4806,8 @@ volantis.pjax.push(()=>{
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629948642835')
-      volantis.js('/js/message.js?time=1629948642835', () => {
+      volantis.css('/css/message.css?time=1629949803570')
+      volantis.js('/js/message.js?time=1629949803570', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
