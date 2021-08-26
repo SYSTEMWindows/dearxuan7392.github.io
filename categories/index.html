@@ -20,7 +20,7 @@
   <meta content="DearXuan的主页" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629948194833" as="style">
+  <link rel="preload" href="/css/style.css?time=1629948642772" as="style">
   <!-- 页面元数据 -->
   <title>所有分类 - DearXuan的主页</title>
   <meta name="keywords" content="编程,算法">
@@ -2180,8 +2180,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629948194833" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629948194833"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629948642772" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629948642772"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2251,8 +2251,46 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
     <script src="/live2d-widget/autoload.js"></script>
     
-      <script src="/js/antiDebug.js"></script>
-    
+      <script>
+        window.onkeydown = window.onkeyup = window.onkeypress = function (event) {
+        if (event.keyCode === 123){ // F12
+            event.preventDefault();
+            window.event.returnValue = false;
+            volantis.message(
+                '禁止调试', 
+                '调试功能已被禁用!', 
+                {
+                icon: 'fa fa-ban red'
+                });
+        } 
+        if(event.ctrlKey && (
+            window.event.keyCode === 67
+        )){
+            event.preventDefault();
+            window.event.returnValue = false;
+            volantis.message(
+                '禁止复制', 
+                '复制功能已被禁用!', 
+            {
+            icon: 'fa fa-ban red'
+            });
+        }
+        }
+        window.oncontextmenu = function() {
+            event.preventDefault();
+            return false;
+        }
+        window.ondragstart = function(event) {
+            return false;
+        }
+        var checkDebug = function(){
+            if(window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160){
+                window.location.href="home/antiDebug"
+            }
+        }
+        checkDebug();
+        setInterval(checkDebug, 300);
+      </script>
     
   </head>
   <body>
@@ -2912,7 +2950,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Thu Aug 26 2021 11:23:13 GMT+0800 (中国标准时间)</div>
+            <div id="last-update" style="display: none;">Thu Aug 26 2021 11:30:41 GMT+0800 (中国标准时间)</div>
             <div id="last-update-show">2021-08-26 日</div>
           
         </div>
@@ -3546,7 +3584,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629948194833')
+    volantis.js('/js/rightMenu.js?time=1629948642772')
   </script>
 
 
@@ -3659,19 +3697,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629948194833")
+        volantis.js("/js/plugins/sites.js?time=1629948642772")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629948194833")
+        volantis.js("/js/plugins/friends.js?time=1629948642772")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629948194833")
+        volantis.js("/js/plugins/contributors.js?time=1629948642772")
       }
     
   };
@@ -3766,7 +3804,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629948194835')
+      await volantis.js('/js/aplayer.js?time=1629948642774')
       volantis.APlayerController.music = true;
     
   })();
@@ -3834,7 +3872,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629948194833.js"></script>
+<script src="/js/app.js?time=1629948642772.js"></script>
 
 
 <!-- optional -->
@@ -3847,7 +3885,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629948194833");
+    return volantis.js("/js/search/hexo.js?time=1629948642772");
   }
 
   function loadSearchService() {
@@ -4159,7 +4197,7 @@ volantis.pjax.push(()=>{
       fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
     }
   }
-  volantis.js('/js/parallax.js?time=1629948194833').then(()=>{
+  volantis.js('/js/parallax.js?time=1629948642772').then(()=>{
     parallax()
   })
   volantis.pjax.push(next_parallax);
@@ -4178,8 +4216,8 @@ volantis.pjax.push(()=>{
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629948194833')
-      volantis.js('/js/message.js?time=1629948194833', () => {
+      volantis.css('/css/message.css?time=1629948642772')
+      volantis.js('/js/message.js?time=1629948642772', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -4223,8 +4261,8 @@ volantis.pjax.push(()=>{
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629948194833')
-      volantis.js('/js/message.js?time=1629948194833', () => {
+      volantis.css('/css/message.css?time=1629948642772')
+      volantis.js('/js/message.js?time=1629948642772', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
